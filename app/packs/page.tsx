@@ -200,51 +200,73 @@ export default function PacksPage() {
       <section className="py-20 px-4 bg-[#111827]/50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-black text-center mb-12">Comparativa completa</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm min-w-[560px]">
+          <div className="overflow-x-auto rounded-2xl border border-white/10">
+            <table className="w-full text-sm min-w-[520px] border-collapse">
+              {/* Header */}
               <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left py-4 text-gray-400 font-medium w-1/2">Características</th>
-                  <th className="text-center py-4 text-[#2979FF] font-bold">GRABA</th>
-                  <th className="text-center py-4 text-[#FF6B6B] font-bold">CREA</th>
-                  <th className="text-center py-4 text-[#FFB020] font-bold">DOMINA</th>
+                <tr className="bg-[#0a0e1a]">
+                  <th className="text-left px-6 py-5 text-gray-400 font-medium w-1/2 border-b border-white/10">
+                    Características
+                  </th>
+                  {[
+                    { label: 'GRABA', color: '#2979FF', price: '350€' },
+                    { label: 'CREA', color: '#FF6B6B', price: '850€' },
+                    { label: 'DOMINA', color: '#FFB020', price: '1.400€' },
+                  ].map(({ label, color, price }) => (
+                    <th key={label} className="px-4 py-5 text-center border-b border-white/10 w-[16%]">
+                      <span className="block font-black text-base" style={{ color }}>{label}</span>
+                      <span className="block text-xs text-gray-500 font-normal mt-0.5">{price}/mes</span>
+                    </th>
+                  ))}
                 </tr>
               </thead>
+              {/* Body */}
               <tbody>
                 {comparisonRows.map(({ feature, graba, crea, domina }, i) => (
                   <tr
                     key={feature}
-                    className={`border-b border-white/5 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}
+                    className={`border-b border-white/5 transition-colors hover:bg-white/[0.03] ${
+                      i % 2 === 0 ? 'bg-white/[0.015]' : 'bg-transparent'
+                    }`}
                   >
-                    <td className="py-3.5 text-gray-300">{feature}</td>
-                    <td className="py-3.5 text-center">
-                      {typeof graba === 'boolean' ? (
-                        graba ? <CheckIcon /> : <XIcon />
-                      ) : (
-                        <span className="text-gray-300">{graba}</span>
-                      )}
-                    </td>
-                    <td className="py-3.5 text-center">
-                      {typeof crea === 'boolean' ? (
-                        crea ? <CheckIcon /> : <XIcon />
-                      ) : (
-                        <span className="text-gray-300">{crea}</span>
-                      )}
-                    </td>
-                    <td className="py-3.5 text-center">
-                      {typeof domina === 'boolean' ? (
-                        domina ? <CheckIcon /> : <XIcon />
-                      ) : (
-                        <span className="text-gray-300">{domina}</span>
-                      )}
-                    </td>
+                    <td className="px-6 py-4 text-gray-300 text-sm">{feature}</td>
+                    {([graba, crea, domina] as (boolean | string)[]).map((val, j) => (
+                      <td key={j} className="px-4 py-4 text-center align-middle">
+                        {typeof val === 'boolean' ? (
+                          <span className="flex justify-center items-center">
+                            {val ? (
+                              <span className="inline-flex w-6 h-6 rounded-full bg-[#00D68F]/15 items-center justify-center">
+                                <svg className="w-3.5 h-3.5 text-[#00D68F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </span>
+                            ) : (
+                              <span className="inline-flex w-6 h-6 rounded-full bg-white/5 items-center justify-center">
+                                <svg className="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </span>
+                            )}
+                          </span>
+                        ) : (
+                          <span className="text-gray-300 text-xs font-medium">{val}</span>
+                        )}
+                      </td>
+                    ))}
                   </tr>
                 ))}
-                <tr>
-                  <td className="py-4 font-bold text-white">Precio/mes +IVA</td>
-                  <td className="py-4 text-center font-black text-[#2979FF]">350€</td>
-                  <td className="py-4 text-center font-black text-[#FF6B6B]">850€</td>
-                  <td className="py-4 text-center font-black text-[#FFB020]">1.400€</td>
+                {/* Price row */}
+                <tr className="bg-[#0a0e1a]">
+                  <td className="px-6 py-5 font-bold text-white text-sm">Precio/mes +IVA</td>
+                  {[
+                    { price: '350€', color: '#2979FF' },
+                    { price: '850€', color: '#FF6B6B' },
+                    { price: '1.400€', color: '#FFB020' },
+                  ].map(({ price, color }) => (
+                    <td key={price} className="px-4 py-5 text-center">
+                      <span className="font-black text-base" style={{ color }}>{price}</span>
+                    </td>
+                  ))}
                 </tr>
               </tbody>
             </table>

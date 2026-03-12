@@ -26,8 +26,10 @@ const schema = {
   telephone: '+34000000000',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Playa San Juan',
+    streetAddress: 'Camino del Faro 37',
+    addressLocality: 'Cabo las Huertas',
     addressRegion: 'Alicante',
+    postalCode: '03540',
     addressCountry: 'ES',
   },
   geo: {

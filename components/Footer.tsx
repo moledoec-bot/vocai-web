@@ -15,7 +15,7 @@ export default function Footer() {
             </p>
             <div className="mt-4 flex gap-3">
               <a
-                href="https://instagram.com/vocai.es"
+                href="https://www.instagram.com/vocai.st/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#2979FF] transition-colors duration-300"
@@ -66,7 +66,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-sm mb-4">Contacto</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>📍 Playa San Juan, Alicante</li>
+              <li>📍 Camino del Faro 37, Cabo las Huertas, Alicante</li>
               <li>
                 <a
                   href={`https://wa.me/${WA_NUMBER}`}
@@ -79,7 +79,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://instagram.com/vocai.es"
+                  href="https://www.instagram.com/vocai.st/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#2979FF] transition-colors duration-300"
