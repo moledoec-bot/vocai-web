@@ -66,7 +66,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-sm mb-4">Contacto</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>📍 Camino del Faro 37, Cabo las Huertas, Alicante</li>
+              <li>
+                📍 Camino del Faro 37,<br />
+                Cabo las Huertas, Alicante
+              </li>
               <li>
                 <a
                   href={`https://wa.me/${WA_NUMBER}`}

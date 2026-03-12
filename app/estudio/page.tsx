@@ -41,7 +41,7 @@ export default function EstudioPage() {
         <div className="absolute inset-0 bg-[#0a0e1a]/70" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <span className="inline-block px-4 py-1.5 bg-[#2979FF]/20 border border-[#2979FF]/40 rounded-full text-[#2979FF] text-sm font-semibold mb-6">
-            📍 Cabo las Huertas, Alicante
+            📍 Camino del Faro 37, Cabo las Huertas, Alicante
           </span>
           <h1 className="text-4xl sm:text-5xl font-black mb-6 leading-tight">
             Estudio de Podcast y Contenido{' '}

@@ -50,7 +50,7 @@ export default function NosotrosPage() {
       <section className="pt-28 pb-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block px-4 py-1.5 bg-[#2979FF]/20 border border-[#2979FF]/40 rounded-full text-[#2979FF] text-sm font-semibold mb-6">
-            📍 Cabo las Huertas, Alicante
+            📍 Camino del Faro 37, Cabo las Huertas, Alicante
           </span>
           <h1 className="text-4xl sm:text-5xl font-black mb-6">
             Somos <span className="gradient-text">VOCAI</span>
@@ -117,7 +117,7 @@ export default function NosotrosPage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-black text-center mb-4">Dónde estamos</h2>
           <p className="text-gray-400 text-center mb-10">
-            Camino del Faro 37, Cabo las Huertas, Alicante · CP 03540
+            📍 Camino del Faro 37, Cabo las Huertas, Alicante
           </p>
           <div className="rounded-2xl overflow-hidden border border-white/10 h-80">
             <iframe

@@ -50,8 +50,8 @@ export default function ContactoPage() {
                   <span className="text-xl flex-shrink-0">📍</span>
                   <div>
                     <p className="text-white font-semibold">Ubicación</p>
-                    <p className="text-gray-400">Camino del Faro 37, Cabo las Huertas</p>
-                    <p className="text-gray-400">Alicante · CP 03540</p>
+                    <p className="text-gray-400">Camino del Faro 37,</p>
+                    <p className="text-gray-400">Cabo las Huertas, Alicante</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
