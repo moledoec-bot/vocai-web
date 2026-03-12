@@ -121,7 +121,7 @@ export default function NosotrosPage() {
           </p>
           <div className="rounded-2xl overflow-hidden border border-white/10 h-80">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.0!2d-0.4074!3d38.3734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6236c85bcaf1cd%3A0x4c5d3f5c2a8e0b3d!2sPlaya%20San%20Juan%2C%20Alicante!5e0!3m2!1ses!2ses!4v1"
+              src="https://maps.google.com/maps?q=Camino+del+Faro+37,+Cabo+las+Huertas,+Alicante+03540&output=embed&hl=es&z=17"
               width="100%"
               height="100%"
               style={{ border: 0 }}

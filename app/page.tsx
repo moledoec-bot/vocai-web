@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
@@ -180,14 +181,23 @@ export default function HomePage() {
           <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
             Tecnología de primer nivel en el corazón de Alicante.
           </p>
-          {/* REEMPLAZAR estos placeholders con imágenes reales del estudio en /public/images/ */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
+            {/* Imagen destacada principal — ocupa 2 columnas */}
+            <div className="col-span-2 relative aspect-video rounded-xl overflow-hidden border border-white/5">
+              <Image
+                src="/images/estudio-1.jpg"
+                alt="Estudio VOCAI — Cabo las Huertas, Alicante"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            {/* REEMPLAZAR con estudio-2.jpg, estudio-3.jpg cuando estén disponibles */}
+            {[2, 3].map((i) => (
               <div
                 key={i}
-                className="bg-[#1a1a2e] rounded-xl aspect-square flex items-center justify-center text-gray-600 text-xs border border-white/5"
+                className="bg-[#1a1a2e] rounded-xl aspect-video flex items-center justify-center text-gray-600 text-xs border border-white/5"
               >
-                {/* REEMPLAZAR con: <Image src={`/images/estudio-${i}.jpg`} alt="Estudio VOCAI" fill className="object-cover rounded-xl" /> */}
                 Foto estudio {i}
               </div>
             ))}

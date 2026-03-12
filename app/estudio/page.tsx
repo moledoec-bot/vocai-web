@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
@@ -76,7 +77,7 @@ export default function EstudioPage() {
           <div className="h-12 w-px bg-white/10 hidden sm:block" />
           <div className="text-gray-300">
             <p>✅ Técnico incluido</p>
-            <p>✅ Entrega inmediata del material</p>
+            <p>✅ Entrega inmediata</p>
           </div>
         </div>
       </section>
@@ -107,15 +108,23 @@ export default function EstudioPage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-black text-center mb-12">El estudio por dentro</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[1, 2, 3, 4, 5].map((i) => (
+            {/* Imagen destacada principal — ocupa 2 columnas */}
+            <div className="col-span-2 relative aspect-video rounded-xl overflow-hidden border border-white/5">
+              <Image
+                src="/images/estudio-1.jpg"
+                alt="Estudio VOCAI — Cabo las Huertas, Alicante"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            {/* REEMPLAZAR con estudio-2.jpg, estudio-3.jpg, estudio-4.jpg cuando estén disponibles */}
+            {[2, 3, 4].map((i) => (
               <div
                 key={i}
-                className={`bg-[#1a1a2e] rounded-xl border border-white/5 flex items-center justify-center text-gray-600 text-xs ${
-                  i === 1 ? 'col-span-2 md:col-span-2 aspect-video' : 'aspect-square'
-                }`}
+                className="bg-[#1a1a2e] rounded-xl aspect-square border border-white/5 flex items-center justify-center text-gray-600 text-xs"
               >
-                {/* REEMPLAZAR con: <Image src={`/images/estudio-interior-${i}.jpg`} alt="Interior estudio VOCAI" fill className="object-cover rounded-xl" /> */}
-                Foto interior estudio {i}
+                Foto estudio {i}
               </div>
             ))}
           </div>
