@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0a0e1a;
+  --blue: #2979FF;
+  --coral: #FF6B6B;
+  --amber: #FFB020;
+  --green: #00D68F;
+  --card: #111827;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0e1a;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #2979FF, #FF6B6B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #2979FF, #FF6B6B);
+  }
+
+  .gradient-border {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, #2979FF, #FF6B6B) 1;
+  }
+}
+
+/* Blog prose styles */
+.prose-vocai h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-vocai h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-vocai p {
+  color: #9ca3af;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.prose-vocai strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+.prose-vocai ul, .prose-vocai ol {
+  color: #9ca3af;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.prose-vocai li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+.prose-vocai a {
+  color: #2979FF;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.prose-vocai a:hover {
+  color: #ffffff;
+}
+.prose-vocai hr {
+  border-color: rgba(255,255,255,0.1);
+  margin: 2rem 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2979FF;
+  border-radius: 3px;
+}
