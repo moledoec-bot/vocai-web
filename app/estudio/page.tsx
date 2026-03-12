@@ -55,7 +55,7 @@ export default function EstudioPage() {
             href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20reservar%20el%20estudio%20de%20VOCAI`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-[#FF6B6B] hover:bg-[#ff5252] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
+            className="inline-block px-8 py-4 mb-12 sm:mb-0 bg-[#FF6B6B] hover:bg-[#ff5252] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
           >
             Reservar ahora →
           </a>

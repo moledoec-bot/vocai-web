@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import HeroParallax from '@/components/HeroParallax'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
@@ -101,35 +102,7 @@ export default function HomePage() {
       />
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background — REEMPLAZAR con: <Image src="/images/estudio-hero.jpg" alt="Estudio VOCAI" fill className="object-cover" priority /> */}
-        <div className="absolute inset-0 bg-[#1a1a2e]" aria-hidden="true" />
-        <div className="absolute inset-0 bg-[#0a0e1a]/60" aria-hidden="true" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6">
-            La voz de tu negocio,{' '}
-            <span className="gradient-text">potenciada por IA.</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-            Estudio de podcast, marketing digital e inteligencia artificial para empresas y profesionales en Alicante.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/packs"
-              className="px-8 py-4 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
-            >
-              Ver packs →
-            </Link>
-            <Link
-              href="/estudio"
-              className="px-8 py-4 border-2 border-[#FF6B6B] text-[#FF6B6B] hover:bg-[#FF6B6B] hover:text-white font-bold rounded-xl transition-all duration-300 text-lg"
-            >
-              Reservar estudio →
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroParallax />
 
       {/* VALUE PROPS */}
       <section className="py-20 px-4 max-w-7xl mx-auto">
