@@ -1,19 +1,17 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
 export default function HeroParallax() {
-  const imageRef = useRef<HTMLDivElement>(null)
+  const bgRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!imageRef.current) return
-      // La imagen se mueve al 35% de la velocidad del scroll → efecto parallax suave
-      imageRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`
+      if (!bgRef.current) return
+      bgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -22,23 +20,27 @@ export default function HeroParallax() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Imagen de fondo con parallax */}
-      {/* scale-110 evita bordes blancos durante el movimiento parallax */}
-      <div ref={imageRef} className="absolute inset-0 scale-110 will-change-transform">
-        <Image
-          src="/images/estudio-1.jpg"
-          alt="Estudio VOCAI — Cabo las Huertas, Alicante"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
-      </div>
-
-      {/* Overlay navy al 60% */}
+      {/* Fondo navy con gradiente azul-coral y parallax */}
+      <div ref={bgRef} className="absolute inset-0 scale-110 will-change-transform"
+        style={{
+          background: 'linear-gradient(135deg, #0a0e1a 0%, #0d1b3e 40%, #1a0e1a 70%, #1f0f0d 100%)',
+        }}
+        aria-hidden="true"
+      />
+      {/* Resplandor azul superior-izquierda */}
       <div
-        className="absolute inset-0"
-        style={{ backgroundColor: 'rgba(10, 14, 26, 0.60)' }}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 60% 50% at 20% 30%, rgba(41,121,255,0.18) 0%, transparent 70%)',
+        }}
+        aria-hidden="true"
+      />
+      {/* Resplandor coral inferior-derecha */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 50% 45% at 80% 75%, rgba(255,107,107,0.14) 0%, transparent 70%)',
+        }}
         aria-hidden="true"
       />
 
