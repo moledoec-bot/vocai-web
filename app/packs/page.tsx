@@ -5,85 +5,157 @@ const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 export const metadata: Metadata = {
   title: 'Packs de Contenido y Marketing | VOCAI',
   description:
-    'Elige tu pack: GRABA (350€/mes), CREA (850€/mes) o DOMINA (1.400€/mes). Podcast, reels, redes sociales e IA para tu negocio en Alicante.',
+    'Elige tu pack: BÁSICO (90€/h), PLUS (190€), PACK GRABA (349€/mes), PACK CREA (850€/mes) o PACK DOMINA (1.400€/mes). Podcast, reels y marketing en Alicante.',
   openGraph: {
     title: 'Packs de Contenido y Marketing | VOCAI',
-    description: 'Desde 350€/mes: estudio, técnico, reels, marca personal y automatizaciones IA.',
+    description: 'Desde 90€/hora: estudio profesional, reels, marca personal y automatizaciones IA.',
     url: 'https://vocai.es/packs',
   },
   alternates: { canonical: 'https://vocai.es/packs' },
 }
 
-const packs = [
+type Pack = {
+  name: string
+  icon: string
+  tagline: string
+  contentBadges: string[]
+  popularBadge: string | null
+  originalPrice: string
+  price: string
+  priceUnit: string
+  features: string[]
+  color: string
+}
+
+const packs: Pack[] = [
   {
-    name: 'GRABA',
-    icon: '📦',
-    originalPrice: '550',
-    price: '350',
-    badge: null,
-    tagline: 'Empieza a grabar contenido profesional',
+    name: 'BÁSICO',
+    icon: '🎙️',
+    tagline: 'Graba contenido profesional en nuestro estudio',
+    contentBadges: ['CRUDO · SIN EDITAR'],
+    popularBadge: null,
+    originalPrice: '120€/hora',
+    price: '90€',
+    priceUnit: '/hora +IVA',
     features: [
-      '4 horas de estudio al mes',
-      'Técnico en sala incluido',
-      '6 reels editados/mes',
-      'Entrega por Drive/WeTransfer',
-      'Soporte por WhatsApp',
+      'Grabación en estudio profesional',
+      'Entrega al momento',
     ],
     color: '#2979FF',
   },
   {
-    name: 'CREA',
-    icon: '🚀',
-    originalPrice: '1.200',
-    price: '850',
-    badge: 'MÁS POPULAR',
-    tagline: 'Tu marca personal en piloto automático',
+    name: 'PLUS',
+    icon: '⚡',
+    tagline: 'Tu contenido grabado y editado, listo para publicar',
+    contentBadges: ['CON EDICIÓN'],
+    popularBadge: null,
+    originalPrice: '249€',
+    price: '190€',
+    priceUnit: '+IVA',
     features: [
-      'Todo lo del pack GRABA',
-      'Guion de contenido mensual',
+      'Grabación en estudio profesional',
+      '1 hora de grabación',
+      '3 reels editados',
+      'Audio y multicámara ×3',
+      'Entrega en 48/72hs',
+    ],
+    color: '#00D68F',
+  },
+  {
+    name: 'PACK GRABA',
+    icon: '📦',
+    tagline: 'Contenido recurrente para tu marca',
+    contentBadges: ['CON EDICIÓN'],
+    popularBadge: null,
+    originalPrice: '549€/mes',
+    price: '349€',
+    priceUnit: '/mes +IVA',
+    features: [
+      'Grabación en estudio profesional',
+      '3 horas de grabación',
+      '6 reels editados',
+      'Audio y multicámara ×3',
+      'Entrega en 48/72hs',
+    ],
+    color: '#9B59B6',
+  },
+  {
+    name: 'PACK CREA',
+    icon: '🚀',
+    tagline: 'Tu marca personal en piloto automático',
+    contentBadges: ['CON EDICIÓN', 'MARKETING & IA PARA TU NEGOCIO'],
+    popularBadge: 'MÁS POPULAR',
+    originalPrice: '1.300€/mes',
+    price: '850€',
+    priceUnit: '/mes +IVA',
+    features: [
+      'Grabación en estudio profesional',
+      '6 horas de grabación',
+      '8 reels editados',
+      'Audio y multicámara ×3',
       'Gestión de redes sociales',
-      'Estrategia de marca personal',
-      'Asesoramiento IA mensual',
-      '12 reels editados/mes',
-      'Informe de resultados mensual',
+      'Sitio web con posicionamiento SEO',
+      'Asistente digital IA diario',
+      'Consultoría para automatizar tu negocio',
     ],
     color: '#FF6B6B',
   },
   {
-    name: 'DOMINA',
+    name: 'PACK DOMINA',
     icon: '👑',
-    originalPrice: '2.000',
-    price: '1.400',
-    badge: null,
     tagline: 'El ecosistema completo para crecer',
+    contentBadges: ['CON EDICIÓN', 'MARKETING & IA PARA TU NEGOCIO', 'SERVICIO FULL · TODO INCLUIDO'],
+    popularBadge: null,
+    originalPrice: '3.000€/mes',
+    price: '1.400€',
+    priceUnit: '/mes +IVA',
     features: [
-      'Todo lo del pack CREA',
-      'CRM configurado y gestionado',
-      'Automatizaciones de negocio',
+      'Grabación en estudio profesional',
+      '6 horas de grabación',
+      '12 reels editados',
+      'Audio y multicámara ×3',
+      'Gestión de redes sociales',
+      'Sitio web con posicionamiento SEO',
+      'Asistente digital IA diario',
+      'Consultoría para automatizar tu negocio',
+      'Automatizaciones',
+      'Embudos de venta',
+      'CRM',
       'Meta Ads gestionadas',
-      'Dashboard de métricas',
-      'Sesión estratégica mensual',
-      'Soporte prioritario 24/7',
     ],
     color: '#FFB020',
   },
 ]
 
-const comparisonRows = [
-  { feature: 'Horas de estudio/mes', graba: '4h', crea: '8h', domina: '12h' },
-  { feature: 'Técnico en sala', graba: true, crea: true, domina: true },
-  { feature: 'Reels editados/mes', graba: '6', crea: '12', domina: '20' },
-  { feature: 'Guion de contenido', graba: false, crea: true, domina: true },
-  { feature: 'Gestión de redes', graba: false, crea: true, domina: true },
-  { feature: 'Estrategia de marca', graba: false, crea: true, domina: true },
-  { feature: 'Asesoramiento IA', graba: false, crea: true, domina: true },
-  { feature: 'CRM gestionado', graba: false, crea: false, domina: true },
-  { feature: 'Automatizaciones', graba: false, crea: false, domina: true },
-  { feature: 'Meta Ads gestionadas', graba: false, crea: false, domina: true },
-  { feature: 'Dashboard métricas', graba: false, crea: false, domina: true },
-  { feature: 'Informe mensual', graba: false, crea: true, domina: true },
-  { feature: 'Sesión estratégica', graba: false, crea: false, domina: true },
-  { feature: 'Soporte', graba: 'WhatsApp', crea: 'WhatsApp', domina: 'Prioritario 24/7' },
+const comparisonRows: {
+  feature: string
+  basico: boolean | string
+  plus: boolean | string
+  graba: boolean | string
+  crea: boolean | string
+  domina: boolean | string
+}[] = [
+  { feature: 'Grabación en estudio', basico: true, plus: true, graba: true, crea: true, domina: true },
+  { feature: 'Horas de grabación', basico: 'Por hora', plus: '1h', graba: '3h', crea: '6h', domina: '6h' },
+  { feature: 'Reels editados', basico: '—', plus: '3', graba: '6', crea: '8', domina: '12' },
+  { feature: 'Audio y multicámara ×3', basico: false, plus: true, graba: true, crea: true, domina: true },
+  { feature: 'Entrega', basico: 'Al momento', plus: '48/72hs', graba: '48/72hs', crea: '48/72hs', domina: '48/72hs' },
+  { feature: 'Gestión de redes', basico: false, plus: false, graba: false, crea: true, domina: true },
+  { feature: 'Sitio web con SEO', basico: false, plus: false, graba: false, crea: true, domina: true },
+  { feature: 'Asistente digital IA', basico: false, plus: false, graba: false, crea: true, domina: true },
+  { feature: 'Consultoría automatización', basico: false, plus: false, graba: false, crea: true, domina: true },
+  { feature: 'Automatizaciones', basico: false, plus: false, graba: false, crea: false, domina: true },
+  { feature: 'Embudos de venta', basico: false, plus: false, graba: false, crea: false, domina: true },
+  { feature: 'CRM', basico: false, plus: false, graba: false, crea: false, domina: true },
+  { feature: 'Meta Ads gestionadas', basico: false, plus: false, graba: false, crea: false, domina: true },
+]
+
+const tableHeaders = [
+  { label: 'BÁSICO', color: '#2979FF', price: '90€/h', original: '120€/h' },
+  { label: 'PLUS', color: '#00D68F', price: '190€', original: '249€' },
+  { label: 'GRABA', color: '#9B59B6', price: '349€/mes', original: '549€/mes' },
+  { label: 'CREA', color: '#FF6B6B', price: '850€/mes', original: '1.300€/mes' },
+  { label: 'DOMINA', color: '#FFB020', price: '1.400€/mes', original: '3.000€/mes' },
 ]
 
 const faqs = [
@@ -92,12 +164,12 @@ const faqs = [
     a: 'No. Puedes cancelar o cambiar de pack en cualquier momento con 15 días de preaviso. Sin compromisos.',
   },
   {
-    q: '¿Puedo empezar por el pack GRABA y subir después?',
+    q: '¿Puedo empezar por el BÁSICO y subir después?',
     a: 'Sí, y es lo que recomendamos. Empieza por donde te sientas cómodo y escala cuando estés listo.',
   },
   {
     q: '¿Los precios incluyen IVA?',
-    a: 'No, los precios indicados son +IVA. Te facturamos mensualmente con todos los detalles.',
+    a: 'No, los precios indicados son +IVA. Te facturamos con todos los detalles.',
   },
   {
     q: '¿Qué pasa con el contenido que grabamos? ¿Es mío?',
@@ -107,16 +179,8 @@ const faqs = [
 
 function CheckIcon() {
   return (
-    <svg className="w-5 h-5 text-[#00D68F] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className="w-4 h-4 text-[#00D68F] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-    </svg>
-  )
-}
-
-function XIcon() {
-  return (
-    <svg className="w-5 h-5 text-gray-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
     </svg>
   )
 }
@@ -132,55 +196,70 @@ export default function PacksPage() {
             <span className="gradient-text">Crece a tu ritmo.</span>
           </h1>
           <p className="text-gray-400 text-lg">
-            Tres packs diseñados para que empieces hoy y escales cuando estés listo. Sin permanencia.
+            Cinco packs diseñados para que empieces hoy y escales cuando estés listo. Sin permanencia.
           </p>
         </div>
       </section>
 
       {/* PACK CARDS */}
       <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 items-start">
           {packs.map((pack) => (
             <div
               key={pack.name}
-              className={`relative bg-[#111827] rounded-3xl p-8 border transition-all duration-300 hover:-translate-y-1 ${
-                pack.badge
+              className={`relative bg-[#111827] rounded-3xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
+                pack.popularBadge
                   ? 'border-[#FF6B6B]/60 shadow-xl shadow-[#FF6B6B]/10'
                   : 'border-white/5 hover:border-white/20'
               }`}
             >
-              {pack.badge && (
+              {pack.popularBadge && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 bg-[#FF6B6B] text-white text-xs font-black rounded-full tracking-wider">
-                    {pack.badge}
+                  <span className="px-4 py-1.5 bg-[#FF6B6B] text-white text-xs font-black rounded-full tracking-wider whitespace-nowrap">
+                    {pack.popularBadge}
                   </span>
                 </div>
               )}
 
-              <div className="text-center mb-8">
+              <div className="text-center mb-5">
                 <span className="text-4xl mb-3 block">{pack.icon}</span>
                 <h2
-                  className="text-xl font-black tracking-wide mb-1"
+                  className="text-base font-black tracking-wide mb-1"
                   style={{ color: pack.color }}
                 >
                   {pack.name}
                 </h2>
-                <p className="text-gray-400 text-sm mb-4">{pack.tagline}</p>
+                <p className="text-gray-400 text-xs mb-3 leading-relaxed">{pack.tagline}</p>
+
+                {/* Content type badges */}
+                <div className="flex flex-wrap gap-1 justify-center mb-3">
+                  {pack.contentBadges.map((badge) => (
+                    <span
+                      key={badge}
+                      className="inline-block px-2 py-0.5 bg-white/5 text-gray-400 text-[10px] font-semibold rounded border border-white/10 leading-tight"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Launch price badge */}
                 <span className="inline-block px-2 py-0.5 bg-[#FF6B6B]/15 text-[#FF6B6B] text-xs font-semibold rounded mb-2">
                   Precio lanzamiento
                 </span>
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <span className="text-sm text-gray-500 line-through">{pack.originalPrice}€/mes</span>
+
+                <div className="flex items-center justify-center mb-1">
+                  <span className="text-sm text-gray-500 line-through">{pack.originalPrice}</span>
                 </div>
                 <div className="flex items-end justify-center gap-1">
-                  <span className="text-4xl font-black text-white">{pack.price}€</span>
-                  <span className="text-gray-400 text-sm mb-1">/mes +IVA</span>
+                  <span className="text-4xl font-black text-white">{pack.price}</span>
+                  <span className="text-gray-400 text-sm mb-1">{pack.priceUnit}</span>
                 </div>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-2.5 mb-6">
                 {pack.features.map((f) => (
-                  <li key={f} className="flex items-center gap-3 text-sm text-gray-300">
+                  <li key={f} className="flex items-start gap-2.5 text-xs text-gray-300 leading-relaxed">
                     <CheckIcon />
                     {f}
                   </li>
@@ -188,17 +267,17 @@ export default function PacksPage() {
               </ul>
 
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20el%20pack%20${encodeURIComponent(pack.name)}`}
+                href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20el%20${encodeURIComponent(pack.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-3 rounded-xl font-bold text-sm text-center transition-all duration-300 hover:scale-105"
+                className="block w-full py-2.5 rounded-xl font-bold text-sm text-center transition-all duration-300 hover:scale-105"
                 style={{
-                  backgroundColor: pack.badge ? pack.color : 'transparent',
-                  color: pack.badge ? '#fff' : pack.color,
+                  backgroundColor: pack.popularBadge ? pack.color : 'transparent',
+                  color: pack.popularBadge ? '#fff' : pack.color,
                   border: `2px solid ${pack.color}`,
                 }}
               >
-                Empezar con {pack.name} →
+                Más información →
               </a>
             </div>
           ))}
@@ -207,41 +286,35 @@ export default function PacksPage() {
 
       {/* COMPARISON TABLE */}
       <section className="py-20 px-4 bg-[#111827]/50">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-black text-center mb-12">Comparativa completa</h2>
           <div className="overflow-x-auto rounded-2xl border border-white/10">
-            <table className="w-full text-sm min-w-[520px] border-collapse">
-              {/* Header */}
+            <table className="w-full text-sm min-w-[760px] border-collapse">
               <thead>
                 <tr className="bg-[#0a0e1a]">
-                  <th className="text-left px-6 py-5 text-gray-400 font-medium w-1/2 border-b border-white/10">
+                  <th className="text-left px-5 py-5 text-gray-400 font-medium w-[26%] border-b border-white/10">
                     Características
                   </th>
-                  {[
-                    { label: 'GRABA', color: '#2979FF', price: '350€', original: '550€' },
-                    { label: 'CREA', color: '#FF6B6B', price: '850€', original: '1.200€' },
-                    { label: 'DOMINA', color: '#FFB020', price: '1.400€', original: '2.000€' },
-                  ].map(({ label, color, price, original }) => (
-                    <th key={label} className="px-4 py-5 text-center border-b border-white/10 w-[16%]">
-                      <span className="block font-black text-base" style={{ color }}>{label}</span>
-                      <span className="block text-xs text-gray-500 line-through font-normal mt-0.5">{original}/mes</span>
-                      <span className="block text-xs font-bold mt-0.5" style={{ color }}>{price}/mes</span>
+                  {tableHeaders.map(({ label, color, price, original }) => (
+                    <th key={label} className="px-3 py-5 text-center border-b border-white/10">
+                      <span className="block font-black text-sm" style={{ color }}>{label}</span>
+                      <span className="block text-xs text-gray-500 line-through font-normal mt-0.5">{original}</span>
+                      <span className="block text-xs font-bold mt-0.5" style={{ color }}>{price}</span>
                     </th>
                   ))}
                 </tr>
               </thead>
-              {/* Body */}
               <tbody>
-                {comparisonRows.map(({ feature, graba, crea, domina }, i) => (
+                {comparisonRows.map(({ feature, basico, plus, graba, crea, domina }, i) => (
                   <tr
                     key={feature}
                     className={`border-b border-white/5 transition-colors hover:bg-white/[0.03] ${
                       i % 2 === 0 ? 'bg-white/[0.015]' : 'bg-transparent'
                     }`}
                   >
-                    <td className="px-6 py-4 text-gray-300 text-sm">{feature}</td>
-                    {([graba, crea, domina] as (boolean | string)[]).map((val, j) => (
-                      <td key={j} className="px-4 py-4 text-center align-middle">
+                    <td className="px-5 py-4 text-gray-300 text-sm">{feature}</td>
+                    {([basico, plus, graba, crea, domina] as (boolean | string)[]).map((val, j) => (
+                      <td key={j} className="px-3 py-4 text-center align-middle">
                         {typeof val === 'boolean' ? (
                           <span className="flex justify-center items-center">
                             {val ? (
@@ -267,15 +340,11 @@ export default function PacksPage() {
                 ))}
                 {/* Price row */}
                 <tr className="bg-[#0a0e1a]">
-                  <td className="px-6 py-5 font-bold text-white text-sm">Precio/mes +IVA</td>
-                  {[
-                    { price: '350€', original: '550€', color: '#2979FF' },
-                    { price: '850€', original: '1.200€', color: '#FF6B6B' },
-                    { price: '1.400€', original: '2.000€', color: '#FFB020' },
-                  ].map(({ price, original, color }) => (
-                    <td key={price} className="px-4 py-5 text-center">
+                  <td className="px-5 py-5 font-bold text-white text-sm">Precio +IVA</td>
+                  {tableHeaders.map(({ price, original, color }) => (
+                    <td key={price} className="px-3 py-5 text-center">
                       <span className="block text-xs text-gray-500 line-through">{original}</span>
-                      <span className="font-black text-base" style={{ color }}>{price}</span>
+                      <span className="font-black text-sm" style={{ color }}>{price}</span>
                     </td>
                   ))}
                 </tr>
