@@ -18,6 +18,7 @@ const packs = [
   {
     name: 'GRABA',
     icon: '📦',
+    originalPrice: '550',
     price: '350',
     badge: null,
     tagline: 'Empieza a grabar contenido profesional',
@@ -33,6 +34,7 @@ const packs = [
   {
     name: 'CREA',
     icon: '🚀',
+    originalPrice: '1.200',
     price: '850',
     badge: 'MÁS POPULAR',
     tagline: 'Tu marca personal en piloto automático',
@@ -50,6 +52,7 @@ const packs = [
   {
     name: 'DOMINA',
     icon: '👑',
+    originalPrice: '2.000',
     price: '1.400',
     badge: null,
     tagline: 'El ecosistema completo para crecer',
@@ -163,6 +166,12 @@ export default function PacksPage() {
                   {pack.name}
                 </h2>
                 <p className="text-gray-400 text-sm mb-4">{pack.tagline}</p>
+                <span className="inline-block px-2 py-0.5 bg-[#FF6B6B]/15 text-[#FF6B6B] text-xs font-semibold rounded mb-2">
+                  Precio lanzamiento
+                </span>
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <span className="text-sm text-gray-500 line-through">{pack.originalPrice}€/mes</span>
+                </div>
                 <div className="flex items-end justify-center gap-1">
                   <span className="text-4xl font-black text-white">{pack.price}€</span>
                   <span className="text-gray-400 text-sm mb-1">/mes +IVA</span>
@@ -209,13 +218,14 @@ export default function PacksPage() {
                     Características
                   </th>
                   {[
-                    { label: 'GRABA', color: '#2979FF', price: '350€' },
-                    { label: 'CREA', color: '#FF6B6B', price: '850€' },
-                    { label: 'DOMINA', color: '#FFB020', price: '1.400€' },
-                  ].map(({ label, color, price }) => (
+                    { label: 'GRABA', color: '#2979FF', price: '350€', original: '550€' },
+                    { label: 'CREA', color: '#FF6B6B', price: '850€', original: '1.200€' },
+                    { label: 'DOMINA', color: '#FFB020', price: '1.400€', original: '2.000€' },
+                  ].map(({ label, color, price, original }) => (
                     <th key={label} className="px-4 py-5 text-center border-b border-white/10 w-[16%]">
                       <span className="block font-black text-base" style={{ color }}>{label}</span>
-                      <span className="block text-xs text-gray-500 font-normal mt-0.5">{price}/mes</span>
+                      <span className="block text-xs text-gray-500 line-through font-normal mt-0.5">{original}/mes</span>
+                      <span className="block text-xs font-bold mt-0.5" style={{ color }}>{price}/mes</span>
                     </th>
                   ))}
                 </tr>
@@ -259,11 +269,12 @@ export default function PacksPage() {
                 <tr className="bg-[#0a0e1a]">
                   <td className="px-6 py-5 font-bold text-white text-sm">Precio/mes +IVA</td>
                   {[
-                    { price: '350€', color: '#2979FF' },
-                    { price: '850€', color: '#FF6B6B' },
-                    { price: '1.400€', color: '#FFB020' },
-                  ].map(({ price, color }) => (
+                    { price: '350€', original: '550€', color: '#2979FF' },
+                    { price: '850€', original: '1.200€', color: '#FF6B6B' },
+                    { price: '1.400€', original: '2.000€', color: '#FFB020' },
+                  ].map(({ price, original, color }) => (
                     <td key={price} className="px-4 py-5 text-center">
+                      <span className="block text-xs text-gray-500 line-through">{original}</span>
                       <span className="font-black text-base" style={{ color }}>{price}</span>
                     </td>
                   ))}

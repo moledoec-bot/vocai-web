@@ -49,7 +49,10 @@ export default function EstudioPage() {
             <span className="gradient-text">Profesional en Alicante</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Graba lo que quieras con calidad de primer nivel. Técnico incluido. Desde 90€/hora.
+            Graba lo que quieras con calidad de primer nivel. Técnico incluido.{' '}
+            <span className="line-through text-gray-500">120€/h</span>{' '}
+            <span className="text-white font-bold">90€/h</span>{' '}
+            <span className="text-[#FF6B6B] text-sm font-semibold">(precio lanzamiento)</span>
           </p>
           <a
             href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20reservar%20el%20estudio%20de%20VOCAI`}
@@ -66,8 +69,14 @@ export default function EstudioPage() {
       <section className="py-12 px-4 bg-[#2979FF]/10 border-y border-[#2979FF]/20">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-8 text-center sm:text-left">
           <div>
-            <span className="text-5xl font-black text-[#2979FF]">90€</span>
-            <span className="text-gray-400 ml-2">+IVA / hora</span>
+            <span className="inline-block px-2 py-0.5 bg-[#FF6B6B]/15 text-[#FF6B6B] text-xs font-semibold rounded mb-2 block text-center sm:text-left">
+              Precio lanzamiento
+            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-lg text-gray-500 line-through">120€/h</span>
+              <span className="text-5xl font-black text-[#2979FF]">90€</span>
+              <span className="text-gray-400">+IVA / hora</span>
+            </div>
           </div>
           <div className="h-12 w-px bg-white/10 hidden sm:block" />
           <div className="text-gray-300">
@@ -163,7 +172,9 @@ export default function EstudioPage() {
             Combina el estudio con el Pack GRABA
           </h2>
           <p className="text-gray-400 mb-8">
-            Desde 350€/mes tienes estudio ilimitado + técnico + 6 reels editados al mes. Sin preocuparte de nada.
+            <span className="line-through text-gray-600">550€/mes</span>{' '}
+            → Desde <span className="text-white font-bold">350€/mes</span> tienes estudio + técnico + 6 reels editados al mes.{' '}
+            <span className="text-[#FF6B6B] text-sm font-semibold">Precio lanzamiento.</span>
           </p>
           <Link
             href="/packs"

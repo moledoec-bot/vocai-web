@@ -63,12 +63,71 @@ const valueProps = [
   },
 ]
 
-const services = [
-  { icon: '🎙️', name: 'ESTUDIO', href: '/estudio', desc: 'Graba con calidad broadcast en Alicante' },
-  { icon: '📦', name: 'GRABA', href: '/packs', desc: 'Pack entrada: estudio + reels editados' },
-  { icon: '🚀', name: 'CREA', href: '/packs', desc: 'Marca personal completa con IA incluida' },
-  { icon: '👑', name: 'DOMINA', href: '/packs', desc: 'Automatizaciones + ads + CRM' },
-  { icon: '🤖', name: 'SOLUCIONES IA', href: '/soluciones-ia', desc: 'IA aplicada a tu negocio hoy' },
+const levels = [
+  {
+    icon: '🎙️',
+    name: 'Estudio por horas',
+    desc: 'Graba con calidad broadcast en Alicante',
+    originalPrice: '120€/h',
+    price: '90€',
+    unit: '+IVA / hora',
+    badge: null as string | null,
+    color: '#2979FF',
+    href: '/estudio',
+    cta: 'Reservar estudio →',
+  },
+  {
+    icon: '📦',
+    name: 'Pack GRABA',
+    desc: 'Estudio + reels editados cada mes',
+    originalPrice: '550€/mes',
+    price: '350€',
+    unit: '/mes +IVA',
+    badge: null as string | null,
+    color: '#2979FF',
+    href: '/packs',
+    cta: 'Empezar con GRABA →',
+  },
+  {
+    icon: '🚀',
+    name: 'Pack CREA',
+    desc: 'Marca personal completa con IA',
+    originalPrice: '1.200€/mes',
+    price: '850€',
+    unit: '/mes +IVA',
+    badge: 'MÁS POPULAR' as string | null,
+    color: '#FF6B6B',
+    href: '/packs',
+    cta: 'Empezar con CREA →',
+  },
+  {
+    icon: '👑',
+    name: 'Pack DOMINA',
+    desc: 'Automatizaciones + ads + CRM',
+    originalPrice: '2.000€/mes',
+    price: '1.400€',
+    unit: '/mes +IVA',
+    badge: null as string | null,
+    color: '#FFB020',
+    href: '/packs',
+    cta: 'Empezar con DOMINA →',
+  },
+]
+
+const homeComparisonRows = [
+  { feature: 'Horas de estudio/mes', graba: '4h', crea: '8h', domina: '12h' },
+  { feature: 'Técnico en sala', graba: true, crea: true, domina: true },
+  { feature: 'Reels editados/mes', graba: '6', crea: '12', domina: '20' },
+  { feature: 'Guion de contenido', graba: false, crea: true, domina: true },
+  { feature: 'Gestión de redes', graba: false, crea: true, domina: true },
+  { feature: 'Estrategia de marca', graba: false, crea: true, domina: true },
+  { feature: 'Asesoramiento IA', graba: false, crea: true, domina: true },
+  { feature: 'CRM gestionado', graba: false, crea: false, domina: true },
+  { feature: 'Automatizaciones', graba: false, crea: false, domina: true },
+  { feature: 'Meta Ads gestionadas', graba: false, crea: false, domina: true },
+  { feature: 'Informe mensual', graba: false, crea: true, domina: true },
+  { feature: 'Sesión estratégica', graba: false, crea: false, domina: true },
+  { feature: 'Soporte', graba: 'WhatsApp', crea: 'WhatsApp', domina: 'Prioritario 24/7' },
 ]
 
 const testimonials = [
@@ -120,29 +179,136 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* ELIGE TU NIVEL */}
       <section className="py-20 px-4 bg-[#111827]/50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">
-            Todo lo que necesita tu negocio
+            Elige tu nivel
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
-            Un ecosistema completo de servicios diseñados para que crezcas a tu ritmo.
+            Empieza donde quieras. Sin permanencia. Precios especiales de lanzamiento.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {services.map(({ icon, name, href, desc }) => (
-              <Link
-                key={name}
-                href={href}
-                className="bg-[#111827] rounded-2xl p-6 border border-white/5 hover:border-[#2979FF]/50 transition-all duration-300 hover:-translate-y-1 group text-center"
+
+          {/* 4 cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+            {levels.map((level) => (
+              <div
+                key={level.name}
+                className={`relative bg-[#111827] rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
+                  level.badge
+                    ? 'border-[#FF6B6B]/60 shadow-xl shadow-[#FF6B6B]/10'
+                    : 'border-white/5 hover:border-white/20'
+                }`}
               >
-                <span className="text-3xl mb-3 block">{icon}</span>
-                <h3 className="text-[#2979FF] font-black text-sm tracking-wide mb-2 group-hover:text-white transition-colors">
-                  {name}
-                </h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
-              </Link>
+                {level.badge && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className="px-3 py-1 bg-[#FF6B6B] text-white text-xs font-black rounded-full tracking-wider whitespace-nowrap">
+                      {level.badge}
+                    </span>
+                  </div>
+                )}
+                <div className="text-center mb-5">
+                  <span className="text-3xl mb-2 block">{level.icon}</span>
+                  <h3 className="font-black text-sm tracking-wide mb-1" style={{ color: level.color }}>
+                    {level.name}
+                  </h3>
+                  <p className="text-gray-500 text-xs mb-3 leading-relaxed">{level.desc}</p>
+                  <span className="inline-block px-2 py-0.5 bg-[#FF6B6B]/15 text-[#FF6B6B] text-xs font-semibold rounded mb-2">
+                    Precio lanzamiento
+                  </span>
+                  <div className="flex items-center justify-center gap-2 mb-0.5">
+                    <span className="text-sm text-gray-500 line-through">{level.originalPrice}</span>
+                  </div>
+                  <div className="flex items-end justify-center gap-1">
+                    <span className="text-3xl font-black text-white">{level.price}</span>
+                    <span className="text-gray-400 text-xs mb-1">{level.unit}</span>
+                  </div>
+                </div>
+                <Link
+                  href={level.href}
+                  className="block w-full py-2.5 rounded-xl font-bold text-xs text-center transition-all duration-300 hover:scale-105"
+                  style={{
+                    backgroundColor: level.badge ? level.color : 'transparent',
+                    color: level.badge ? '#fff' : level.color,
+                    border: `2px solid ${level.color}`,
+                  }}
+                >
+                  {level.cta}
+                </Link>
+              </div>
             ))}
+          </div>
+
+          {/* Comparison table */}
+          <div className="overflow-x-auto rounded-2xl border border-white/10">
+            <table className="w-full text-sm min-w-[520px] border-collapse">
+              <thead>
+                <tr className="bg-[#0a0e1a]">
+                  <th className="text-left px-6 py-5 text-gray-400 font-medium w-1/2 border-b border-white/10">
+                    Características
+                  </th>
+                  {[
+                    { label: 'GRABA', color: '#2979FF', price: '350€', original: '550€' },
+                    { label: 'CREA', color: '#FF6B6B', price: '850€', original: '1.200€' },
+                    { label: 'DOMINA', color: '#FFB020', price: '1.400€', original: '2.000€' },
+                  ].map(({ label, color, price, original }) => (
+                    <th key={label} className="px-4 py-5 text-center border-b border-white/10 w-[16%]">
+                      <span className="block font-black text-base" style={{ color }}>{label}</span>
+                      <span className="block text-xs text-gray-500 line-through font-normal mt-0.5">{original}/mes</span>
+                      <span className="block text-xs font-bold mt-0.5" style={{ color }}>{price}/mes</span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {homeComparisonRows.map(({ feature, graba, crea, domina }, i) => (
+                  <tr
+                    key={feature}
+                    className={`border-b border-white/5 transition-colors hover:bg-white/[0.03] ${
+                      i % 2 === 0 ? 'bg-white/[0.015]' : 'bg-transparent'
+                    }`}
+                  >
+                    <td className="px-6 py-4 text-gray-300 text-sm">{feature}</td>
+                    {([graba, crea, domina] as (boolean | string)[]).map((val, j) => (
+                      <td key={j} className="px-4 py-4 text-center align-middle">
+                        {typeof val === 'boolean' ? (
+                          <span className="flex justify-center items-center">
+                            {val ? (
+                              <span className="inline-flex w-6 h-6 rounded-full bg-[#00D68F]/15 items-center justify-center">
+                                <svg className="w-3.5 h-3.5 text-[#00D68F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </span>
+                            ) : (
+                              <span className="inline-flex w-6 h-6 rounded-full bg-white/5 items-center justify-center">
+                                <svg className="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </span>
+                            )}
+                          </span>
+                        ) : (
+                          <span className="text-gray-300 text-xs font-medium">{val}</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                <tr className="bg-[#0a0e1a]">
+                  <td className="px-6 py-5 font-bold text-white text-sm">Precio/mes +IVA</td>
+                  {[
+                    { price: '350€', original: '550€', color: '#2979FF' },
+                    { price: '850€', original: '1.200€', color: '#FF6B6B' },
+                    { price: '1.400€', original: '2.000€', color: '#FFB020' },
+                  ].map(({ price, original, color }) => (
+                    <td key={price} className="px-4 py-5 text-center">
+                      <span className="block text-xs text-gray-500 line-through">{original}</span>
+                      <span className="font-black text-base" style={{ color }}>{price}</span>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
