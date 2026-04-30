@@ -27,49 +27,60 @@ export default function BlogPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative pt-28 pb-16 px-4 text-center section-glow-blue">
-        <div className="relative max-w-3xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 leading-[1.05] tracking-tight">
-            Blog <span className="gradient-text">VOCAI</span>
+      <section className="relative min-h-[60vh] flex items-end pt-32 pb-16 px-4 overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 60% at 80% 30%, rgba(255,176,32,0.15) 0%, transparent 60%), radial-gradient(ellipse 70% 60% at 20% 80%, rgba(41,121,255,0.16) 0%, transparent 60%)',
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto w-full">
+          <span className="text-xs uppercase tracking-widest text-[#FFB020] font-bold">Blog</span>
+          <h1 className="mt-4 text-6xl md:text-8xl font-black tracking-tight leading-[1.0] max-w-5xl">
+            Ideas para que tu marca <span className="gradient-text">se escuche.</span>
           </h1>
-          <p className="text-gray-400 text-lg sm:text-xl">
+          <p className="mt-8 text-xl text-slate-400 font-light leading-relaxed max-w-2xl">
             Podcast, marketing digital e inteligencia artificial para empresas. Consejos prácticos, sin tecnicismos.
           </p>
         </div>
       </section>
 
+      <div className="divider-soft max-w-7xl mx-auto" />
+
       {/* POSTS */}
       <FadeIn>
-        <section className="py-12 px-4 pb-24">
-        <div className="max-w-4xl mx-auto">
-          {posts.length === 0 ? (
-            <p className="text-center text-gray-500">No hay artículos publicados todavía.</p>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {posts.map(({ slug, title, date, description }) => (
-                <Link
-                  key={slug}
-                  href={`/blog/${slug}`}
-                  className="group bg-[#0f1629] rounded-2xl p-8 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15 transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
-                >
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="w-2 h-2 rounded-full gradient-bg flex-shrink-0" />
-                    <time className="text-gray-500 text-xs" dateTime={date}>
-                      {formatDate(date)}
-                    </time>
-                  </div>
-                  <h2 className="text-white font-bold text-lg leading-snug mb-3 group-hover:text-[#2979FF] transition-colors duration-300">
-                    {title}
-                  </h2>
-                  <p className="text-gray-400 text-sm leading-relaxed flex-grow">{description}</p>
-                  <span className="mt-4 text-[#2979FF] text-sm font-semibold group-hover:underline">
-                    Leer artículo →
-                  </span>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+        <section className="py-20 px-4 pb-32">
+          <div className="max-w-7xl mx-auto">
+            {posts.length === 0 ? (
+              <p className="text-slate-500 font-light">No hay artículos publicados todavía.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {posts.map(({ slug, title, date, description }) => (
+                  <Link
+                    key={slug}
+                    href={`/blog/${slug}`}
+                    className="group card-premium rounded-3xl p-10 flex flex-col"
+                  >
+                    <div className="flex items-center gap-2 mb-6">
+                      <span className="w-2 h-2 rounded-full gradient-bg flex-shrink-0" />
+                      <time className="text-slate-500 text-xs uppercase tracking-widest font-semibold" dateTime={date}>
+                        {formatDate(date)}
+                      </time>
+                    </div>
+                    <h2 className="text-white font-bold text-2xl leading-tight mb-4 group-hover:text-[#2979FF] transition-colors duration-300">
+                      {title}
+                    </h2>
+                    <p className="text-slate-400 font-light leading-relaxed flex-grow">{description}</p>
+                    <span className="mt-6 text-[#2979FF] text-xs font-bold uppercase tracking-widest group-hover:underline">
+                      Leer artículo →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </section>
       </FadeIn>
     </>

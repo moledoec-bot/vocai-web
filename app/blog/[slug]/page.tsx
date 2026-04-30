@@ -38,26 +38,26 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   return (
-    <article className="pt-28 pb-24 px-4">
+    <article className="pt-32 pb-32 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Back */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-gray-500 hover:text-[#2979FF] text-sm mb-10 transition-colors duration-300"
+          className="inline-flex items-center gap-2 text-slate-500 hover:text-[#2979FF] text-xs uppercase tracking-widest font-semibold mb-12 transition-colors duration-300"
         >
           ← Volver al blog
         </Link>
 
         {/* Header */}
-        <header className="mb-10">
-          <time className="text-gray-500 text-sm" dateTime={post.date}>
+        <header className="mb-12">
+          <time className="text-slate-500 text-xs uppercase tracking-widest font-semibold" dateTime={post.date}>
             {formatDate(post.date)}
           </time>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-4 leading-[1.05] tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-black text-white mt-5 mb-6 leading-[1.05] tracking-tight">
             {post.title}
           </h1>
-          <p className="text-gray-400 text-lg">{post.description}</p>
-          <div className="mt-6 h-px bg-gradient-to-r from-[#2979FF] to-[#FF6B6B]" />
+          <p className="text-xl text-slate-400 font-light leading-relaxed">{post.description}</p>
+          <div className="mt-8 h-px bg-gradient-to-r from-[#2979FF] via-[#FF6B6B] to-transparent" />
         </header>
 
         {/* Content */}
@@ -67,13 +67,13 @@ export default async function BlogPostPage({ params }: Props) {
         />
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-white/10 text-center">
-          <p className="text-gray-400 mb-4">¿Te ha resultado útil este artículo?</p>
+        <div className="mt-20 pt-10 border-t border-white/5">
+          <p className="text-slate-400 mb-6 font-light text-lg">¿Te ha resultado útil este artículo?</p>
           <a
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'}?text=Hola%2C%20he%20le%C3%ADdo%20vuestro%20art%C3%ADculo%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2979FF]/40"
+            className="btn-primary inline-block px-10 py-4 rounded-full font-bold text-base uppercase tracking-widest"
           >
             Hablemos →
           </a>

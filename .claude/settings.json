@@ -5,7 +5,9 @@
       "Bash(sips -g pixelWidth -g pixelHeight /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/images/IMG_4286.jpg)",
       "Bash(npx shadcn@latest add https://21st.dev/r/designali-in/shader-animation --yes)",
       "Bash(yes)",
-      "Bash(npx shadcn@latest add https://21st.dev/r/designali-in/shader-animation)"
+      "Bash(npx shadcn@latest add https://21st.dev/r/designali-in/shader-animation)",
+      "Bash(npx tailwindcss *)",
+      "Read(//tmp/**)"
     ]
   }
 }

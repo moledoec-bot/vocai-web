@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -17,10 +17,24 @@ const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/95 backdrop-blur-sm border-b border-[#2979FF]/15">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#0a0e1a]/80 backdrop-blur-md border-b border-white/5'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -31,13 +45,15 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-[#2979FF] ${
-                  pathname === href ? 'text-[#2979FF]' : 'text-gray-300'
+                className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-300 ${
+                  pathname === href
+                    ? 'text-white'
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 {label}
@@ -47,7 +63,7 @@ export default function Navbar() {
               href={`https://wa.me/${WA_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 px-4 py-2 bg-[#FF6B6B] hover:bg-[#ff5252] text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              className="ml-2 px-5 py-2 btn-coral text-xs uppercase tracking-widest font-bold rounded-full"
             >
               Hablemos
             </a>
@@ -56,7 +72,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+            className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white transition-colors"
             aria-label="Abrir menú"
           >
             {open ? (
@@ -74,15 +90,15 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0a0e1a] border-t border-[#2979FF]/15">
-          <div className="px-4 py-4 flex flex-col gap-3">
+        <div className="md:hidden bg-[#0a0e1a]/95 backdrop-blur-md border-t border-white/5">
+          <div className="px-4 py-6 flex flex-col gap-4">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className={`text-sm font-medium py-2 transition-colors duration-300 hover:text-[#2979FF] ${
-                  pathname === href ? 'text-[#2979FF]' : 'text-gray-300'
+                className={`text-xs uppercase tracking-widest font-semibold py-2 transition-colors duration-300 ${
+                  pathname === href ? 'text-white' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 {label}
@@ -92,7 +108,8 @@ export default function Navbar() {
               href={`https://wa.me/${WA_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 px-4 py-2 bg-[#FF6B6B] text-white text-sm font-semibold rounded-lg text-center transition-colors duration-300"
+              onClick={() => setOpen(false)}
+              className="mt-2 px-5 py-3 btn-coral text-xs uppercase tracking-widest font-bold rounded-full text-center"
             >
               Hablemos
             </a>

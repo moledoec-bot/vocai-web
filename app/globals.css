@@ -5,11 +5,12 @@
 :root {
   --navy: #0a0e1a;
   --card: #0f1629;
-  --card-border: rgba(41, 121, 255, 0.15);
   --blue: #2979FF;
   --coral: #FF6B6B;
   --amber: #FFB020;
-  --green: #00D68F;
+  --text: #ffffff;
+  --muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -24,8 +25,10 @@ html {
 
 body {
   background-color: var(--navy);
-  color: #ffffff;
+  color: var(--text);
   font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
@@ -40,72 +43,80 @@ body {
     background: linear-gradient(135deg, #2979FF, #FF6B6B);
   }
 
-  .gradient-border {
-    border: 1px solid;
-    border-image: linear-gradient(135deg, #2979FF, #FF6B6B) 1;
-  }
-
-  /* Card con borde azul sutil VOCAI */
-  .vocai-card {
+  /* Card premium con hover glow azul */
+  .card-premium {
     background: var(--card);
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--border);
+    transition: transform 280ms ease-out, border-color 280ms ease-out, box-shadow 280ms ease-out;
+  }
+  .card-premium:hover {
+    transform: translateY(-8px);
+    border-color: rgba(41, 121, 255, 0.4);
+    box-shadow: 0 20px 60px -20px rgba(41, 121, 255, 0.35);
   }
 
-  /* Glow azul sutil en bordes de secciones */
-  .section-glow-blue {
-    position: relative;
-  }
-  .section-glow-blue::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    pointer-events: none;
-    background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(41, 121, 255, 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 80% 40% at 50% 100%, rgba(255, 107, 107, 0.06) 0%, transparent 70%);
+  /* Card con acento coral */
+  .card-premium-coral:hover {
+    border-color: rgba(255, 107, 107, 0.4);
+    box-shadow: 0 20px 60px -20px rgba(255, 107, 107, 0.35);
   }
 
-  /* Shimmer en hover sobre cards de precios */
-  .shimmer-card {
-    position: relative;
-    overflow: hidden;
-  }
-  .shimmer-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent 30%,
-      rgba(41, 121, 255, 0.18) 50%,
-      transparent 70%
-    );
-    transition: left 0.6s ease;
-    pointer-events: none;
-  }
-  .shimmer-card:hover::after {
-    left: 100%;
+  /* Card con acento ámbar */
+  .card-premium-amber:hover {
+    border-color: rgba(255, 176, 32, 0.45);
+    box-shadow: 0 20px 60px -20px rgba(255, 176, 32, 0.3);
   }
 
-  /* Placeholder de galería con gradiente animado */
-  .gallery-placeholder {
-    background: linear-gradient(120deg, #0a0e1a 0%, #0d1b3e 35%, #1a3a8a 50%, #0d1b3e 65%, #0a0e1a 100%);
-    background-size: 300% 100%;
-    animation: gallery-flow 12s ease-in-out infinite;
+  /* Botón primario azul con glow */
+  .btn-primary {
+    background: linear-gradient(135deg, #2979FF 0%, #1a6aff 100%);
+    color: white;
+    transition: transform 260ms ease-out, box-shadow 260ms ease-out;
   }
-  @keyframes gallery-flow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px -8px rgba(41, 121, 255, 0.55);
+  }
+
+  /* Botón secundario coral con borde */
+  .btn-coral {
+    border: 1.5px solid #FF6B6B;
+    color: #FF6B6B;
+    background: transparent;
+    transition: transform 260ms ease-out, background-color 260ms ease-out, color 260ms ease-out, box-shadow 260ms ease-out;
+  }
+  .btn-coral:hover {
+    background: #FF6B6B;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px -8px rgba(255, 107, 107, 0.5);
+  }
+
+  /* Número decorativo grande de sección */
+  .deco-number {
+    font-size: clamp(4rem, 9vw, 7.5rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    background: linear-gradient(180deg, rgba(41,121,255,0.35) 0%, rgba(41,121,255,0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Línea divisoria sutil */
+  .divider-soft {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
   }
 }
 
-/* Fade-in en scroll (Intersection Observer agrega .is-visible) */
+/* Fade-in con IntersectionObserver (el hook agrega .is-visible) */
 .fade-in-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 .fade-in-on-scroll.is-visible {
@@ -116,47 +127,51 @@ body {
 /* Blog prose styles */
 .prose-vocai h2 {
   color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-top: 2.5rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 .prose-vocai h3 {
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   margin-bottom: 0.75rem;
 }
 .prose-vocai p {
-  color: #9ca3af;
-  line-height: 1.8;
+  color: #94a3b8;
+  line-height: 1.85;
   margin-bottom: 1.25rem;
+  font-weight: 300;
 }
 .prose-vocai strong {
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
 }
-.prose-vocai ul, .prose-vocai ol {
-  color: #9ca3af;
+.prose-vocai ul,
+.prose-vocai ol {
+  color: #94a3b8;
   padding-left: 1.5rem;
   margin-bottom: 1.25rem;
 }
 .prose-vocai li {
   margin-bottom: 0.5rem;
-  line-height: 1.7;
+  line-height: 1.75;
+  font-weight: 300;
 }
 .prose-vocai a {
   color: #2979FF;
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: color 200ms;
 }
 .prose-vocai a:hover {
   color: #ffffff;
 }
 .prose-vocai hr {
-  border-color: rgba(255,255,255,0.1);
-  margin: 2rem 0;
+  border-color: rgba(255, 255, 255, 0.08);
+  margin: 2.5rem 0;
 }
 
 /* Scrollbar */
@@ -167,6 +182,15 @@ body {
   background: #0a0e1a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2979FF;
+  background: rgba(41, 121, 255, 0.5);
   border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(41, 121, 255, 0.8);
+}
+
+/* Selection */
+::selection {
+  background: rgba(41, 121, 255, 0.3);
+  color: #ffffff;
 }

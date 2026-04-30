@@ -17,59 +17,54 @@ export const metadata: Metadata = {
 }
 
 const values = [
-  {
-    icon: '🤝',
-    title: 'Cercanía',
-    desc: 'Tratamos a cada cliente como un socio. Estamos disponibles, somos directos y nunca dejamos una duda sin respuesta.',
-  },
-  {
-    icon: '⚡',
-    title: 'Agilidad',
-    desc: 'Ejecutamos rápido. De la idea al primer episodio publicado en menos de una semana.',
-  },
-  {
-    icon: '🎯',
-    title: 'Resultados',
-    desc: 'Todo lo que hacemos tiene un objetivo medible. Si no genera resultados, lo cambiamos.',
-  },
-  {
-    icon: '🤖',
-    title: 'Tecnología accesible',
-    desc: 'Hacemos la IA sencilla. No necesitas entender cómo funciona, solo ver cómo te ayuda.',
-  },
-  {
-    icon: '🌱',
-    title: 'Crecimiento conjunto',
-    desc: 'Crecemos cuando nuestros clientes crecen. Eso alinea nuestros intereses desde el primer día.',
-  },
+  { num: '01', title: 'Cercanía', desc: 'Tratamos a cada cliente como un socio. Estamos disponibles, somos directos y nunca dejamos una duda sin respuesta.' },
+  { num: '02', title: 'Agilidad', desc: 'Ejecutamos rápido. De la idea al primer episodio publicado en menos de una semana.' },
+  { num: '03', title: 'Resultados', desc: 'Todo lo que hacemos tiene un objetivo medible. Si no genera resultados, lo cambiamos.' },
+  { num: '04', title: 'Tecnología accesible', desc: 'Hacemos la IA sencilla. No necesitas entender cómo funciona, solo ver cómo te ayuda.' },
+  { num: '05', title: 'Crecimiento conjunto', desc: 'Crecemos cuando nuestros clientes crecen. Eso alinea nuestros intereses desde el primer día.' },
 ]
 
 export default function NosotrosPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative pt-28 pb-16 px-4 section-glow-blue">
-        <div className="relative max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 bg-[#2979FF]/20 border border-[#2979FF]/40 rounded-full text-[#2979FF] text-sm font-semibold mb-6">
+      <section className="relative min-h-[60vh] flex items-end pt-32 pb-16 px-4 overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 60% at 70% 30%, rgba(41,121,255,0.18) 0%, transparent 60%), radial-gradient(ellipse 70% 60% at 20% 80%, rgba(255,107,107,0.14) 0%, transparent 60%)',
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto w-full">
+          <span className="inline-block px-3 py-1 bg-[#2979FF]/10 border border-[#2979FF]/30 rounded-full text-[#2979FF] text-[10px] font-bold uppercase tracking-widest mb-6">
             📍 Camino del Faro 37, Cabo las Huertas, Alicante
           </span>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-8 leading-[1.05] tracking-tight">
-            Somos <span className="gradient-text">VOCAI</span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-[1.0] max-w-5xl">
+            Somos <span className="gradient-text">VOCAI.</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="mt-8 text-xl text-slate-400 font-light leading-relaxed max-w-2xl">
             Un equipo que cree que cualquier negocio merece comunicarse con la misma calidad que las grandes marcas — y la tecnología para hacerlo ya existe.
           </p>
         </div>
       </section>
 
+      <div className="divider-soft max-w-7xl mx-auto" />
+
       {/* TEAM PHOTO */}
       <FadeIn>
-        <section className="py-8 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="gallery-placeholder w-full aspect-video rounded-3xl border border-[#2979FF]/15 flex items-center justify-center">
-              <div className="text-center px-4">
-                <span className="block text-5xl sm:text-6xl mb-3" aria-hidden="true">📸</span>
-                <p className="text-white/90 font-bold text-lg sm:text-xl tracking-wide">Foto del equipo próximamente</p>
+        <section className="py-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div
+              className="w-full aspect-[16/9] rounded-3xl border border-white/5 flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #0d1b3e 0%, #0f1629 50%, #1a0e1a 100%)',
+              }}
+            >
+              <div className="text-center px-6">
+                <span className="block text-6xl mb-3" aria-hidden="true">📸</span>
+                <p className="text-white/90 font-bold text-xl tracking-wide">Foto del equipo próximamente</p>
               </div>
             </div>
           </div>
@@ -78,12 +73,17 @@ export default function NosotrosPage() {
 
       {/* STORY */}
       <FadeIn>
-        <section className="py-20 px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-black mb-8 text-center tracking-tight">Nuestra historia</h2>
-            <div className="space-y-6 text-gray-300 leading-relaxed">
+        <section className="py-32 px-4">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <span className="text-xs uppercase tracking-widest text-[#FF6B6B] font-bold">Nuestra historia</span>
+              <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight leading-[1.05]">
+                De la frustración al estudio.
+              </h2>
+            </div>
+            <div className="lg:col-span-7 lg:col-start-6 space-y-6 text-slate-300 font-light leading-[1.85] text-lg">
               <p>
-                VOCAI nació de una pregunta simple: <strong className="text-white">¿por qué las pymes en Alicante no tienen acceso a la misma calidad de comunicación que las grandes empresas?</strong>
+                VOCAI nació de una pregunta simple: <strong className="text-white font-semibold">¿por qué las pymes en Alicante no tienen acceso a la misma calidad de comunicación que las grandes empresas?</strong>
               </p>
               <p>
                 Vimos cómo negocios increíbles perdían clientes frente a competidores con menos producto pero mejor presencia. La diferencia no era el talento — era la comunicación.
@@ -92,28 +92,31 @@ export default function NosotrosPage() {
                 Decidimos construir el estudio que nos hubiera gustado tener: tecnología de primer nivel, un equipo que entiende de negocio y la inteligencia artificial como aliada para hacer más con menos.
               </p>
               <p>
-                Hoy ayudamos a empresas y profesionales de toda la provincia a <strong className="text-white">grabarse, publicarse y automatizarse</strong> — sin que tengan que convertirse en expertos en tecnología para hacerlo.
+                Hoy ayudamos a empresas y profesionales de toda la provincia a <strong className="text-white font-semibold">grabarse, publicarse y automatizarse</strong> — sin que tengan que convertirse en expertos en tecnología para hacerlo.
               </p>
             </div>
           </div>
         </section>
       </FadeIn>
 
+      <div className="divider-soft max-w-7xl mx-auto" />
+
       {/* VALUES */}
       <FadeIn>
-        <section className="py-20 px-4 bg-[#0a0e1a]">
+        <section className="py-32 px-4">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">Nuestros valores</h2>
-            <p className="text-gray-400 text-center mb-12">Lo que nos guía en cada decisión.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-              {values.map(({ icon, title, desc }) => (
-                <div
-                  key={title}
-                  className="bg-[#0f1629] rounded-2xl p-6 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15 hover:-translate-y-1.5 transition-all duration-300 text-center"
-                >
-                  <span className="text-3xl mb-3 block">{icon}</span>
-                  <h3 className="text-white font-bold mb-2">{title}</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
+            <div className="mb-16 max-w-3xl">
+              <span className="text-xs uppercase tracking-widest text-[#FFB020] font-bold">Valores</span>
+              <h2 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+                Lo que nos guía en cada decisión.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {values.map(({ num, title, desc }) => (
+                <div key={num} className="card-premium rounded-3xl p-8">
+                  <span className="deco-number block mb-5">{num}</span>
+                  <h3 className="text-xl font-bold mb-3">{title}</h3>
+                  <p className="text-slate-400 font-light leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
@@ -121,15 +124,22 @@ export default function NosotrosPage() {
         </section>
       </FadeIn>
 
+      <div className="divider-soft max-w-7xl mx-auto" />
+
       {/* LOCATION */}
       <FadeIn>
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">Dónde estamos</h2>
-            <p className="text-gray-400 text-center mb-10">
-              📍 Camino del Faro 37, Cabo las Huertas, Alicante
-            </p>
-            <div className="rounded-2xl overflow-hidden border border-[#2979FF]/15 h-80">
+        <section className="py-32 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-12">
+              <span className="text-xs uppercase tracking-widest text-[#2979FF] font-bold">Dónde estamos</span>
+              <h2 className="mt-4 text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+                Cabo las Huertas, Alicante.
+              </h2>
+              <p className="mt-6 text-xl text-slate-400 font-light leading-relaxed max-w-2xl">
+                📍 Camino del Faro 37, frente al mar.
+              </p>
+            </div>
+            <div className="rounded-3xl overflow-hidden border border-white/5 h-[420px]">
               <iframe
                 src="https://maps.google.com/maps?q=Camino+del+Faro+37,+Cabo+las+Huertas,+Alicante+03540&output=embed&hl=es&z=17"
                 width="100%"
@@ -138,7 +148,7 @@ export default function NosotrosPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación VOCAI — Playa San Juan, Alicante"
+                title="Ubicación VOCAI — Cabo las Huertas, Alicante"
               />
             </div>
           </div>
@@ -147,24 +157,26 @@ export default function NosotrosPage() {
 
       {/* CTA */}
       <FadeIn>
-        <section className="py-20 px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">¿Hablamos?</h2>
-            <p className="text-gray-400 mb-8">
-              Cuéntanos tu proyecto. Siempre respondemos en menos de 24 horas.
+        <section className="py-32 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+              ¿Hablamos?
+            </h2>
+            <p className="mt-6 text-xl text-slate-400 font-light leading-relaxed max-w-2xl">
+              Contanos tu proyecto. Siempre respondemos en menos de 24 horas.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a
                 href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20VOCAI`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2979FF]/40"
+                className="btn-primary inline-block px-10 py-4 rounded-full font-bold text-base uppercase tracking-widest"
               >
-                Escríbenos →
+                Escribinos →
               </a>
               <Link
                 href="/contacto"
-                className="px-8 py-4 border-2 border-white/20 text-white hover:border-[#2979FF] hover:bg-[#2979FF]/10 font-bold rounded-xl transition-all duration-300 hover:scale-105"
+                className="btn-coral inline-block px-10 py-4 rounded-full font-bold text-base uppercase tracking-widest text-center"
               >
                 Ver contacto
               </Link>
