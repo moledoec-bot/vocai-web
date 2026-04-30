@@ -1,11 +1,25 @@
 import Link from 'next/link'
+import { ShaderAnimation } from '@/components/ui/shader-animation'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111827] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative bg-[#0a0e1a] border-t border-[#2979FF]/15 overflow-hidden">
+      {/* Shader sutil de fondo */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
+        <ShaderAnimation className="w-full h-full" intensity={0.18} />
+      </div>
+      {/* Veil para legibilidad */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(10,14,26,0.85) 0%, rgba(10,14,26,0.95) 100%)',
+        }}
+      />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
@@ -98,7 +112,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="mt-10 pt-8 border-t border-[#2979FF]/15 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-xs">
             © {new Date().getFullYear()} VOCAI. Todos los derechos reservados.
           </p>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import FadeIn from '@/components/FadeIn'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
@@ -189,28 +190,29 @@ export default function PacksPage() {
   return (
     <>
       {/* HERO */}
-      <section className="pt-28 pb-12 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-black mb-4">
+      <section className="relative pt-28 pb-12 px-4 text-center section-glow-blue">
+        <div className="relative max-w-3xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 leading-[1.05] tracking-tight">
             Elige tu nivel.{' '}
             <span className="gradient-text">Crece a tu ritmo.</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg sm:text-xl">
             Cinco packs diseñados para que empieces hoy y escales cuando estés listo. Sin permanencia.
           </p>
         </div>
       </section>
 
       {/* PACK CARDS */}
-      <section className="py-16 px-4">
+      <FadeIn>
+        <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 items-start">
           {packs.map((pack) => (
             <div
               key={pack.name}
-              className={`relative bg-[#111827] rounded-3xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
+              className={`shimmer-card relative bg-[#0f1629] rounded-3xl p-6 border transition-all duration-300 hover:-translate-y-1.5 ${
                 pack.popularBadge
-                  ? 'border-[#FF6B6B]/60 shadow-xl shadow-[#FF6B6B]/10'
-                  : 'border-white/5 hover:border-white/20'
+                  ? 'border-[#FF6B6B]/60 shadow-xl shadow-[#FF6B6B]/15 hover:shadow-2xl hover:shadow-[#FF6B6B]/25'
+                  : 'border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15'
               }`}
             >
               {pack.popularBadge && (
@@ -274,7 +276,7 @@ export default function PacksPage() {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-2.5 rounded-xl font-bold text-sm text-center transition-all duration-300 hover:scale-105"
+                className="block w-full py-2.5 rounded-xl font-bold text-sm text-center transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 style={{
                   backgroundColor: pack.popularBadge ? pack.color : 'transparent',
                   color: pack.popularBadge ? '#fff' : pack.color,
@@ -286,12 +288,14 @@ export default function PacksPage() {
             </div>
           ))}
         </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* COMPARISON TABLE */}
-      <section className="py-20 px-4 bg-[#111827]/50">
+      <FadeIn>
+        <section className="py-20 px-4 bg-[#0a0e1a]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-black text-center mb-12">Comparativa completa</h2>
+          <h2 className="text-4xl sm:text-5xl font-black text-center mb-12 tracking-tight">Comparativa completa</h2>
           <div className="overflow-x-auto rounded-2xl border border-white/10">
             <table className="w-full text-sm min-w-[760px] border-collapse">
               <thead>
@@ -356,27 +360,34 @@ export default function PacksPage() {
             </table>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* FAQ */}
-      <section className="py-20 px-4">
+      <FadeIn>
+        <section className="py-20 px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-black text-center mb-12">Preguntas frecuentes</h2>
+          <h2 className="text-4xl sm:text-5xl font-black text-center mb-12 tracking-tight">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {faqs.map(({ q, a }) => (
-              <div key={q} className="bg-[#111827] rounded-xl p-6 border border-white/5">
+              <div
+                key={q}
+                className="bg-[#0f1629] rounded-xl p-6 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-lg hover:shadow-[#2979FF]/15 transition-all duration-300"
+              >
                 <h3 className="text-white font-bold mb-2">{q}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* CTA */}
-      <section className="py-20 px-4">
+      <FadeIn>
+        <section className="py-20 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-black mb-4">¿No sabes qué pack elegir?</h2>
+          <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">¿No sabes qué pack elegir?</h2>
           <p className="text-gray-400 mb-8">
             Cuéntanos tu situación y te recomendamos el pack perfecto para ti. Sin compromiso.
           </p>
@@ -384,12 +395,13 @@ export default function PacksPage() {
             href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20no%20s%C3%A9%20qu%C3%A9%20pack%20es%20el%20mejor%20para%20m%C3%AD%2C%20%C2%BFme%20ayud%C3%A1is%3F`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
+            className="inline-block px-8 py-4 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2979FF]/40 text-lg"
           >
             Pídenos recomendación →
           </a>
         </div>
-      </section>
+        </section>
+      </FadeIn>
     </>
   )
 }

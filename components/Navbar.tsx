@@ -20,7 +20,7 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/95 backdrop-blur-sm border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0e1a]/95 backdrop-blur-sm border-b border-[#2979FF]/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0a0e1a] border-t border-white/5">
+        <div className="md:hidden bg-[#0a0e1a] border-t border-[#2979FF]/15">
           <div className="px-4 py-4 flex flex-col gap-3">
             {links.map(({ href, label }) => (
               <Link

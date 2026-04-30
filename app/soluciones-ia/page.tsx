@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import FadeIn from '@/components/FadeIn'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
@@ -74,23 +75,23 @@ export default function SolucionesIAPage() {
   return (
     <>
       {/* HERO */}
-      <section className="pt-28 pb-16 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative pt-28 pb-16 px-4 text-center section-glow-blue">
+        <div className="relative max-w-3xl mx-auto">
           <span className="inline-block px-4 py-1.5 bg-[#00D68F]/20 border border-[#00D68F]/40 rounded-full text-[#00D68F] text-sm font-semibold mb-6">
             🤖 Inteligencia Artificial Aplicada
           </span>
-          <h1 className="text-4xl sm:text-5xl font-black mb-6 leading-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-8 leading-[1.05] tracking-tight">
             IA que trabaja{' '}
             <span className="gradient-text">para tu negocio</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
             Automatizaciones reales para empresas y profesionales. Sin tecnicismos, sin presupuestos desorbitados. Resultados desde la primera semana.
           </p>
           <a
             href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20una%20consulta%20gratuita%20sobre%20soluciones%20IA%20para%20mi%20negocio`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-[#00D68F] hover:bg-[#00bc7d] text-[#0a0e1a] font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
+            className="inline-block px-8 py-4 bg-[#00D68F] hover:bg-[#00bc7d] text-[#0a0e1a] font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#00D68F]/40 text-lg"
           >
             Solicitar consulta gratuita →
           </a>
@@ -98,71 +99,77 @@ export default function SolucionesIAPage() {
       </section>
 
       {/* SOLUTIONS */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">Nuestras soluciones</h2>
-          <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
-            Soluciones probadas, rápidas de implementar y con resultados medibles.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {solutions.map(({ icon, title, desc, benefit, color }) => (
-              <div
-                key={title}
-                className="bg-[#111827] rounded-2xl p-8 border border-white/5 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 flex flex-col"
-              >
-                <span className="text-4xl mb-4">{icon}</span>
-                <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">{desc}</p>
+      <FadeIn>
+        <section className="py-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">Nuestras soluciones</h2>
+            <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+              Soluciones probadas, rápidas de implementar y con resultados medibles.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {solutions.map(({ icon, title, desc, benefit, color }) => (
                 <div
-                  className="text-xs font-semibold px-3 py-1.5 rounded-full self-start"
-                  style={{ color, backgroundColor: `${color}20`, border: `1px solid ${color}40` }}
+                  key={title}
+                  className="bg-[#0f1629] rounded-2xl p-8 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15 transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
                 >
-                  ✓ {benefit}
+                  <span className="text-4xl mb-4">{icon}</span>
+                  <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">{desc}</p>
+                  <div
+                    className="text-xs font-semibold px-3 py-1.5 rounded-full self-start"
+                    style={{ color, backgroundColor: `${color}20`, border: `1px solid ${color}40` }}
+                  >
+                    ✓ {benefit}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* PROCESS */}
-      <section className="py-20 px-4 bg-[#111827]/50">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">Cómo trabajamos</h2>
-          <p className="text-gray-400 text-center mb-16">Sencillo, rápido y sin sorpresas.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map(({ num, title, desc }) => (
-              <div key={num} className="text-center">
-                <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-6 text-white font-black text-xl shadow-lg shadow-[#2979FF]/20">
-                  {num}
+      <FadeIn>
+        <section className="py-20 px-4 bg-[#0a0e1a]">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">Cómo trabajamos</h2>
+            <p className="text-gray-400 text-center mb-16">Sencillo, rápido y sin sorpresas.</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {steps.map(({ num, title, desc }) => (
+                <div key={num} className="text-center">
+                  <div className="w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-6 text-white font-black text-xl shadow-lg shadow-[#2979FF]/20">
+                    {num}
+                  </div>
+                  <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
                 </div>
-                <h3 className="text-white font-bold text-lg mb-3">{title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* CTA */}
-      <section className="py-24 px-4">
-        <div className="max-w-3xl mx-auto text-center rounded-3xl bg-[#111827] border border-[#00D68F]/30 p-12">
-          <span className="text-4xl mb-4 block">🤖</span>
-          <h2 className="text-3xl font-black mb-4">¿Cuánto tiempo pierdes en tareas repetitivas?</h2>
-          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-            En 30 minutos de consulta gratuita identificamos qué procesos de tu negocio pueden automatizarse y te damos un plan concreto.
-          </p>
-          <a
-            href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20una%20consulta%20gratuita%20sobre%20soluciones%20IA%20para%20mi%20negocio`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-[#00D68F] hover:bg-[#00bc7d] text-[#0a0e1a] font-black rounded-xl transition-all duration-300 hover:scale-105 text-lg"
-          >
-            Solicitar consulta gratuita →
-          </a>
-          <p className="text-gray-600 text-xs mt-4">Sin compromiso. En menos de 24h te respondemos.</p>
-        </div>
-      </section>
+      <FadeIn>
+        <section className="py-24 px-4">
+          <div className="max-w-3xl mx-auto text-center rounded-3xl bg-[#0f1629] border border-[#00D68F]/30 hover:border-[#00D68F]/55 hover:shadow-2xl hover:shadow-[#00D68F]/15 transition-all duration-300 p-12">
+            <span className="text-4xl mb-4 block">🤖</span>
+            <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">¿Cuánto tiempo pierdes en tareas repetitivas?</h2>
+            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+              En 30 minutos de consulta gratuita identificamos qué procesos de tu negocio pueden automatizarse y te damos un plan concreto.
+            </p>
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20una%20consulta%20gratuita%20sobre%20soluciones%20IA%20para%20mi%20negocio`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-4 bg-[#00D68F] hover:bg-[#00bc7d] text-[#0a0e1a] font-black rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#00D68F]/40 text-lg"
+            >
+              Solicitar consulta gratuita →
+            </a>
+            <p className="text-gray-600 text-xs mt-4">Sin compromiso. En menos de 24h te respondemos.</p>
+          </div>
+        </section>
+      </FadeIn>
     </>
   )
 }

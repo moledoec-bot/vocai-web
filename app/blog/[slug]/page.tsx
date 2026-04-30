@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: Props) {
           <time className="text-gray-500 text-sm" dateTime={post.date}>
             {formatDate(post.date)}
           </time>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mt-3 mb-4 leading-[1.05] tracking-tight">
             {post.title}
           </h1>
           <p className="text-gray-400 text-lg">{post.description}</p>
@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'}?text=Hola%2C%20he%20le%C3%ADdo%20vuestro%20art%C3%ADculo%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105"
+            className="inline-block px-6 py-3 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2979FF]/40"
           >
             Hablemos →
           </a>

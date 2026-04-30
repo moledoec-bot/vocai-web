@@ -16,3 +16,6 @@
 .DS_Store
 *.pem
 npm-debug.log*
+public/frames/
+public/images/*.HEIC
+public/video*

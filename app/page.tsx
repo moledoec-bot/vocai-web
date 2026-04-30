@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import HeroParallax from '@/components/HeroParallax'
+import FadeIn from '@/components/FadeIn'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
@@ -188,25 +188,28 @@ export default function HomePage() {
       <HeroParallax />
 
       {/* VALUE PROPS */}
-      <section className="py-20 px-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {valueProps.map(({ icon, title, text }) => (
-            <div
-              key={title}
-              className="bg-[#111827] rounded-2xl p-8 border border-white/5 hover:border-[#2979FF]/40 transition-all duration-300 hover:-translate-y-1"
-            >
-              <span className="text-4xl mb-4 block">{icon}</span>
-              <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <FadeIn>
+        <section className="py-20 px-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {valueProps.map(({ icon, title, text }) => (
+              <div
+                key={title}
+                className="bg-[#0f1629] rounded-2xl p-8 border border-[#2979FF]/15 hover:border-[#2979FF]/50 hover:shadow-xl hover:shadow-[#2979FF]/15 transition-all duration-300 hover:-translate-y-1.5"
+              >
+                <span className="text-4xl mb-4 block">{icon}</span>
+                <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </FadeIn>
 
       {/* ELIGE TU NIVEL */}
-      <section className="py-20 px-4 bg-[#111827]/50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">
+      <FadeIn>
+        <section className="relative py-20 px-4 bg-[#0a0e1a] section-glow-blue overflow-hidden">
+        <div className="relative max-w-7xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">
             Elige tu nivel
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
@@ -218,10 +221,10 @@ export default function HomePage() {
             {levels.map((level) => (
               <div
                 key={level.name}
-                className={`relative bg-[#111827] rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
+                className={`shimmer-card relative bg-[#0f1629] rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1.5 ${
                   level.badge
-                    ? 'border-[#FF6B6B]/60 shadow-xl shadow-[#FF6B6B]/10'
-                    : 'border-white/5 hover:border-white/20'
+                    ? 'border-[#FF6B6B]/60 shadow-xl shadow-[#FF6B6B]/15 hover:shadow-2xl hover:shadow-[#FF6B6B]/25'
+                    : 'border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15'
                 }`}
               >
                 {level.badge && (
@@ -327,51 +330,41 @@ export default function HomePage() {
             </table>
           </div>
         </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* GALLERY */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">El estudio</h2>
-          <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
-            Tecnología de primer nivel en el corazón de Alicante.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Imagen destacada principal — ocupa 2 columnas */}
-            <div className="col-span-2 relative aspect-video rounded-xl overflow-hidden border border-white/5">
-              <Image
-                src="/images/estudio-1.jpg"
-                alt="Estudio VOCAI — Cabo las Huertas, Alicante"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            {/* REEMPLAZAR con estudio-2.jpg, estudio-3.jpg cuando estén disponibles */}
-            {[2, 3].map((i) => (
-              <div
-                key={i}
-                className="bg-[#1a1a2e] rounded-xl aspect-video flex items-center justify-center text-gray-600 text-xs border border-white/5"
-              >
-                Foto estudio {i}
+      <FadeIn>
+        <section className="py-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">El estudio</h2>
+            <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+              Tecnología de primer nivel en el corazón de Alicante.
+            </p>
+            <div className="gallery-placeholder relative rounded-2xl overflow-hidden border border-[#2979FF]/15 aspect-[16/9] sm:aspect-[16/7] flex items-center justify-center">
+              <div className="text-center px-4">
+                <span className="block text-5xl sm:text-6xl mb-3" aria-hidden="true">📸</span>
+                <p className="text-white/90 font-bold text-lg sm:text-xl tracking-wide">Fotos próximamente</p>
+                <p className="text-white/50 text-sm mt-1">Estamos preparando una nueva sesión del estudio.</p>
               </div>
-            ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link
+                href="/estudio"
+                className="inline-flex items-center gap-2 text-[#2979FF] hover:text-white font-semibold transition-colors duration-300"
+              >
+                Ver el estudio completo →
+              </Link>
+            </div>
           </div>
-          <div className="text-center mt-8">
-            <Link
-              href="/estudio"
-              className="inline-flex items-center gap-2 text-[#2979FF] hover:text-white font-semibold transition-colors duration-300"
-            >
-              Ver el estudio completo →
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* ECOSYSTEM */}
-      <section className="py-20 px-4 bg-[#111827]/50">
+      <FadeIn>
+        <section className="py-20 px-4 bg-[#0a0e1a]">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-black mb-4">El ecosistema VOCAI</h2>
+          <h2 className="text-4xl sm:text-5xl font-black mb-4 tracking-tight">El ecosistema VOCAI</h2>
           <p className="text-gray-400 mb-16 max-w-xl mx-auto">
             Cada servicio está diseñado para conectarse con el siguiente. Empieza donde quieras.
           </p>
@@ -394,7 +387,7 @@ export default function HomePage() {
               ].map(({ icon, label }) => (
                 <div
                   key={label}
-                  className="bg-[#111827] rounded-xl p-5 border border-[#2979FF]/20"
+                  className="bg-[#0f1629] rounded-xl p-5 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#2979FF]/15 transition-all duration-300"
                 >
                   <span className="text-2xl block mb-2">{icon}</span>
                   <span className="text-white text-sm font-semibold">{label}</span>
@@ -407,18 +400,20 @@ export default function HomePage() {
             "Cada servicio de VOCAI está diseñado para que crezcas. Empieza donde quieras. Llega donde mereces."
           </p>
         </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 px-4">
+      <FadeIn>
+        <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">Lo que dicen nuestros clientes</h2>
+          <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">Lo que dicen nuestros clientes</h2>
           <p className="text-gray-400 text-center mb-12">Resultados reales de negocios reales.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map(({ name, company, text }) => (
               <div
                 key={name}
-                className="bg-[#111827] rounded-2xl p-8 border border-white/5"
+                className="bg-[#0f1629] rounded-2xl p-8 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15 hover:-translate-y-1.5 transition-all duration-300"
               >
                 {/* REEMPLAZAR con foto real: <Image src="/images/testimonial-X.jpg" ... /> */}
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2979FF] to-[#FF6B6B] flex items-center justify-center text-white font-bold text-lg mb-4">
@@ -433,27 +428,30 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* FINAL CTA */}
-      <section className="py-24 px-4">
-        <div className="max-w-3xl mx-auto text-center rounded-3xl gradient-bg p-12 shadow-2xl shadow-[#2979FF]/20">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-            ¿Listo para que tu negocio tenga voz?
-          </h2>
-          <p className="text-white/80 mb-8 text-lg">
-            Cuéntanos tu idea. La primera consulta es gratuita.
-          </p>
-          <a
-            href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20los%20servicios%20de%20VOCAI`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-white text-[#2979FF] font-black rounded-xl hover:scale-105 transition-transform duration-300 text-lg shadow-lg"
-          >
-            Hablemos →
-          </a>
-        </div>
-      </section>
+      <FadeIn>
+        <section className="py-24 px-4">
+          <div className="max-w-3xl mx-auto text-center rounded-3xl gradient-bg p-12 shadow-2xl shadow-[#2979FF]/20">
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+              ¿Listo para que tu negocio tenga voz?
+            </h2>
+            <p className="text-white/80 mb-8 text-lg">
+              Cuéntanos tu idea. La primera consulta es gratuita.
+            </p>
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20los%20servicios%20de%20VOCAI`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-4 bg-white text-[#2979FF] font-black rounded-xl hover:scale-105 transition-all duration-300 text-lg shadow-lg hover:shadow-2xl"
+            >
+              Hablemos →
+            </a>
+          </div>
+        </section>
+      </FadeIn>
     </>
   )
 }

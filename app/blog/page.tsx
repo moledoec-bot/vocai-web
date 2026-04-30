@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/blog'
+import FadeIn from '@/components/FadeIn'
 
 export const metadata: Metadata = {
   title: 'Blog — Podcast, Marketing e IA | VOCAI',
@@ -26,19 +27,20 @@ export default function BlogPage() {
   return (
     <>
       {/* HERO */}
-      <section className="pt-28 pb-16 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-black mb-4">
+      <section className="relative pt-28 pb-16 px-4 text-center section-glow-blue">
+        <div className="relative max-w-3xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 leading-[1.05] tracking-tight">
             Blog <span className="gradient-text">VOCAI</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg sm:text-xl">
             Podcast, marketing digital e inteligencia artificial para empresas. Consejos prácticos, sin tecnicismos.
           </p>
         </div>
       </section>
 
       {/* POSTS */}
-      <section className="py-12 px-4 pb-24">
+      <FadeIn>
+        <section className="py-12 px-4 pb-24">
         <div className="max-w-4xl mx-auto">
           {posts.length === 0 ? (
             <p className="text-center text-gray-500">No hay artículos publicados todavía.</p>
@@ -48,7 +50,7 @@ export default function BlogPage() {
                 <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="group bg-[#111827] rounded-2xl p-8 border border-white/5 hover:border-[#2979FF]/40 transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                  className="group bg-[#0f1629] rounded-2xl p-8 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15 transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <span className="w-2 h-2 rounded-full gradient-bg flex-shrink-0" />
@@ -68,7 +70,8 @@ export default function BlogPage() {
             </div>
           )}
         </div>
-      </section>
+        </section>
+      </FadeIn>
     </>
   )
 }

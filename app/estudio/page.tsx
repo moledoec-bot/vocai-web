@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
+import FadeIn from '@/components/FadeIn'
+import { ShaderAnimation } from '@/components/ui/shader-animation'
 
 const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
 
@@ -37,18 +38,26 @@ export default function EstudioPage() {
     <>
       {/* HERO */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-16">
-        {/* REEMPLAZAR con imagen real: <Image src="/images/estudio-hero.jpg" alt="Estudio VOCAI Alicante" fill className="object-cover" priority /> */}
-        <div className="absolute inset-0 bg-[#1a1a2e]" />
-        <div className="absolute inset-0 bg-[#0a0e1a]/70" />
+        <div className="absolute inset-0" aria-hidden="true">
+          <ShaderAnimation className="w-full h-full" intensity={0.85} />
+        </div>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          style={{
+            background:
+              'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(10,14,26,0.4) 0%, rgba(10,14,26,0.75) 100%)',
+          }}
+        />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <span className="inline-block px-4 py-1.5 bg-[#2979FF]/20 border border-[#2979FF]/40 rounded-full text-[#2979FF] text-sm font-semibold mb-6">
             📍 Camino del Faro 37, Cabo las Huertas, Alicante
           </span>
-          <h1 className="text-4xl sm:text-5xl font-black mb-6 leading-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 leading-[1.05] tracking-tight drop-shadow-2xl">
             Estudio de Podcast y Contenido{' '}
             <span className="gradient-text">Profesional en Alicante</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto mb-8 drop-shadow">
             Graba lo que quieras con calidad de primer nivel. Técnico incluido.{' '}
             <span className="line-through text-gray-500">120€/h</span>{' '}
             <span className="text-white font-bold">90€/h</span>{' '}
@@ -58,7 +67,7 @@ export default function EstudioPage() {
             href="https://cal.com/vocai/vocai-estudio"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 mb-12 sm:mb-0 bg-[#FF6B6B] hover:bg-[#ff5252] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
+            className="inline-block px-8 py-4 mb-12 sm:mb-0 bg-[#FF6B6B] hover:bg-[#ff5252] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#FF6B6B]/40 text-lg"
           >
             Reservar ahora →
           </a>
@@ -66,142 +75,140 @@ export default function EstudioPage() {
       </section>
 
       {/* PRICE HIGHLIGHT */}
-      <section className="py-12 px-4 bg-[#2979FF]/10 border-y border-[#2979FF]/20">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-8 text-center sm:text-left">
-          <div>
-            <span className="inline-block px-2 py-0.5 bg-[#FF6B6B]/15 text-[#FF6B6B] text-xs font-semibold rounded mb-2 block text-center sm:text-left">
-              Precio lanzamiento
-            </span>
-            <div className="flex items-center gap-2">
-              <span className="text-lg text-gray-500 line-through">120€/h</span>
-              <span className="text-5xl font-black text-[#2979FF]">90€</span>
-              <span className="text-gray-400">+IVA / hora</span>
+      <FadeIn>
+        <section className="py-12 px-4 bg-[#2979FF]/10 border-y border-[#2979FF]/20">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-8 text-center sm:text-left">
+            <div>
+              <span className="inline-block px-2 py-0.5 bg-[#FF6B6B]/15 text-[#FF6B6B] text-xs font-semibold rounded mb-2 block text-center sm:text-left">
+                Precio lanzamiento
+              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-lg text-gray-500 line-through">120€/h</span>
+                <span className="text-5xl font-black text-[#2979FF]">90€</span>
+                <span className="text-gray-400">+IVA / hora</span>
+              </div>
+            </div>
+            <div className="h-12 w-px bg-white/10 hidden sm:block" />
+            <div className="text-gray-300">
+              <p>✅ Mínimo 1 hora</p>
+              <p>✅ Sin permanencia</p>
+            </div>
+            <div className="h-12 w-px bg-white/10 hidden sm:block" />
+            <div className="text-gray-300">
+              <p>✅ Técnico incluido</p>
+              <p>✅ Entrega inmediata</p>
             </div>
           </div>
-          <div className="h-12 w-px bg-white/10 hidden sm:block" />
-          <div className="text-gray-300">
-            <p>✅ Mínimo 1 hora</p>
-            <p>✅ Sin permanencia</p>
-          </div>
-          <div className="h-12 w-px bg-white/10 hidden sm:block" />
-          <div className="text-gray-300">
-            <p>✅ Técnico incluido</p>
-            <p>✅ Entrega inmediata</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* WHAT'S INCLUDED */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">¿Qué incluye?</h2>
-          <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
-            Todo lo que necesitas para grabar contenido profesional, listo para publicar.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map(({ icon, text }) => (
-              <div
-                key={text}
-                className="bg-[#111827] rounded-xl p-6 border border-white/5 hover:border-[#2979FF]/40 transition-all duration-300 flex items-center gap-4"
-              >
-                <span className="text-2xl flex-shrink-0">{icon}</span>
-                <span className="text-white font-medium">{text}</span>
-              </div>
-            ))}
+      <FadeIn>
+        <section className="py-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">¿Qué incluye?</h2>
+            <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+              Todo lo que necesitas para grabar contenido profesional, listo para publicar.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {features.map(({ icon, text }) => (
+                <div
+                  key={text}
+                  className="bg-[#0f1629] rounded-xl p-6 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-lg hover:shadow-[#2979FF]/15 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4"
+                >
+                  <span className="text-2xl flex-shrink-0">{icon}</span>
+                  <span className="text-white font-medium">{text}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* GALLERY */}
-      <section className="py-20 px-4 bg-[#111827]/50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-black text-center mb-12">El estudio por dentro</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {/* Imagen destacada principal — ocupa 2 columnas */}
-            <div className="col-span-2 relative aspect-video rounded-xl overflow-hidden border border-white/5">
-              <Image
-                src="/images/estudio-1.jpg"
-                alt="Estudio VOCAI — Cabo las Huertas, Alicante"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            {/* REEMPLAZAR con estudio-2.jpg, estudio-3.jpg, estudio-4.jpg cuando estén disponibles */}
-            {[2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="bg-[#1a1a2e] rounded-xl aspect-square border border-white/5 flex items-center justify-center text-gray-600 text-xs"
-              >
-                Foto estudio {i}
+      <FadeIn>
+        <section className="py-20 px-4 bg-[#0a0e1a]">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-12 tracking-tight">El estudio por dentro</h2>
+            <div className="gallery-placeholder relative rounded-2xl overflow-hidden border border-[#2979FF]/15 aspect-[16/9] sm:aspect-[16/7] flex items-center justify-center">
+              <div className="text-center px-4">
+                <span className="block text-5xl sm:text-6xl mb-3" aria-hidden="true">📸</span>
+                <p className="text-white/90 font-bold text-lg sm:text-xl tracking-wide">Fotos próximamente</p>
+                <p className="text-white/50 text-sm mt-1">Estamos preparando una nueva sesión del estudio.</p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* FOR WHOM */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-black text-center mb-4">¿Para quién es?</h2>
-          <p className="text-gray-400 text-center mb-12">
-            Si tienes algo que decir, este es tu sitio.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {profiles.map(({ icon, title, text }) => (
-              <div
-                key={title}
-                className="bg-[#111827] rounded-2xl p-6 border border-white/5 hover:border-[#2979FF]/40 transition-all duration-300"
-              >
-                <span className="text-3xl mb-3 block">{icon}</span>
-                <h3 className="text-white font-bold mb-2">{title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
-              </div>
-            ))}
+      <FadeIn>
+        <section className="py-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-4 tracking-tight">¿Para quién es?</h2>
+            <p className="text-gray-400 text-center mb-12">
+              Si tienes algo que decir, este es tu sitio.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {profiles.map(({ icon, title, text }) => (
+                <div
+                  key={title}
+                  className="bg-[#0f1629] rounded-2xl p-6 border border-[#2979FF]/15 hover:border-[#2979FF]/45 hover:shadow-xl hover:shadow-[#2979FF]/15 hover:-translate-y-1.5 transition-all duration-300"
+                >
+                  <span className="text-3xl mb-3 block">{icon}</span>
+                  <h3 className="text-white font-bold mb-2">{title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
 
       {/* UPSELL */}
-      <section className="py-20 px-4 bg-[#111827]/50">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block px-3 py-1 bg-[#FFB020]/20 text-[#FFB020] rounded-full text-xs font-semibold mb-4">
-            ¿QUIERES MÁS?
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-black mb-4">
-            Combina el estudio con el Pack GRABA
-          </h2>
-          <p className="text-gray-400 mb-8">
-            <span className="line-through text-gray-600">550€/mes</span>{' '}
-            → Desde <span className="text-white font-bold">350€/mes</span> tienes estudio + técnico + 6 reels editados al mes.{' '}
-            <span className="text-[#FF6B6B] text-sm font-semibold">Precio lanzamiento.</span>
-          </p>
-          <Link
-            href="/packs"
-            className="inline-block px-8 py-4 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105"
-          >
-            Ver Pack GRABA →
-          </Link>
-        </div>
-      </section>
+      <FadeIn>
+        <section className="py-20 px-4 bg-[#0a0e1a]">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-block px-3 py-1 bg-[#FFB020]/20 text-[#FFB020] rounded-full text-xs font-semibold mb-4">
+              ¿QUIERES MÁS?
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">
+              Combina el estudio con el Pack GRABA
+            </h2>
+            <p className="text-gray-400 mb-8">
+              <span className="line-through text-gray-600">550€/mes</span>{' '}
+              → Desde <span className="text-white font-bold">350€/mes</span> tienes estudio + técnico + 6 reels editados al mes.{' '}
+              <span className="text-[#FF6B6B] text-sm font-semibold">Precio lanzamiento.</span>
+            </p>
+            <Link
+              href="/packs"
+              className="inline-block px-8 py-4 bg-[#2979FF] hover:bg-[#1a6aff] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#2979FF]/40"
+            >
+              Ver Pack GRABA →
+            </Link>
+          </div>
+        </section>
+      </FadeIn>
 
       {/* FINAL CTA */}
-      <section className="py-20 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-black mb-4">¿Cuándo grabamos?</h2>
-          <p className="text-gray-400 mb-8">
-            Dinos qué quieres grabar y te hacemos un presupuesto personalizado en menos de 24 horas.
-          </p>
-          <a
-            href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20consultar%20disponibilidad%20del%20estudio`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-[#FF6B6B] hover:bg-[#ff5252] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 text-lg"
-          >
-            Reservar por WhatsApp →
-          </a>
-        </div>
-      </section>
+      <FadeIn>
+        <section className="py-20 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">¿Cuándo grabamos?</h2>
+            <p className="text-gray-400 mb-8">
+              Dinos qué quieres grabar y te hacemos un presupuesto personalizado en menos de 24 horas.
+            </p>
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20consultar%20disponibilidad%20del%20estudio`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 bg-[#FF6B6B] hover:bg-[#ff5252] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#FF6B6B]/40 text-lg"
+            >
+              Reservar por WhatsApp →
+            </a>
+          </div>
+        </section>
+      </FadeIn>
     </>
   )
 }
