@@ -267,7 +267,11 @@ export default function PacksPage() {
               </ul>
 
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20el%20${encodeURIComponent(pack.name)}`}
+                href={
+                  pack.name === 'BÁSICO'
+                    ? 'https://cal.com/vocai/vocai-estudio'
+                    : `https://wa.me/${WA_NUMBER}?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20el%20${encodeURIComponent(pack.name)}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full py-2.5 rounded-xl font-bold text-sm text-center transition-all duration-300 hover:scale-105"
@@ -277,7 +281,7 @@ export default function PacksPage() {
                   border: `2px solid ${pack.color}`,
                 }}
               >
-                Más información →
+                {pack.name === 'BÁSICO' ? 'Reservar ahora →' : 'Más información →'}
               </a>
             </div>
           ))}
