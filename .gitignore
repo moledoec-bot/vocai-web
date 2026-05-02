@@ -19,3 +19,5 @@ npm-debug.log*
 public/frames/
 public/images/*.HEIC
 public/video*
+.mcp.json
+.claude/skills/

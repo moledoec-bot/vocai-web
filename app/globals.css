@@ -194,3 +194,61 @@ body {
   background: rgba(41, 121, 255, 0.3);
   color: #ffffff;
 }
+
+/* Botón estilo Dala — slide-fill coral */
+.btn-slide-fill {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: transparent;
+  isolation: isolate;
+  transition: border-color 360ms ease, color 360ms ease;
+}
+.btn-slide-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #FF6B6B;
+  transform: translateX(-101%);
+  transition: transform 420ms cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+}
+.btn-slide-fill:hover {
+  border-color: #FF6B6B;
+}
+.btn-slide-fill:hover::after {
+  transform: translateX(0);
+}
+
+/* Tipografías huge para landing */
+.huge-h2 {
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: #ffffff;
+}
+.manifest-h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #ffffff;
+}
+.big-paragraph {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 200;
+  line-height: 1.4;
+  color: #ffffff;
+  letter-spacing: -0.005em;
+}
+.muted-paragraph {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: #94a3b8;
+}

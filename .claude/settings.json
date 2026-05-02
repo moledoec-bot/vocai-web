@@ -7,7 +7,14 @@
       "Bash(yes)",
       "Bash(npx shadcn@latest add https://21st.dev/r/designali-in/shader-animation)",
       "Bash(npx tailwindcss *)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Read(//Users/agustinmoledo/.claude/**)",
+      "Bash(gcloud config *)",
+      "Bash(gcloud services *)",
+      "Bash(gcloud auth *)"
+    ],
+    "additionalDirectories": [
+      "/Users/agustinmoledo/.claude"
     ]
   }
 }
