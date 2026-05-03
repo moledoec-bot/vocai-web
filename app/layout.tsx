@@ -70,7 +70,7 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${generalSans.variable}`}>
       <body>
         <JsonLd />
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   )
