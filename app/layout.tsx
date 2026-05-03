@@ -1,8 +1,25 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
+import { JsonLd } from '@/components/seo/JsonLd'
 
-const inter = Inter({ subsets: ['latin'] })
+const generalSans = localFont({
+  src: [
+    { path: '../public/fonts/GeneralSans-Variable.woff2', style: 'normal', weight: '200 700' },
+    { path: '../public/fonts/GeneralSans-VariableItalic.woff2', style: 'italic', weight: '200 700' },
+  ],
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const inter = localFont({
+  src: [
+    { path: '../public/fonts/InterVariable.woff2', style: 'normal', weight: '100 900' },
+    { path: '../public/fonts/InterVariable-Italic.woff2', style: 'italic', weight: '100 900' },
+  ],
+  variable: '--font-body',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -12,10 +29,35 @@ export const metadata: Metadata = {
   description:
     'Estudio de podcast, marketing digital e inteligencia artificial para empresas y profesionales en Alicante.',
   metadataBase: new URL('https://vocai.es'),
+  alternates: { canonical: '/' },
   openGraph: {
     siteName: 'VOCAI',
+    title: 'VOCAI — La voz de tu negocio, potenciada por IA',
+    description:
+      'Estudio de podcast, marketing digital e inteligencia artificial para empresas y profesionales en Alicante.',
+    url: 'https://vocai.es',
     locale: 'es_ES',
     type: 'website',
+    images: [
+      {
+        url: '/og-home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'VOCAI — La voz de tu negocio, potenciada por IA',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VOCAI — La voz de tu negocio, potenciada por IA',
+    description:
+      'Estudio de podcast, marketing digital e inteligencia artificial en Alicante.',
+    images: ['/og-home.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 }
 
@@ -25,8 +67,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className={inter.className}>
+    <html lang="es" className={`${inter.variable} ${generalSans.variable}`}>
+      <body>
+        <JsonLd />
         <main>{children}</main>
       </body>
     </html>

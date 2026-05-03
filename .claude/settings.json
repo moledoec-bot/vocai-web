@@ -11,7 +11,16 @@
       "Read(//Users/agustinmoledo/.claude/**)",
       "Bash(gcloud config *)",
       "Bash(gcloud services *)",
-      "Bash(gcloud auth *)"
+      "Bash(gcloud auth *)",
+      "Bash(curl -sLo /tmp/general-sans.zip \"https://api.fontshare.com/v2/fonts/download/general-sans\")",
+      "Bash(curl -sLo /tmp/InterVariable.woff2 \"https://rsms.me/inter/font-files/InterVariable.woff2\")",
+      "Bash(curl -sLo /tmp/InterVariable-Italic.woff2 \"https://rsms.me/inter/font-files/InterVariable-Italic.woff2\")",
+      "Read(//private/tmp/**)",
+      "Bash(unzip -q -o /tmp/general-sans.zip -d /tmp/general-sans/)",
+      "Bash(cp /tmp/general-sans/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-Variable.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
+      "Bash(cp /tmp/general-sans/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-VariableItalic.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
+      "Bash(cp /tmp/InterVariable.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
+      "Bash(cp /tmp/InterVariable-Italic.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude"

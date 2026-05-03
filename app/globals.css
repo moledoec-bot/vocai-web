@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 :root {
+  /* Paleta cálida (landing premium single-page) */
+  --bg-base: #0a0710;       /* navy cálido casi negro vino */
+  --bg-elev: #14101c;       /* card oscuro cálido */
+  --coral: #FF6B5B;         /* acento principal */
+  --amber: #FFB020;         /* acento cálido */
+  --text-primary: #f5f3f0;  /* off-white cálido */
+  --text-muted: #8a8290;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Legacy (mantener para clases existentes: card-premium, btn-primary, etc.) */
   --navy: #0a0e1a;
   --card: #0f1629;
   --blue: #2979FF;
-  --coral: #FF6B6B;
-  --amber: #FFB020;
+  --coral-legacy: #FF6B6B;
   --text: #ffffff;
   --muted: #94a3b8;
   --border: rgba(255, 255, 255, 0.05);
@@ -24,11 +33,15 @@ html {
 }
 
 body {
-  background-color: var(--navy);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body), 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display), 'General Sans', system-ui, sans-serif;
 }
 
 @layer utilities {
