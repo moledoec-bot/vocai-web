@@ -63,7 +63,9 @@
       "Bash(pkill -9 -f \"python3 -m http.server\")",
       "Bash(curl -sI http://localhost:3000/)",
       "Bash(curl -sI http://localhost:3000/mockup.html)",
-      "Bash(curl -s http://localhost:3000/)"
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/cp3-hero.png --virtual-time-budget=5000 \"http://localhost:3000/\")"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",
