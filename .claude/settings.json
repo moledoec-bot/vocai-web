@@ -20,7 +20,20 @@
       "Bash(cp /tmp/general-sans/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-Variable.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
       "Bash(cp /tmp/general-sans/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-VariableItalic.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
       "Bash(cp /tmp/InterVariable.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
-      "Bash(cp /tmp/InterVariable-Italic.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)"
+      "Bash(cp /tmp/InterVariable-Italic.woff2 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/fonts/)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/hero-desktop.png --virtual-time-budget=10000 http://localhost:3001)",
+      "WebSearch",
+      "WebFetch(domain:sketchfab.com)",
+      "WebFetch(domain:poly.pizza)",
+      "Bash(curl -sL \"https://sketchfab.com/3d-models/shure-sm7b-microphone-blender-932fa222f4b14538828cac6da5747eec\")",
+      "Bash(curl -sL \"https://sketchfab.com/3d-models/podcast-microphone-5cf2389b7f264931a1833684804e9798\")",
+      "Bash(curl -sL \"https://sketchfab.com/3d-models/shure-sm7b-37c21283fcc84f7c9a98e3389e79506c\")",
+      "Bash(mkdir -p /tmp/mic-previews)",
+      "Bash(curl -sLo /tmp/mic-previews/marshal-sm7b.jpeg \"https://media.sketchfab.com/models/932fa222f4b14538828cac6da5747eec/thumbnails/3ce9492dc3ca493b932d36aa966d7cce/5c7ce611b6b34177a8332ffda5edff64.jpeg\")",
+      "Bash(curl -sLo /tmp/mic-previews/grogan-podcast.jpeg \"https://media.sketchfab.com/models/5cf2389b7f264931a1833684804e9798/thumbnails/2971c2269e7842f087fdda8e7547c4e1/2a19b226f3734a56a166ed72732596fa.jpeg\")",
+      "Bash(curl -sLo /tmp/mic-previews/yanis-sm7b.jpeg \"https://media.sketchfab.com/models/37c21283fcc84f7c9a98e3389e79506c/thumbnails/57c26a222a7e450e98ad01f3f6493f66/c671a854e86340e68627841c7232182c.jpeg\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/hero-desktop-v2.png --virtual-time-budget=10000 http://localhost:3001)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/hero-desktop-v2-frame2.png --virtual-time-budget=12000 http://localhost:3001)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude"
