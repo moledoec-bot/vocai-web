@@ -33,10 +33,37 @@
       "Bash(curl -sLo /tmp/mic-previews/grogan-podcast.jpeg \"https://media.sketchfab.com/models/5cf2389b7f264931a1833684804e9798/thumbnails/2971c2269e7842f087fdda8e7547c4e1/2a19b226f3734a56a166ed72732596fa.jpeg\")",
       "Bash(curl -sLo /tmp/mic-previews/yanis-sm7b.jpeg \"https://media.sketchfab.com/models/37c21283fcc84f7c9a98e3389e79506c/thumbnails/57c26a222a7e450e98ad01f3f6493f66/c671a854e86340e68627841c7232182c.jpeg\")",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/hero-desktop-v2.png --virtual-time-budget=10000 http://localhost:3001)",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/hero-desktop-v2-frame2.png --virtual-time-budget=12000 http://localhost:3001)"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/hero-desktop-v2-frame2.png --virtual-time-budget=12000 http://localhost:3001)",
+      "Bash(curl -sI http://localhost:3001/mockup.html)",
+      "Bash(curl -s http://localhost:3001/mockup.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,3600 --screenshot=/tmp/mockup-desktop.png --virtual-time-budget=10000 http://localhost:3001/mockup.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=390,5400 --screenshot=/tmp/mockup-mobile.png --virtual-time-budget=10000 http://localhost:3001/mockup.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/mockup-1-hero.png --virtual-time-budget=8000 \"http://localhost:3001/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/mockup-2-quehacemos.png --virtual-time-budget=8000 \"http://localhost:3001/mockup.html#que-hacemos\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,900 --screenshot=/tmp/mockup-3-estudio.png --virtual-time-budget=8000 \"http://localhost:3001/mockup.html#estudio\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,1100 --screenshot=/tmp/mockup-4-servicios.png --virtual-time-budget=8000 \"http://localhost:3001/mockup.html#servicios\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,1100 --screenshot=/tmp/mockup-5-nosotros.png --virtual-time-budget=8000 \"http://localhost:3001/mockup.html#nosotros\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --window-size=1440,1000 --screenshot=/tmp/mockup-6-contacto.png --virtual-time-budget=8000 \"http://localhost:3001/mockup.html#contacto\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --enable-webgl --use-angle=metal --window-size=1440,900 --screenshot=/tmp/mockup-hero-shader.png --virtual-time-budget=15000 \"http://localhost:3001/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --window-size=1440,900 --screenshot=/tmp/mockup-hero-shader-v2.png --virtual-time-budget=15000 \"http://localhost:3001/mockup.html\")",
+      "Bash(curl -s \"http://localhost:3001/mockup.html\")",
+      "Bash(curl -sI \"https://unpkg.com/three@0.184.0/build/three.min.js\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --window-size=1440,900 --screenshot=/tmp/mockup-hero-shader-v3.png --virtual-time-budget=20000 \"http://localhost:3001/mockup.html\")",
+      "Bash(python3 -m http.server 8000)",
+      "Bash(curl -sI http://localhost:8000/mockup.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --window-size=1440,900 --screenshot=/tmp/mockup-hero.png --virtual-time-budget=18000 \"http://localhost:8000/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/mockup-hero.png --virtual-time-budget=6000 \"http://localhost:8000/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/mockup-hero-azul.png --virtual-time-budget=8000 \"http://localhost:8000/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/mockup-final.png --virtual-time-budget=8000 \"http://localhost:8000/mockup.html\")",
+      "Bash(pkill -9 -f \"Google Chrome\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/mockup-anim.png --virtual-time-budget=6000 \"http://localhost:8000/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/mockup-c.png --virtual-time-budget=5000 \"http://localhost:8000/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/sec-hero.png --virtual-time-budget=4500 \"http://localhost:8000/mockup.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --no-sandbox --window-size=1440,900 --screenshot=/tmp/no-gpu.png \"http://localhost:8000/mockup.html\")"
     ],
     "additionalDirectories": [
-      "/Users/agustinmoledo/.claude"
+      "/Users/agustinmoledo/.claude",
+      "/private/tmp"
     ]
   }
 }

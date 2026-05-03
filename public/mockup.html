@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOCAI — Mockup landing premium</title>
+  <meta name="description" content="Mockup visual de la landing premium de VOCAI">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       TOKENS — paleta cálida VOCAI
+       ========================================== */
+    :root {
+      --bg-base:      #0a0710;
+      --bg-elev:      #14101c;
+      --bg-elev-2:    #1c1623;
+      --coral:        #FF5A4A;
+      --coral-soft:   rgba(255, 90, 74, 0.14);
+      --amber:        #FFB020;
+      --amber-soft:   rgba(255, 176, 32, 0.12);
+      --text-primary: #f5f3f0;
+      --text-muted:   #8a8290;
+      --text-faded:   #5a525a;
+      --border-subtle:rgba(255, 255, 255, 0.06);
+      --border-soft:  rgba(255, 255, 255, 0.12);
+      --font-display: 'General Sans', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    /* RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+      background: var(--bg-base); /* fallback bajo el canvas fixed */
+    }
+    body {
+      background: transparent; /* deja ver el canvas cosmos detrás de todo */
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ==========================================
+       LAYOUT
+       ========================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    @media (min-width: 768px)  { .container { padding: 0 2rem; } }
+    @media (min-width: 1024px) { .container { padding: 0 3rem; } }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+      z-index: 1;
+      scroll-margin-top: 100px; /* compensa navbar fixed al hacer anchor scroll */
+    }
+    @media (min-width: 768px)  { section { padding: 8rem 0; } }
+    /* Sección 2 con menos aire arriba */
+    #que-hacemos { padding-top: 5rem; }
+    @media (min-width: 768px) { #que-hacemos { padding-top: 6rem; } }
+    /* Todas las secciones excepto el hero: bg semi-transparente
+       para que el cosmos del shader fixed siga vivo sutilmente debajo. */
+    section:not(.hero) {
+      background: rgba(10, 7, 16, 0.92);
+    }
+
+    /* ==========================================
+       TYPOGRAPHY
+       ========================================== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--text-primary);
+    }
+    .h1 { font-size: clamp(2.75rem, 6.5vw, 5.5rem); font-weight: 500; }
+    .h2 { font-size: clamp(2rem,    4.5vw, 3.75rem); font-weight: 500; }
+    .h3 { font-size: clamp(1.375rem,2.2vw, 1.75rem); font-weight: 500; }
+    .h4 { font-size: clamp(1.125rem,1.5vw, 1.375rem); font-weight: 500; }
+
+    .lead {
+      font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .text-coral { color: var(--coral); }
+    .text-amber { color: var(--amber); }
+    .text-muted { color: var(--text-muted); }
+
+    /* ==========================================
+       BUTTONS
+       ========================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 0.95rem 1.6rem;
+      border-radius: 999px;
+      transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, color 220ms ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: #1a0608;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #ff6f5e;
+    }
+    .btn-ghost {
+      border: 1px solid var(--border-soft);
+      color: var(--text-primary);
+    }
+    .btn-ghost:hover {
+      border-color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+    .btn-large { padding: 1.1rem 2rem; font-size: 1rem; }
+
+    .arrow-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      color: var(--coral);
+      transition: gap 220ms ease;
+    }
+    .arrow-link:hover { gap: 0.85rem; }
+    .arrow-link::after { content: '→'; font-size: 1.1em; }
+
+    /* ==========================================
+       NAVBAR FLOTANTE
+       ========================================== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: 1rem 0;
+      background: linear-gradient(180deg, rgba(10,7,16,0.85) 0%, rgba(10,7,16,0.55) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+    }
+    .nav-logo .dot { color: var(--coral); }
+    .nav-links {
+      display: none;
+      gap: 2.25rem;
+    }
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color 220ms ease;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* ==========================================
+       1) HERO
+       ========================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 7rem 0 4rem 0;
+      overflow: hidden;
+      z-index: 1;
+      background: transparent;
+    }
+    /* Canvas del shader: FIXED full-viewport, vive bajo TODO el contenido.
+       Su opacidad la controla el scroll handler para que sea fuerte en el
+       hero y se mantenga sutil (8%) durante el resto de la landing. */
+    #hero-shader-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      display: block;
+      pointer-events: none;
+    }
+    /* Overlay de legibilidad sobre el shader, dentro del hero */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg,
+          rgba(10,7,16,0.55) 0%,
+          rgba(10,7,16,0.30) 45%,
+          rgba(10,7,16,0.55) 100%
+        ),
+        radial-gradient(ellipse at 30% 60%,
+          rgba(10,7,16,0.35) 0%,
+          rgba(10,7,16,0) 50%
+        );
+      pointer-events: none;
+    }
+    /* Blend gradient en los últimos 240px del hero para fundir
+       suavemente el azul del shader en el bg-base sólido. */
+    .hero-bottom-blend {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 240px;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 7, 16, 0)    0%,
+        rgba(10, 7, 16, 0.40) 50%,
+        rgba(10, 7, 16, 1.00) 100%
+      );
+    }
+    .hero .container {
+      position: relative;
+      z-index: 3;
+    }
+    .hero-copy {
+      max-width: 780px;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--text-primary);
+      max-width: 16ch;
+      margin-bottom: 1.5rem;
+    }
+    .hero-headline .accent {
+      color: var(--coral);
+      display: block;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      color: var(--text-primary);
+      opacity: 0.85;
+      font-weight: 300;
+      max-width: 50ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.55;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    @media (min-width: 540px) {
+      .hero-ctas { flex-direction: row; align-items: center; }
+    }
+
+    /* ==========================================
+       2) QUÉ HACEMOS — 2 cards GRANDES
+       ========================================== */
+    .que-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+      .que-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    .que-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: transform 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .que-card { padding: 3rem; min-height: 24rem; }
+    }
+    .que-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--coral);
+      box-shadow: 0 30px 60px -25px rgba(255, 90, 74, 0.35);
+    }
+    .que-card.amber:hover {
+      border-color: var(--amber);
+      box-shadow: 0 30px 60px -25px rgba(255, 176, 32, 0.32);
+    }
+    .que-icon {
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--coral);
+      transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .que-card.amber .que-icon { color: var(--amber); }
+    .que-icon svg { width: 100%; height: 100%; }
+    .que-card:hover .que-icon { transform: scale(1.08) rotate(-3deg); }
+    .que-card.amber:hover .que-icon { transform: scale(1.08) rotate(3deg); }
+    .que-card .h3 {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      font-weight: 500;
+    }
+    .que-card p {
+      color: var(--text-muted);
+      max-width: 36ch;
+      flex: 1;
+    }
+
+    /* Section header reusable */
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 1rem;
+    }
+    .section-head .eyebrow { margin-bottom: 1rem; }
+    .section-head h2 { margin-bottom: 1.25rem; }
+    .section-head p { color: var(--text-muted); font-size: 1.0625rem; max-width: 50ch; }
+
+    /* ==========================================
+       3) EL ESTUDIO
+       ========================================== */
+    .estudio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .estudio-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+    }
+    .estudio-copy h2 { margin-bottom: 1.5rem; }
+    .estudio-copy p { color: var(--text-muted); margin-bottom: 2rem; }
+
+    .sub-services {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0 2.5rem 0;
+    }
+    .sub-services li {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .estudio-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width: 540px) {
+      .estudio-gallery { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    }
+    .photo-placeholder {
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(135deg, var(--bg-elev) 0%, var(--bg-elev-2) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.875rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem;
+      color: var(--text-faded);
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--coral);
+      opacity: 0.18;
+      transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .photo-icon svg { width: 100%; height: 100%; }
+    .photo-placeholder:hover .photo-icon { opacity: 0.4; }
+    .photo-label { font-size: 0.625rem; }
+
+    /* ==========================================
+       4) IMPLEMENTACIONES IA
+       ========================================== */
+    .ia-section {
+      background: linear-gradient(180deg,
+        rgba(10, 7, 16, 0.92) 0%,
+        rgba(14, 10, 22, 0.94) 100%
+      );
+    }
+    .ia-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      align-items: center;
+    }
+    @media (min-width: 1024px) {
+      .ia-grid { grid-template-columns: 1.1fr 1fr; gap: 4rem; }
+    }
+
+    .spline-placeholder {
+      width: 100%;
+      max-width: 600px;
+      aspect-ratio: 3 / 2;
+      margin: 0 auto;
+      border: 2px dashed var(--border-soft);
+      border-radius: 1.5rem;
+      background:
+        radial-gradient(ellipse at center, rgba(255, 90, 74, 0.12) 0%, transparent 60%),
+        linear-gradient(135deg, var(--bg-elev) 0%, var(--bg-elev-2) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .spline-placeholder .label {
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .spline-placeholder .title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .spline-placeholder .desc {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      max-width: 32ch;
+    }
+
+    /* Neural net SVG dentro del Spline placeholder — preview animado */
+    .neural-net {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+    .neural-net line {
+      stroke: rgba(255, 90, 74, 0.18);
+      stroke-width: 1;
+    }
+    .neural-net circle {
+      fill: var(--coral);
+      transform-origin: center;
+      animation: neural-pulse 2.4s ease-in-out infinite;
+    }
+    .neural-net circle.amber { fill: var(--amber); }
+    @keyframes neural-pulse {
+      0%, 100% { opacity: 0.30; transform: scale(0.85); }
+      50%      { opacity: 0.95; transform: scale(1.15); }
+    }
+    .spline-placeholder { position: relative; overflow: hidden; }
+    .spline-placeholder > .label,
+    .spline-placeholder > .title,
+    .spline-placeholder > .desc {
+      position: relative;
+      z-index: 2;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .neural-net circle { animation: none; opacity: 0.6; }
+    }
+
+    /* Mini calendar dentro del Cal.com placeholder */
+    .calcom-placeholder { padding: 1.75rem; gap: 1rem; }
+    .mini-calendar {
+      width: 100%;
+      max-width: 320px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.875rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cal-header {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.25rem;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+    }
+    .cal-day-name {
+      text-align: center;
+      color: var(--text-faded);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0;
+    }
+    .cal-day {
+      text-align: center;
+      padding: 0.45rem 0;
+      color: var(--text-muted);
+      border-radius: 0.4rem;
+      position: relative;
+      font-weight: 400;
+      cursor: default;
+      transition: background 200ms ease, color 200ms ease;
+    }
+    .cal-day.empty { color: transparent; }
+    .cal-day.available {
+      color: var(--text-primary);
+    }
+    .cal-day.available::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+    .cal-day.available:hover {
+      background: var(--coral-soft);
+      color: var(--text-primary);
+    }
+
+    .ia-copy h2 { margin-bottom: 1.5rem; }
+    .ia-copy p { color: var(--text-muted); margin-bottom: 2rem; }
+
+    /* ==========================================
+       5) NOSOTROS
+       ========================================== */
+    .nos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+      .nos-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    .nos-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      text-align: center;
+      transition: transform 280ms ease, border-color 280ms ease;
+    }
+    .nos-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--coral);
+    }
+    .nos-avatar {
+      width: 8rem;
+      height: 8rem;
+      margin: 0 auto 1.5rem auto;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--bg-elev-2) 0%, var(--bg-base) 100%);
+      border: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-faded);
+      font-family: var(--font-display);
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nos-card .name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .nos-card .role {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      color: var(--coral);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+    .nos-card .bio {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      max-width: 32ch;
+      margin: 0 auto;
+    }
+
+    .por-que {
+      margin-top: 4rem;
+      padding: 2.5rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.5rem;
+    }
+    @media (min-width: 768px) { .por-que { padding: 3.5rem; } }
+    .por-que h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+    .por-que p { color: var(--text-muted); max-width: 60ch; margin-bottom: 1rem; }
+    .valores {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 768px) { .valores { grid-template-columns: repeat(3, 1fr); } }
+    .valor {
+      padding: 1.25rem;
+      border-left: 2px solid var(--coral);
+    }
+    .valor .v-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .valor .v-desc {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* ==========================================
+       6) CONTACTO
+       ========================================== */
+    .contacto-section {
+      background: linear-gradient(180deg,
+        rgba(10, 7, 16, 0.92) 0%,
+        rgba(16, 11, 24, 0.94) 100%
+      );
+    }
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    @media (min-width: 1024px) {
+      .contacto-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    .calcom-placeholder {
+      width: 100%;
+      min-height: 26rem;
+      border: 2px dashed var(--border-soft);
+      border-radius: 1.5rem;
+      background: var(--bg-elev);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      text-align: center;
+      padding: 2rem;
+    }
+    .calcom-placeholder .label {
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .calcom-placeholder .title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      color: var(--text-primary);
+    }
+    .calcom-placeholder .desc {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      max-width: 28ch;
+    }
+
+    .contacto-side { display: flex; flex-direction: column; gap: 1.5rem; }
+    .wa-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .wa-card h3 { font-size: 1.25rem; }
+    .wa-card p { color: var(--text-muted); font-size: 0.9375rem; }
+
+    .form-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border-subtle);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .form-card h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-field label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-field input, .form-field textarea {
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.625rem;
+      padding: 0.7rem 0.85rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 300;
+      transition: border-color 200ms ease;
+    }
+    .form-field input:focus, .form-field textarea:focus {
+      outline: none;
+      border-color: var(--coral);
+    }
+    .form-field textarea { resize: vertical; min-height: 5rem; }
+
+    /* ==========================================
+       7) FOOTER
+       ========================================== */
+    .footer {
+      padding: 4rem 0 2rem 0;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(10, 7, 16, 0.96);
+      position: relative;
+      z-index: 1;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
+    }
+    .footer-brand .nav-logo { font-size: 1.25rem; margin-bottom: 1rem; display: inline-block; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.9375rem; max-width: 28ch; margin-bottom: 1.25rem; }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .footer-social {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: border-color 200ms ease, color 200ms ease;
+    }
+    .footer-social:hover { border-color: var(--coral); color: var(--coral); }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-faded);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .footer-col a { color: var(--text-muted); font-size: 0.9375rem; transition: color 200ms ease; }
+    .footer-col a:hover { color: var(--text-primary); }
+    .footer-col .addr { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6; }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-faded);
+      font-size: 0.8125rem;
+    }
+    @media (min-width: 768px) {
+      .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+
+    /* ==========================================
+       BANNER MOCKUP
+       ========================================== */
+    .mockup-banner {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 100;
+      background: var(--amber);
+      color: #1a0608;
+      padding: 0.5rem 0.875rem;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 24px -8px rgba(255, 176, 32, 0.5);
+    }
+
+    /* ==========================================
+       SCROLL-DRIVEN ANIMATIONS — Linear/Vercel style
+       ========================================== */
+
+    /* Reveal base: opacity 0 + slide-up 40px hasta IO marca .is-visible */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Drop will-change una vez visible para liberar GPU */
+    .reveal.is-visible.is-settled {
+      will-change: auto;
+    }
+
+    /* Headline word-by-word reveal (first load) */
+    .word-reveal {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+      margin-right: 0.22em;
+      will-change: opacity, transform;
+    }
+    body.is-loaded .word-reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .accent .word-reveal { margin-right: 0.18em; }
+
+    /* CTAs hero entran al final */
+    .hero-ctas {
+      opacity: 0;
+      transform: translateY(16px) scale(0.98);
+      transition:
+        opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) 900ms,
+        transform 700ms cubic-bezier(0.16, 1, 0.3, 1) 900ms;
+    }
+    body.is-loaded .hero-ctas {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .hero-sub {
+      opacity: 0;
+      transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) 700ms;
+    }
+    body.is-loaded .hero-sub {
+      opacity: 1;
+    }
+
+    /* Hero shader fade-out al scrollear (controlado por JS via opacity inline) */
+    #hero-shader-canvas {
+      transition: opacity 100ms linear;
+    }
+
+    /* Navbar: estado scrolled con más blur + más opaco */
+    .navbar {
+      transition:
+        background 300ms ease,
+        backdrop-filter 300ms ease,
+        border-color 300ms ease,
+        padding 300ms ease;
+    }
+    .navbar.is-scrolled {
+      background: rgba(10, 7, 16, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0.7rem 0;
+      border-bottom-color: var(--border-soft);
+    }
+
+    /* Nav links — underline animado de izq a der al hover */
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: var(--coral);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Botones — easing suave premium */
+    .btn {
+      transition:
+        transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        background 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 36px -12px rgba(255, 90, 74, 0.55);
+    }
+    .btn-ghost:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Fotos del estudio — scale 1.05 al hover, transition más suave */
+    .photo-placeholder {
+      transition:
+        transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .photo-placeholder:hover {
+      transform: scale(1.05);
+      border-color: var(--coral);
+    }
+
+    /* Spline placeholder con rotación sutil al scroll (controlado por JS) */
+    .spline-placeholder {
+      transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: center center;
+    }
+
+    /* prefers-reduced-motion: matar todas las anim, solo opacity instant */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .word-reveal,
+      .hero-ctas,
+      .hero-sub,
+      #hero-shader-canvas,
+      .navbar,
+      .nav-links a::after,
+      .btn,
+      .photo-placeholder,
+      .spline-placeholder {
+        transition: none !important;
+        animation: none !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .word-reveal { opacity: 1; transform: none; }
+      .hero-ctas { opacity: 1; transform: none; }
+      .hero-sub { opacity: 1; }
+    }
+
+    /* No-anim fallback (toggleable por JS si hace falta) */
+    body.no-animations .reveal,
+    body.no-animations .word-reveal,
+    body.no-animations .hero-ctas,
+    body.no-animations .hero-sub {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    /* Mobile: animaciones más rápidas */
+    @media (max-width: 767px) {
+      .reveal {
+        transition-duration: 500ms;
+        transform: translateY(24px);
+      }
+      .word-reveal {
+        transition-duration: 400ms;
+        transform: translateY(14px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ==========================================
+       SHADER COSMOS (FIXED full-viewport, vive bajo TODO el contenido)
+       Su opacidad la controla el scroll handler:
+       - 1.0 al inicio del hero
+       - 0.4 al 80% del hero
+       - 0.08 al pasar el hero (sutil de fondo en toda la landing)
+       - mobile: pausa total fuera del hero (cancelAnimationFrame)
+       ========================================== -->
+  <canvas id="hero-shader-canvas"></canvas>
+
+  <!-- ==========================================
+       NAVBAR FLOTANTE
+       ========================================== -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">VOCAI<span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="#estudio">Estudio</a>
+        <a href="#ia">IA</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a href="#contacto" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.875rem;">Hablemos</a>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       1) HERO
+       ========================================== -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-bottom-blend"></div>
+
+    <div class="container">
+      <div class="hero-copy">
+        <h1 class="hero-headline">
+          <span class="word-reveal">La</span><span class="word-reveal">voz</span><span class="word-reveal">de</span><span class="word-reveal">tu</span><span class="word-reveal">negocio.</span>
+          <br>
+          <span class="accent">
+            <span class="word-reveal">Construida</span><span class="word-reveal">con</span><span class="word-reveal">IA.</span>
+          </span>
+        </h1>
+        <p class="hero-sub">
+          Estudio de podcast, marketing digital y agentes IA para empresas que
+          quieren sonar grande. En Alicante.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary btn-large">Reservar estudio</a>
+          <a href="#contacto" class="btn btn-ghost btn-large">Hablar con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       2) QUÉ HACEMOS — 2 cards GRANDES
+       ========================================== -->
+  <section id="que-hacemos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Qué hacemos</span>
+        <h2 class="h2">Dos mundos. Una sola voz.</h2>
+        <p>
+          VOCAI une un estudio de producción audiovisual con un equipo de
+          desarrollo en inteligencia artificial. Te ayudamos a comunicar mejor y
+          a operar más rápido.
+        </p>
+      </div>
+
+      <div class="que-grid stagger">
+        <a href="#estudio" class="que-card reveal">
+          <span class="que-icon" aria-hidden="true">
+            <!-- Lucide: mic -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" x2="12" y1="19" y2="22"/>
+            </svg>
+          </span>
+          <h3 class="h3">El estudio</h3>
+          <p>
+            Grabamos podcast, vídeo y reels con calidad broadcast. Te ocupás de
+            aparecer; del resto nos ocupamos nosotros: guion, edición, branding
+            y publicación.
+          </p>
+          <span class="arrow-link">Ver más</span>
+        </a>
+
+        <a href="#ia" class="que-card amber reveal">
+          <span class="que-icon" aria-hidden="true">
+            <!-- Lucide: cpu -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="16" height="16" x="4" y="4" rx="2"/>
+              <rect width="6" height="6" x="9" y="9" rx="1"/>
+              <path d="M15 2v2"/><path d="M15 20v2"/>
+              <path d="M2 15h2"/><path d="M2 9h2"/>
+              <path d="M20 15h2"/><path d="M20 9h2"/>
+              <path d="M9 2v2"/><path d="M9 20v2"/>
+            </svg>
+          </span>
+          <h3 class="h3">Implementaciones IA</h3>
+          <p>
+            Construimos agentes, automatizaciones y apps a medida con IA.
+            Recuperás horas, automatizás procesos y escalás sin contratar más
+            gente.
+          </p>
+          <span class="arrow-link">Ver más</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3) EL ESTUDIO
+       ========================================== -->
+  <section id="estudio">
+    <div class="container">
+      <div class="estudio-grid">
+        <div class="estudio-copy reveal">
+          <span class="eyebrow">El estudio</span>
+          <h2 class="h2" style="margin-top: 1rem;">Tu marca, en formato premium.</h2>
+          <p>
+            Un set diseñado para que tu marca personal o empresarial se vea
+            como las grandes. Vídeo multicámara 4K, audio broadcast, técnico
+            en sala y entrega inmediata. Sin invertir en equipo propio.
+          </p>
+
+          <ul class="sub-services">
+            <li>Podcast</li>
+            <li>Producción de contenido</li>
+            <li>Branding</li>
+            <li>Marketing digital</li>
+          </ul>
+
+          <a href="#contacto" class="btn btn-primary btn-large">Reservá una hora</a>
+        </div>
+
+        <div class="estudio-gallery stagger">
+          <div class="photo-placeholder reveal">
+            <span class="photo-icon" aria-hidden="true">
+              <!-- Lucide: video -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m22 8-6 4 6 4V8Z"/>
+                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"/>
+              </svg>
+            </span>
+            <span class="photo-label">Foto estudio 1</span>
+          </div>
+          <div class="photo-placeholder reveal">
+            <span class="photo-icon" aria-hidden="true">
+              <!-- Lucide: mic -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" x2="12" y1="19" y2="22"/>
+              </svg>
+            </span>
+            <span class="photo-label">Foto estudio 2</span>
+          </div>
+          <div class="photo-placeholder reveal">
+            <span class="photo-icon" aria-hidden="true">
+              <!-- Lucide: sliders-horizontal -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="21" x2="14" y1="4" y2="4"/>
+                <line x1="10" x2="3" y1="4" y2="4"/>
+                <line x1="21" x2="12" y1="12" y2="12"/>
+                <line x1="8" x2="3" y1="12" y2="12"/>
+                <line x1="21" x2="16" y1="20" y2="20"/>
+                <line x1="12" x2="3" y1="20" y2="20"/>
+                <line x1="14" x2="14" y1="2" y2="6"/>
+                <line x1="8" x2="8" y1="10" y2="14"/>
+                <line x1="16" x2="16" y1="18" y2="22"/>
+              </svg>
+            </span>
+            <span class="photo-label">Foto estudio 3</span>
+          </div>
+          <div class="photo-placeholder reveal">
+            <span class="photo-icon" aria-hidden="true">
+              <!-- Lucide: clapperboard -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/>
+                <path d="m6.2 5.3 3.1 3.9"/>
+                <path d="m12.4 3.4 3.1 4"/>
+                <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8Z"/>
+              </svg>
+            </span>
+            <span class="photo-label">Foto estudio 4</span>
+          </div>
+          <div class="photo-placeholder reveal">
+            <span class="photo-icon" aria-hidden="true">
+              <!-- Lucide: headphones -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1v-6a9 9 0 0 1 18 0v6a1 1 0 0 1-1 1h-2a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/>
+              </svg>
+            </span>
+            <span class="photo-label">Foto estudio 5</span>
+          </div>
+          <div class="photo-placeholder reveal">
+            <span class="photo-icon" aria-hidden="true">
+              <!-- Lucide: mic-2 (mic broadcast con base) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/>
+                <circle cx="17" cy="7" r="5"/>
+              </svg>
+            </span>
+            <span class="photo-label">Foto estudio 6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4) IMPLEMENTACIONES IA
+       ========================================== -->
+  <section id="ia" class="ia-section">
+    <div class="container">
+      <div class="ia-grid">
+        <div class="spline-placeholder reveal" data-tilt-on-scroll>
+          <!-- Red neuronal SVG animada (CSS pulse loop por nodo) -->
+          <svg class="neural-net" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <!-- Líneas: layer 1 (x=80) → layer 2 (x=200) → layer 3 (x=320) -->
+            <!-- L1→L2 -->
+            <line x1="80" y1="60"  x2="200" y2="50"/>
+            <line x1="80" y1="60"  x2="200" y2="110"/>
+            <line x1="80" y1="60"  x2="200" y2="170"/>
+            <line x1="80" y1="125" x2="200" y2="50"/>
+            <line x1="80" y1="125" x2="200" y2="110"/>
+            <line x1="80" y1="125" x2="200" y2="170"/>
+            <line x1="80" y1="125" x2="200" y2="200"/>
+            <line x1="80" y1="190" x2="200" y2="110"/>
+            <line x1="80" y1="190" x2="200" y2="170"/>
+            <line x1="80" y1="190" x2="200" y2="200"/>
+            <!-- L2→L3 -->
+            <line x1="200" y1="50"  x2="320" y2="80"/>
+            <line x1="200" y1="50"  x2="320" y2="170"/>
+            <line x1="200" y1="110" x2="320" y2="80"/>
+            <line x1="200" y1="110" x2="320" y2="125"/>
+            <line x1="200" y1="110" x2="320" y2="170"/>
+            <line x1="200" y1="170" x2="320" y2="125"/>
+            <line x1="200" y1="170" x2="320" y2="170"/>
+            <line x1="200" y1="200" x2="320" y2="170"/>
+
+            <!-- Nodos: 3 layers -->
+            <!-- Layer 1 (input) -->
+            <circle cx="80"  cy="60"  r="5" style="animation-delay: 0s;"/>
+            <circle cx="80"  cy="125" r="5" style="animation-delay: 0.3s;"/>
+            <circle cx="80"  cy="190" r="5" style="animation-delay: 0.6s;"/>
+            <!-- Layer 2 (hidden) -->
+            <circle cx="200" cy="50"  r="5" class="amber" style="animation-delay: 0.15s;"/>
+            <circle cx="200" cy="110" r="5" class="amber" style="animation-delay: 0.45s;"/>
+            <circle cx="200" cy="170" r="5" class="amber" style="animation-delay: 0.75s;"/>
+            <circle cx="200" cy="200" r="5" class="amber" style="animation-delay: 1.05s;"/>
+            <!-- Layer 3 (output) -->
+            <circle cx="320" cy="80"  r="5" style="animation-delay: 0.9s;"/>
+            <circle cx="320" cy="125" r="5" style="animation-delay: 1.2s;"/>
+            <circle cx="320" cy="170" r="5" style="animation-delay: 1.5s;"/>
+          </svg>
+
+          <span class="label">Escena Spline 3D</span>
+          <span class="title">Cerebro / Red Neuronal IA</span>
+          <span class="desc">
+            Aquí va una escena 3D interactiva (Spline) que sugiere conexión,
+            inteligencia y movimiento líquido cálido.
+          </span>
+        </div>
+
+        <div class="ia-copy reveal">
+          <span class="eyebrow">Implementaciones IA</span>
+          <h2 class="h2" style="margin-top: 1rem;">IA que hace el trabajo aburrido.</h2>
+          <p>
+            Construimos agentes y automatizaciones a medida que se enchufan a
+            tu WhatsApp, tu CRM o tus hojas de cálculo. Cero magia, cero
+            tecnicismos: solo procesos que funcionan solos.
+          </p>
+
+          <ul class="sub-services">
+            <li>Agentes IA</li>
+            <li>Automatizaciones n8n</li>
+            <li>Desarrollo de apps</li>
+            <li>Consultoría IA</li>
+            <li>Formación IA</li>
+          </ul>
+
+          <a href="#contacto" class="btn btn-primary btn-large">Hablar con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5) NOSOTROS
+       ========================================== -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Nosotros</span>
+        <h2 class="h2">El equipo detrás de VOCAI.</h2>
+        <p>
+          Dos socios, una visión: ayudar a empresas y profesionales de Alicante
+          a comunicar mejor y operar más rápido con IA.
+        </p>
+      </div>
+
+      <div class="nos-grid stagger" data-stagger-step="200">
+        <div class="nos-card reveal" data-parallax="0.04">
+          <div class="nos-avatar">Foto Agus</div>
+          <div class="name">Agustín Moledo</div>
+          <div class="role">Estrategia · IA · Producto</div>
+          <p class="bio">
+            Estratega comercial y product. Lidera la rama de IA y desarrollo.
+            Apasionado por automatizar lo aburrido para que la gente cree más.
+          </p>
+        </div>
+
+        <div class="nos-card reveal" data-parallax="-0.04">
+          <div class="nos-avatar">Foto Santi</div>
+          <div class="name">Santiago Piguillem</div>
+          <div class="role">Estudio · Producción · Contenido</div>
+          <p class="bio">
+            Director de estudio y producción audiovisual. Se ocupa de que cada
+            grabación suene y se vea como las grandes.
+          </p>
+        </div>
+      </div>
+
+      <div class="por-que reveal">
+        <h3 class="h3">Por qué VOCAI</h3>
+        <p>
+          Tres principios que aplicamos en cada proyecto, desde el primer
+          briefing hasta el lanzamiento.
+        </p>
+        <div class="valores stagger">
+          <div class="valor reveal">
+            <div class="v-title">Cercanía</div>
+            <div class="v-desc">Hablamos claro, sin tecnicismos. Estamos disponibles cuando hace falta.</div>
+          </div>
+          <div class="valor reveal">
+            <div class="v-title">Agilidad</div>
+            <div class="v-desc">De la idea al primer entregable en menos de una semana.</div>
+          </div>
+          <div class="valor reveal">
+            <div class="v-title">Resultados</div>
+            <div class="v-desc">Si no genera resultados medibles, lo cambiamos hasta que funcione.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6) CONTACTO
+       ========================================== -->
+  <section id="contacto" class="contacto-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Contacto</span>
+        <h2 class="h2">Cuéntanos tu proyecto.</h2>
+        <p>
+          Reservá directo desde el calendario, escribinos por WhatsApp o dejanos
+          un mensaje. Te respondemos en menos de 24 horas.
+        </p>
+      </div>
+
+      <div class="contacto-grid stagger" data-stagger-step="150">
+        <div class="calcom-placeholder reveal">
+          <span class="label">Cal.com Embed</span>
+          <div class="mini-calendar" aria-hidden="true">
+            <div class="cal-header">Diciembre 2026</div>
+            <div class="cal-grid">
+              <div class="cal-day-name">L</div>
+              <div class="cal-day-name">M</div>
+              <div class="cal-day-name">X</div>
+              <div class="cal-day-name">J</div>
+              <div class="cal-day-name">V</div>
+              <div class="cal-day-name">S</div>
+              <div class="cal-day-name">D</div>
+              <!-- 1 dic 2026 = martes; primera fila empieza vacía en lunes -->
+              <span class="cal-day empty"></span>
+              <span class="cal-day available">1</span>
+              <span class="cal-day">2</span>
+              <span class="cal-day available">3</span>
+              <span class="cal-day">4</span>
+              <span class="cal-day available">5</span>
+              <span class="cal-day">6</span>
+
+              <span class="cal-day">7</span>
+              <span class="cal-day">8</span>
+              <span class="cal-day available">9</span>
+              <span class="cal-day available">10</span>
+              <span class="cal-day">11</span>
+              <span class="cal-day available">12</span>
+              <span class="cal-day">13</span>
+
+              <span class="cal-day">14</span>
+              <span class="cal-day available">15</span>
+              <span class="cal-day">16</span>
+              <span class="cal-day">17</span>
+              <span class="cal-day available">18</span>
+              <span class="cal-day available">19</span>
+              <span class="cal-day">20</span>
+
+              <span class="cal-day">21</span>
+              <span class="cal-day available">22</span>
+              <span class="cal-day">23</span>
+              <span class="cal-day available">24</span>
+              <span class="cal-day">25</span>
+              <span class="cal-day">26</span>
+              <span class="cal-day">27</span>
+
+              <span class="cal-day">28</span>
+              <span class="cal-day available">29</span>
+              <span class="cal-day">30</span>
+              <span class="cal-day">31</span>
+              <span class="cal-day empty"></span>
+              <span class="cal-day empty"></span>
+              <span class="cal-day empty"></span>
+            </div>
+          </div>
+          <span class="title">Reservá tu hora de estudio</span>
+        </div>
+
+        <div class="contacto-side reveal">
+          <div class="wa-card">
+            <h3 class="h3">WhatsApp directo</h3>
+            <p>
+              Si tenés una duda rápida o querés agendar fuera del calendario,
+              hablamos por WhatsApp.
+            </p>
+            <a href="#" class="btn btn-primary btn-large" style="align-self: flex-start;">Abrir WhatsApp</a>
+          </div>
+
+          <div class="form-card">
+            <h3 class="h3">Dejanos un mensaje</h3>
+            <div class="form-field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" type="text" placeholder="Tu nombre">
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="tu@email.com">
+            </div>
+            <div class="form-field">
+              <label for="msg">Mensaje</label>
+              <textarea id="msg" placeholder="Contanos brevemente sobre tu proyecto..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="align-self: flex-start;">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7) FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid stagger">
+        <div class="footer-brand reveal">
+          <a href="#hero" class="nav-logo">VOCAI<span class="dot">.</span></a>
+          <p>La voz de tu negocio, potenciada por IA. En Alicante.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/vocai.st/" class="footer-social" aria-label="Instagram">IG</a>
+            <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
+            <a href="#" class="footer-social" aria-label="YouTube">YT</a>
+            <a href="#" class="footer-social" aria-label="TikTok">TT</a>
+          </div>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#estudio">Estudio</a></li>
+            <li><a href="#ia">Implementaciones IA</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Contacto</h4>
+          <p class="addr">
+            Camino del Faro 37<br>
+            Cabo las Huertas<br>
+            03540 · Alicante<br>
+            <br>
+            hola@vocai.es
+          </p>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 VOCAI · Todos los derechos reservados</span>
+        <span>Hecho en Alicante con IA y café</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mockup-banner">Mockup visual · No es la versión final</div>
+
+  <!-- ==========================================
+       SCROLL-DRIVEN ANIMATIONS
+       - IntersectionObserver para reveals
+       - Stagger por contenedor (data-stagger-step opcional, default 80ms)
+       - Hero: shader fade-out + copy parallax al scrollear
+       - Navbar: estado scrolled con más blur/opacidad
+       - Spline placeholder: tilt sutil 0deg→2deg al scrollear
+       - Cards "Nosotros": parallax sutil con data-parallax="0.04"
+       - Headline: stagger de palabras al primer load
+       - Respeta prefers-reduced-motion
+       - Mobile: stagger más rápido y menor parallax
+       ========================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+      // 1) Stagger: asignar transition-delay incremental a hijos .reveal
+      const STAGGER_DEFAULT = isMobile ? 40 : 80;
+      document.querySelectorAll('.stagger').forEach((group) => {
+        const step = parseInt(group.dataset.staggerStep, 10) || STAGGER_DEFAULT;
+        const stepFinal = isMobile ? Math.round(step * 0.6) : step;
+        const reveals = group.querySelectorAll(':scope > .reveal');
+        reveals.forEach((child, i) => {
+          child.style.transitionDelay = (i * stepFinal) + 'ms';
+        });
+      });
+
+      // 2) Headline word-by-word reveal (first load)
+      const words = document.querySelectorAll('.hero-headline .word-reveal');
+      words.forEach((w, i) => {
+        const stepFinal = isMobile ? 60 : 100;
+        w.style.transitionDelay = (i * stepFinal) + 'ms';
+      });
+
+      // Trigger word-reveal animation: agregar .is-loaded al body después del paint
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.body.classList.add('is-loaded');
+        });
+      });
+
+      // Si el user prefiere reduced-motion, abortamos las animaciones avanzadas
+      if (reducedMotion) {
+        document.body.classList.add('no-animations');
+        // Marcar todos los .reveal como visibles ya
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      // 3) IntersectionObserver para .reveal — agregar .is-visible al entrar
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Tras 1s liberamos will-change
+            setTimeout(() => entry.target.classList.add('is-settled'), 1000);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+      // 4) Scroll-driven: hero shader fade + copy parallax + navbar + tilt + parallax cards
+      const hero = document.getElementById('hero');
+      const heroCanvas = document.getElementById('hero-shader-canvas');
+      const heroCopy = document.querySelector('.hero-copy');
+      const navbar = document.querySelector('.navbar');
+      const splineEls = document.querySelectorAll('[data-tilt-on-scroll]');
+      const parallaxEls = document.querySelectorAll('[data-parallax]');
+
+      const heroH = () => (hero ? hero.offsetHeight : window.innerHeight);
+      const winH = () => window.innerHeight;
+
+      // Reduce intensity en mobile
+      const PARALLAX_HERO = isMobile ? 0.08 : 0.15;
+      const PARALLAX_CARDS_MULT = isMobile ? 0.5 : 1.0;
+
+      let ticking = false;
+      let lastScrollY = window.scrollY;
+
+      function update() {
+        const y = lastScrollY;
+        const heroHeight = heroH();
+
+        // Curva de opacity del shader (cosmos continuo sutil de fondo):
+        //   0% hero    → 1.00
+        //   80% hero   → 0.40
+        //   100% hero  → 0.08
+        //   más allá   → 0.08 (sutil de fondo en el resto de la landing)
+        if (heroCanvas) {
+          const p = Math.max(0, y / heroHeight);
+          let opacity;
+          if (p < 0.8) {
+            opacity = 1.0 - (p / 0.8) * 0.6;          // 1.00 → 0.40
+          } else if (p < 1.0) {
+            opacity = 0.40 - ((p - 0.8) / 0.2) * 0.32; // 0.40 → 0.08
+          } else {
+            opacity = 0.08;
+          }
+          heroCanvas.style.opacity = opacity.toFixed(3);
+        }
+
+        // Comunicar al shader si el hero está "activo" para gestionar
+        // throttle (desktop) o pausa total (mobile).
+        const heroVisibleNow = y < heroHeight;
+        if (heroVisibleNow !== window.__heroVisible) {
+          window.__heroVisible = heroVisibleNow;
+          // Si volvemos al hero y el loop estaba pausado (mobile), reanudar
+          if (heroVisibleNow && typeof window.__startShaderLoop === 'function') {
+            window.__startShaderLoop();
+          }
+        }
+
+        // Hero copy parallax: se mueve más rápido que el shader
+        if (heroCopy) {
+          const offset = y * PARALLAX_HERO;
+          heroCopy.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+        }
+
+        // Navbar scrolled state
+        if (navbar) {
+          if (y > 40) navbar.classList.add('is-scrolled');
+          else navbar.classList.remove('is-scrolled');
+        }
+
+        // Tilt del Spline placeholder: 0deg → 2deg según su posición en viewport
+        const wH = winH();
+        splineEls.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          // progress 0 cuando está abajo del viewport, 1 cuando está al tope
+          const center = rect.top + rect.height / 2;
+          const p = 1 - Math.max(0, Math.min(1, center / wH));
+          const rot = (p * 4 - 2).toFixed(2); // -2deg a +2deg
+          el.style.transform = 'rotate(' + rot + 'deg)';
+        });
+
+        // Cards con parallax sutil (data-parallax="0.04" o "-0.04")
+        parallaxEls.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const center = rect.top + rect.height / 2;
+          const dist = (center - wH / 2) * (parseFloat(el.dataset.parallax) || 0) * PARALLAX_CARDS_MULT;
+          // Combinar con el reveal (translateY) sin pisar — usar custom property
+          el.style.setProperty('--parallax-y', dist.toFixed(1) + 'px');
+          // Si ya es visible, aplicamos transform combinado
+          if (el.classList.contains('is-visible')) {
+            el.style.transform = 'translateY(' + dist.toFixed(1) + 'px)';
+          }
+        });
+
+        ticking = false;
+      }
+
+      function onScroll() {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      // Run once en mount
+      update();
+    })();
+  </script>
+
+  <!-- ==========================================
+       SHADER HERO — clouds + estrellas cósmicas (Matthias Hurrle)
+       Adaptado a WebGL1 (compatible con setup Three.js actual)
+       y tintado a tonos azul VOCAI.
+       ========================================== -->
+  <script type="module">
+    import * as THREE from 'https://esm.sh/three@0.184.0';
+
+    (function () {
+      const canvas = document.getElementById('hero-shader-canvas');
+      if (!canvas) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.Camera();
+      camera.position.z = 1;
+
+      const uniforms = {
+        time:       { value: 1.0 },
+        resolution: { value: new THREE.Vector2() }
+      };
+
+      const vertexShader = /* glsl */`
+        void main() {
+          gl_Position = vec4(position, 1.0);
+        }
+      `;
+
+      // Shader cósmico: clouds + estrellas brillantes con noise/fbm.
+      // Original: Matthias Hurrle (@atzedent), WebGL2.
+      // Conversión: removido `#version 300 es` y `out vec4 O`,
+      // reemplazado por gl_FragColor (WebGL1). Bucles `for (float i...)`
+      // pasados a int para compat WebGL1.
+      // Tinte: paleta azul VOCAI sobre el resultado del shader.
+      const fragmentShader = /* glsl */`
+        precision highp float;
+        uniform vec2 resolution;
+        uniform float time;
+
+        #define FC gl_FragCoord.xy
+        #define T  time
+        #define R  resolution
+        #define MN min(R.x, R.y)
+
+        float rnd(vec2 p) {
+          p = fract(p * vec2(12.9898, 78.233));
+          p += dot(p, p + 34.56);
+          return fract(p.x * p.y);
+        }
+
+        float noise(in vec2 p) {
+          vec2 i = floor(p), f = fract(p), u = f * f * (3.0 - 2.0 * f);
+          float a = rnd(i),
+                b = rnd(i + vec2(1.0, 0.0)),
+                c = rnd(i + vec2(0.0, 1.0)),
+                d = rnd(i + 1.0);
+          return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+        }
+
+        float fbm(vec2 p) {
+          float t = 0.0, a = 1.0;
+          mat2 m = mat2(1.0, -0.5, 0.2, 1.2);
+          for (int i = 0; i < 5; i++) {
+            t += a * noise(p);
+            p *= 2.0 * m;
+            a *= 0.5;
+          }
+          return t;
+        }
+
+        float clouds(vec2 p) {
+          float d = 1.0, t = 0.0;
+          for (int k = 0; k < 3; k++) {
+            float i = float(k);
+            float a = d * fbm(i * 10.0 + p.x * 0.2 + 0.2 * (1.0 + i) * p.y + d + i * i + p);
+            t = mix(t, d, a);
+            d = a;
+            p *= 2.0 / (i + 1.0);
+          }
+          return t;
+        }
+
+        void main(void) {
+          vec2 uv = (FC - 0.5 * R) / MN;
+          vec2 st = uv * vec2(2.0, 1.0);
+          vec3 col = vec3(0.0);
+
+          float bg = clouds(vec2(st.x + T * 0.5, -st.y));
+          uv *= 1.0 - 0.3 * (sin(T * 0.2) * 0.5 + 0.5);
+
+          // Tintes azules VOCAI:
+          //   - estrellas en azul VOCAI #2979FF (0.16, 0.47, 1.00)
+          //   - clouds en navy profundo con tinte azul medio
+          vec3 starTint  = vec3(0.45, 0.70, 1.30);
+          vec3 cloudTint = vec3(0.04, 0.10, 0.32);
+
+          for (int j = 1; j < 12; j++) {
+            float i = float(j);
+            uv += 0.1 * cos(i * vec2(0.1 + 0.01 * i, 0.8) + i * i + T * 0.5 + 0.1 * uv.x);
+            vec2 p = uv;
+            float d = length(p);
+
+            // Estrellas brillantes
+            col += 0.00125 / d * (cos(sin(i) * vec3(1.0, 2.0, 3.0)) + 1.0) * starTint;
+
+            // Halo / glow secundario
+            float b = noise(i + p + bg * 1.731);
+            col += 0.002 * b / length(max(p, vec2(b * p.x * 0.02, p.y))) * starTint;
+
+            // Mezcla con clouds (fondo nebuloso)
+            col = mix(col, vec3(bg) * cloudTint, d);
+          }
+
+          gl_FragColor = vec4(col, 1.0);
+        }
+      `;
+
+      const material = new THREE.ShaderMaterial({
+        uniforms,
+        vertexShader,
+        fragmentShader
+      });
+
+      const geometry = new THREE.PlaneGeometry(2, 2);
+      const mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
+
+      function resize() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        renderer.setSize(w, h, false);
+        uniforms.resolution.value.x = renderer.domElement.width;
+        uniforms.resolution.value.y = renderer.domElement.height;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // Estado controlado desde el scroll handler global:
+      //   window.__heroVisible : true cuando estamos dentro del Hero
+      // En mobile, fuera del hero el shader se PAUSA (cancelAnimationFrame).
+      // En desktop, throttle a 30 fps cuando el hero NO está visible.
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      window.__heroVisible = true;
+
+      let rafId = null;
+      let lastFrameTime = 0;
+
+      function loop(now) {
+        // Mobile: si el hero no está visible, parar el loop
+        if (isMobile && !window.__heroVisible) {
+          rafId = null;
+          return;
+        }
+
+        rafId = requestAnimationFrame(loop);
+
+        // Desktop: throttle 30fps fuera del hero
+        if (!isMobile && !window.__heroVisible) {
+          const minDelta = 1000 / 30;
+          if (now - lastFrameTime < minDelta) return;
+          lastFrameTime = now;
+          uniforms.time.value += 0.032;
+          renderer.render(scene, camera);
+          return;
+        }
+
+        // Hero visible: 60fps normal
+        lastFrameTime = now;
+        uniforms.time.value += 0.016;
+        renderer.render(scene, camera);
+      }
+
+      // API expuesta para que el scroll handler reanude la loop si fue cancelada
+      window.__startShaderLoop = function () {
+        if (rafId == null) {
+          rafId = requestAnimationFrame(loop);
+        }
+      };
+
+      // Arranca
+      window.__startShaderLoop();
+    })();
+  </script>
+</body>
+</html>
