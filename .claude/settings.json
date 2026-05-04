@@ -77,7 +77,10 @@
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/brand.png --virtual-time-budget=6000 \"http://localhost:3000/\")",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/cp51-hero.png --virtual-time-budget=6000 \"http://localhost:3000/\")",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/cp51-contacto.png --virtual-time-budget=10000 \"http://localhost:3000/#contacto\")",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,4800 --screenshot=/tmp/cp51-full.png --virtual-time-budget=10000 \"http://localhost:3000/\")"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,4800 --screenshot=/tmp/cp51-full.png --virtual-time-budget=10000 \"http://localhost:3000/\")",
+      "Bash(git check-ignore *)",
+      "Bash(curl -sS -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"nombre\":\"\",\"email\":\"\",\"mensaje\":\"\"}')",
+      "Bash(curl -sS -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"nombre\":\"Test\",\"email\":\"no-es-email\",\"mensaje\":\"hola\"}')"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",

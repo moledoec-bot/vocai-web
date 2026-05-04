@@ -1,7 +1,7 @@
 'use client'
 
 import Cal, { getCalApi } from '@calcom/embed-react'
-import { useEffect } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import {
   CAL_LINK,
   CAL_USERNAME,
@@ -9,8 +9,14 @@ import {
   buildWhatsAppLink,
 } from '@/lib/contact'
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const FALLBACK_ERROR =
+  'Algo salió mal. Probá de nuevo o escribinos por WhatsApp.'
+
+type FormStatus = 'idle' | 'loading' | 'success' | 'error'
+
 export default function ContactoSection() {
-  // Configura el namespace del embed con tema dark + brand coral
+  // Cal.com namespace setup
   useEffect(() => {
     void (async () => {
       const cal = await getCalApi({ namespace: 'vocai-estudio' })
@@ -25,6 +31,65 @@ export default function ContactoSection() {
       })
     })()
   }, [])
+
+  // Form state
+  const [nombre, setNombre] = useState('')
+  const [email, setEmail] = useState('')
+  const [mensaje, setMensaje] = useState('')
+  const [status, setStatus] = useState<FormStatus>('idle')
+  const [errorMsg, setErrorMsg] = useState<string>('')
+
+  function validateClient(): string | null {
+    if (!nombre.trim()) return 'Decinos tu nombre.'
+    if (!email.trim()) return 'Necesitamos tu email para responderte.'
+    if (!EMAIL_REGEX.test(email.trim())) return 'El email no parece válido.'
+    if (!mensaje.trim()) return 'Contanos brevemente sobre tu proyecto.'
+    return null
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (status === 'loading') return
+
+    const clientError = validateClient()
+    if (clientError) {
+      setErrorMsg(clientError)
+      setStatus('error')
+      return
+    }
+
+    setStatus('loading')
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: nombre.trim(),
+          email: email.trim(),
+          mensaje: mensaje.trim(),
+        }),
+      })
+
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string }
+        setErrorMsg(data.error ?? FALLBACK_ERROR)
+        setStatus('error')
+        return
+      }
+
+      // OK: limpiar form + estado success
+      setNombre('')
+      setEmail('')
+      setMensaje('')
+      setStatus('success')
+    } catch (err) {
+      console.error('[contact form] fetch failed:', err)
+      setErrorMsg(FALLBACK_ERROR)
+      setStatus('error')
+    }
+  }
 
   return (
     <section id="contacto" className="contacto-section">
@@ -51,8 +116,6 @@ export default function ContactoSection() {
               }}
               config={{ layout: 'month_view', theme: 'dark' }}
             />
-            {/* Fallback: si por algún motivo el iframe no carga,
-                el link directo siempre funciona */}
             <a
               href={CAL_LINK}
               target="_blank"
@@ -81,33 +144,100 @@ export default function ContactoSection() {
               </a>
             </div>
 
-            <form className="form-card" action="#" method="post">
-              <h3 className="h3">Dejanos un mensaje</h3>
-              <div className="form-field">
-                <label htmlFor="nombre">Nombre</label>
-                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" />
+            {status === 'success' ? (
+              <div className="form-success" role="status" aria-live="polite">
+                <span className="form-success-icon" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </span>
+                <h3 className="h3">Mensaje enviado</h3>
+                <p>Te respondemos en menos de 24 horas.</p>
+                <button
+                  type="button"
+                  className="form-success-reset"
+                  onClick={() => setStatus('idle')}
+                >
+                  Enviar otro mensaje
+                </button>
               </div>
-              <div className="form-field">
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="tu@email.com" />
-              </div>
-              <div className="form-field">
-                <label htmlFor="msg">Mensaje</label>
-                <textarea
-                  id="msg"
-                  name="mensaje"
-                  placeholder="Contanos brevemente sobre tu proyecto..."
-                />
-              </div>
-              {/* TODO CP5.3: server action que envía el form a hola@vocai.es */}
-              <button
-                type="submit"
-                className="btn btn-primary"
-                style={{ alignSelf: 'flex-start' }}
-              >
-                Enviar
-              </button>
-            </form>
+            ) : (
+              <form className="form-card" onSubmit={handleSubmit} noValidate>
+                <h3 className="h3">Dejanos un mensaje</h3>
+
+                {status === 'error' && (
+                  <div className="form-error-banner" role="alert">
+                    {errorMsg || FALLBACK_ERROR}
+                  </div>
+                )}
+
+                <div className="form-field">
+                  <label htmlFor="nombre">Nombre</label>
+                  <input
+                    id="nombre"
+                    name="nombre"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Tu nombre"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    disabled={status === 'loading'}
+                    maxLength={100}
+                  />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="tu@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={status === 'loading'}
+                    maxLength={200}
+                  />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="msg">Mensaje</label>
+                  <textarea
+                    id="msg"
+                    name="mensaje"
+                    placeholder="Contanos brevemente sobre tu proyecto..."
+                    value={mensaje}
+                    onChange={(e) => setMensaje(e.target.value)}
+                    disabled={status === 'loading'}
+                    maxLength={2000}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ alignSelf: 'flex-start' }}
+                  disabled={status === 'loading'}
+                  aria-busy={status === 'loading'}
+                >
+                  {status === 'loading' ? (
+                    <>
+                      <span className="form-spinner" aria-hidden="true" />
+                      Enviando...
+                    </>
+                  ) : (
+                    'Enviar'
+                  )}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

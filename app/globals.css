@@ -771,7 +771,96 @@ h1, h2, h3, h4 {
   outline: none;
   border-color: var(--coral);
 }
+.form-field input:disabled, .form-field textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
 .form-field textarea { resize: vertical; min-height: 5rem; }
+
+/* === Banner de error sobre el form === */
+.form-error-banner {
+  background: rgba(255, 90, 74, 0.08);
+  border: 1px solid rgba(255, 90, 74, 0.35);
+  border-radius: 0.625rem;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #ffb3a8;
+  line-height: 1.4;
+}
+
+/* === Botón submit en estado loading === */
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.form-spinner {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 6, 8, 0.25);
+  border-top-color: #1a0608;
+  animation: form-spinner-spin 0.7s linear infinite;
+}
+@keyframes form-spinner-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-spinner { animation: none; border-top-color: transparent; }
+}
+
+/* === Card de success que reemplaza el form al enviar === */
+.form-success {
+  background: var(--bg-elev);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  animation: form-success-in 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.form-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--coral-soft);
+  border: 1.5px solid var(--coral);
+  color: var(--coral);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.form-success-icon svg { width: 28px; height: 28px; }
+.form-success h3 { font-size: 1.25rem; }
+.form-success p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  max-width: 32ch;
+}
+.form-success-reset {
+  margin-top: 1rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 200ms ease;
+}
+.form-success-reset:hover { color: var(--text-primary); }
+@keyframes form-success-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-success { animation: none; }
+}
 
 /* ==========================================
    7) FOOTER
