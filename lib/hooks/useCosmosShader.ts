@@ -73,6 +73,7 @@ const FRAGMENT_SHADER = /* glsl */ `
     uv *= 1.0 - 0.3 * (sin(T * 0.2) * 0.5 + 0.5);
 
     vec3 starTint  = vec3(0.45, 0.70, 1.30);
+    vec3 coralTint = vec3(1.40, 0.55, 0.45);
     vec3 cloudTint = vec3(0.04, 0.10, 0.32);
 
     for (int j = 1; j < 12; j++) {
@@ -81,10 +82,14 @@ const FRAGMENT_SHADER = /* glsl */ `
       vec2 p = uv;
       float d = length(p);
 
-      col += 0.00125 / d * (cos(sin(i) * vec3(1.0, 2.0, 3.0)) + 1.0) * starTint;
+      // 1 de cada 4 estrellas en coral, el resto en azul/cyan.
+      // (i = 4 y 8 → 2 coral / 11 estrellas, ~18%)
+      vec3 currentTint = (mod(i, 4.0) < 1.0) ? coralTint : starTint;
+
+      col += 0.00125 / d * (cos(sin(i) * vec3(1.0, 2.0, 3.0)) + 1.0) * currentTint;
 
       float b = noise(i + p + bg * 1.731);
-      col += 0.002 * b / length(max(p, vec2(b * p.x * 0.02, p.y))) * starTint;
+      col += 0.002 * b / length(max(p, vec2(b * p.x * 0.02, p.y))) * currentTint;
 
       col = mix(col, vec3(bg) * cloudTint, d);
     }

@@ -65,7 +65,16 @@
       "Bash(curl -sI http://localhost:3000/mockup.html)",
       "Bash(curl -s http://localhost:3000/)",
       "Bash(pkill -f \"next dev\")",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/cp3-hero.png --virtual-time-budget=5000 \"http://localhost:3000/\")"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/cp3-hero.png --virtual-time-budget=5000 \"http://localhost:3000/\")",
+      "Bash(xargs kill *)",
+      "Bash(curl -sI http://localhost:3000/_next/static/chunks/webpack.js)",
+      "Bash(curl -sI http://localhost:3000/_next/static/chunks/main-app.js)",
+      "Bash(curl -sI http://localhost:3000/_next/static/chunks/app/page.js)",
+      "Bash(curl -sI http://localhost:3000/_next/static/chunks/app-pages-internals.js)",
+      "Bash(pkill -9 -f \"next dev\")",
+      "Bash(pkill -9 -f \"next-server\")",
+      "Bash(tee /tmp/build.log)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/brand.png --virtual-time-budget=6000 \"http://localhost:3000/\")"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",

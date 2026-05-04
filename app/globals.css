@@ -199,6 +199,40 @@ h1, h2, h3, h4 {
   color: var(--text-primary);
 }
 .nav-logo .dot { color: var(--coral); }
+
+/* ========== Wordmark VOCAI (CSS, sin imagen) ========== */
+.vocai-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  text-decoration: none;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.vocai-wordmark {
+  background: linear-gradient(90deg, #4A8AFF 0%, #B566AA 50%, #FF5A4A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 22px;
+}
+.vocai-dot {
+  color: var(--coral); /* punto coral sólido para que no desaparezca */
+  font-size: 22px;
+}
+/* Variante grande (footer) */
+.vocai-logo--lg .vocai-wordmark,
+.vocai-logo--lg .vocai-dot {
+  font-size: 36px;
+}
+@media (max-width: 767px) {
+  .vocai-wordmark, .vocai-dot { font-size: 20px; }
+  .vocai-logo--lg .vocai-wordmark,
+  .vocai-logo--lg .vocai-dot { font-size: 28px; }
+}
 .nav-links {
   display: none;
   gap: 2.25rem;
@@ -299,7 +333,23 @@ h1, h2, h3, h4 {
   max-width: 16ch;
   margin-bottom: 1.5rem;
 }
-.hero-headline .accent { color: var(--coral); display: block; }
+/* Gradiente azul → violeta → coral idéntico al wordmark VOCAI */
+.hero-headline .accent {
+  display: block;
+  background: linear-gradient(90deg, #4A8AFF 0%, #B566AA 50%, #FF5A4A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Los WordReveal hijos heredan el gradiente del padre .accent */
+.hero-headline .accent .word-reveal {
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 .hero-sub {
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   color: var(--text-primary);

@@ -4,8 +4,9 @@ export default function FooterSection() {
       <div className="container">
         <div className="footer-grid stagger">
           <div className="footer-brand reveal">
-            <a href="#hero" className="nav-logo">
-              VOCAI<span className="dot">.</span>
+            <a href="#hero" className="vocai-logo vocai-logo--lg" aria-label="VOCAI">
+              <span className="vocai-wordmark">VOCAI</span>
+              <span className="vocai-dot">.</span>
             </a>
             <p>La voz de tu negocio, potenciada por IA. En Alicante.</p>
             <div className="footer-socials">

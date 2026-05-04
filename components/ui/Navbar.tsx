@@ -5,8 +5,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="container nav-inner">
-        <a href="#hero" className="nav-logo">
-          VOCAI<span className="dot">.</span>
+        <a href="#hero" className="vocai-logo" aria-label="VOCAI">
+          <span className="vocai-wordmark">VOCAI</span>
+          <span className="vocai-dot">.</span>
         </a>
         <div className="nav-links">
           <a href="#estudio">Estudio</a>
