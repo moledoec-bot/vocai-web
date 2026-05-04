@@ -6,6 +6,7 @@ import {
   HeadphonesIcon,
   Mic2Icon,
 } from '@/components/icons'
+import { CAL_LINK } from '@/lib/contact'
 
 const GALLERY = [
   { Icon: VideoIcon, label: 'Foto estudio 1' },
@@ -40,7 +41,7 @@ export default function EstudioSection() {
             </ul>
 
             <a
-              href="https://cal.com/vocai/vocai-estudio"
+              href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-large"

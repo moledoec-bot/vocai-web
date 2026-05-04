@@ -1,9 +1,5 @@
 import WordReveal from '@/components/ui/WordReveal'
-
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
-const WA_PREFILL = encodeURIComponent(
-  'Hola, me gustaría saber más sobre los servicios de VOCAI'
-)
+import { CAL_LINK, buildWhatsAppLink } from '@/lib/contact'
 
 export default function HeroSection() {
   return (
@@ -28,7 +24,7 @@ export default function HeroSection() {
 
           <div className="hero-ctas">
             <a
-              href="https://cal.com/vocai/vocai-estudio"
+              href={CAL_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-large"
@@ -36,7 +32,7 @@ export default function HeroSection() {
               Reservar estudio
             </a>
             <a
-              href={`https://wa.me/${WA}?text=${WA_PREFILL}`}
+              href={buildWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost btn-large"

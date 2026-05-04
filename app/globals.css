@@ -703,99 +703,36 @@ h1, h2, h3, h4 {
 @media (min-width: 1024px) {
   .contacto-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }
-.calcom-placeholder {
+/* Cal.com embed wrap (sustituye al placeholder + mini-calendar fake) */
+.cal-embed-wrap {
   width: 100%;
-  min-height: 26rem;
-  border: 2px dashed var(--border-soft);
-  border-radius: 1.5rem;
   background: var(--bg-elev);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  text-align: center;
-  padding: 1.75rem;
-}
-.calcom-placeholder .label {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--coral);
-}
-.calcom-placeholder .title {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 1.125rem;
-  color: var(--text-primary);
-}
-.calcom-placeholder .desc {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  max-width: 28ch;
-}
-
-/* Mini calendar */
-.mini-calendar {
-  width: 100%;
-  max-width: 320px;
-  background: var(--bg-base);
   border: 1px solid var(--border-subtle);
-  border-radius: 0.875rem;
+  border-radius: 1.5rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  overflow: hidden;
 }
-.cal-header {
+.cal-embed-label {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--text-primary);
-  text-align: center;
-  letter-spacing: 0.02em;
+  padding: 0.25rem 0.5rem 0;
 }
-.cal-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.25rem;
+.cal-embed-wrap iframe { border-radius: 0.875rem; }
+.cal-embed-fallback {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.7rem;
-}
-.cal-day-name {
-  text-align: center;
-  color: var(--text-faded);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.3rem 0;
-}
-.cal-day {
-  text-align: center;
-  padding: 0.45rem 0;
+  font-size: 0.8125rem;
   color: var(--text-muted);
-  border-radius: 0.4rem;
-  position: relative;
-  font-weight: 400;
-  cursor: default;
-  transition: background 200ms ease, color 200ms ease;
+  text-align: center;
+  padding: 0.5rem 0 0;
+  transition: color 200ms ease;
 }
-.cal-day.empty { color: transparent; }
-.cal-day.available { color: var(--text-primary); }
-.cal-day.available::after {
-  content: '';
-  position: absolute;
-  bottom: 4px; left: 50%;
-  transform: translateX(-50%);
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--coral);
-}
-.cal-day.available:hover {
-  background: var(--coral-soft);
-  color: var(--text-primary);
-}
+.cal-embed-fallback:hover { color: var(--coral); }
 
 .contacto-side { display: flex; flex-direction: column; gap: 1.5rem; }
 .wa-card, .form-card {

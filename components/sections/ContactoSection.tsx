@@ -1,50 +1,31 @@
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
-const WA_PREFILL = encodeURIComponent(
-  'Hola, me gustaría saber más sobre los servicios de VOCAI'
-)
+'use client'
 
-// Diciembre 2026 → 1 dic = martes. La primera fila empieza con un día
-// vacío en lunes. Días con dot coral simulan disponibilidad.
-const AVAILABLE_DAYS = new Set([1, 3, 5, 9, 10, 12, 15, 18, 19, 22, 24, 29])
-const DAY_NAMES = ['L', 'M', 'X', 'J', 'V', 'S', 'D'] as const
-
-function MiniCalendar() {
-  const cells: Array<{ kind: 'day' | 'empty'; n?: number; available?: boolean }> = []
-  // 1 lunes vacío antes del 1 (martes)
-  cells.push({ kind: 'empty' })
-  for (let n = 1; n <= 31; n++) {
-    cells.push({ kind: 'day', n, available: AVAILABLE_DAYS.has(n) })
-  }
-  // 35 - 1(empty) - 31(días) = 3 vacíos al final
-  for (let i = 0; i < 3; i++) cells.push({ kind: 'empty' })
-
-  return (
-    <div className="mini-calendar" aria-hidden="true">
-      <div className="cal-header">Diciembre 2026</div>
-      <div className="cal-grid">
-        {DAY_NAMES.map((d) => (
-          <div key={d} className="cal-day-name">
-            {d}
-          </div>
-        ))}
-        {cells.map((cell, i) =>
-          cell.kind === 'empty' ? (
-            <span key={`e-${i}`} className="cal-day empty" />
-          ) : (
-            <span
-              key={`d-${cell.n}`}
-              className={`cal-day${cell.available ? ' available' : ''}`}
-            >
-              {cell.n}
-            </span>
-          )
-        )}
-      </div>
-    </div>
-  )
-}
+import Cal, { getCalApi } from '@calcom/embed-react'
+import { useEffect } from 'react'
+import {
+  CAL_LINK,
+  CAL_USERNAME,
+  CAL_EVENT,
+  buildWhatsAppLink,
+} from '@/lib/contact'
 
 export default function ContactoSection() {
+  // Configura el namespace del embed con tema dark + brand coral
+  useEffect(() => {
+    void (async () => {
+      const cal = await getCalApi({ namespace: 'vocai-estudio' })
+      cal('ui', {
+        theme: 'dark',
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#FF5A4A' },
+          dark: { 'cal-brand': '#FF5A4A' },
+        },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      })
+    })()
+  }, [])
+
   return (
     <section id="contacto" className="contacto-section">
       <div className="container">
@@ -58,10 +39,28 @@ export default function ContactoSection() {
         </div>
 
         <div className="contacto-grid stagger" data-stagger-step="150">
-          <div className="calcom-placeholder reveal">
-            <span className="label">Cal.com Embed</span>
-            <MiniCalendar />
-            <span className="title">Reservá tu hora de estudio</span>
+          <div className="cal-embed-wrap reveal">
+            <span className="cal-embed-label">Reservá tu hora de estudio</span>
+            <Cal
+              namespace="vocai-estudio"
+              calLink={`${CAL_USERNAME}/${CAL_EVENT}`}
+              style={{
+                width: '100%',
+                height: '600px',
+                overflow: 'auto',
+              }}
+              config={{ layout: 'month_view', theme: 'dark' }}
+            />
+            {/* Fallback: si por algún motivo el iframe no carga,
+                el link directo siempre funciona */}
+            <a
+              href={CAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cal-embed-fallback"
+            >
+              ¿No carga? Abrir Cal.com en una pestaña nueva →
+            </a>
           </div>
 
           <div className="contacto-side reveal">
@@ -72,7 +71,7 @@ export default function ContactoSection() {
                 hablamos por WhatsApp.
               </p>
               <a
-                href={`https://wa.me/${WA}?text=${WA_PREFILL}`}
+                href={buildWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary btn-large"
@@ -100,7 +99,7 @@ export default function ContactoSection() {
                   placeholder="Contanos brevemente sobre tu proyecto..."
                 />
               </div>
-              {/* TODO CP5: server action que envía el form a hola@vocai.es */}
+              {/* TODO CP5.3: server action que envía el form a hola@vocai.es */}
               <button
                 type="submit"
                 className="btn btn-primary"

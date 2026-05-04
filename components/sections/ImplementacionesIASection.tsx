@@ -1,7 +1,4 @@
-const WA = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '34000000000'
-const WA_PREFILL = encodeURIComponent(
-  'Hola, me gustaría saber más sobre los servicios de VOCAI'
-)
+import { buildWhatsAppLink } from '@/lib/contact'
 
 // Red neuronal: 3 capas (3 input → 4 hidden → 3 output)
 // Líneas conectando cada nodo de una capa con cada nodo de la siguiente.
@@ -109,7 +106,7 @@ export default function ImplementacionesIASection() {
             </ul>
 
             <a
-              href={`https://wa.me/${WA}?text=${WA_PREFILL}`}
+              href={buildWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-large"
