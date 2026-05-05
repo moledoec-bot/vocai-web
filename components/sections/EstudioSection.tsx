@@ -33,12 +33,23 @@ export default function EstudioSection() {
               en sala y entrega inmediata. Sin invertir en equipo propio.
             </p>
 
-            <ul className="sub-services">
-              <li>Podcast</li>
-              <li>Producción de contenido</li>
-              <li>Branding</li>
-              <li>Marketing digital</li>
-            </ul>
+            <a
+              href={CAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="price-card price-card--featured"
+            >
+              <span className="price-card-title">Podcast</span>
+              <div className="price-card-bottom">
+                <span className="price-card-price">Desde 90€/h + IVA</span>
+                <span className="price-card-arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+
+            <p className="also-list">
+              <span className="also-list-label">También hacemos:</span>
+              producción de contenido · branding · marketing digital
+            </p>
 
             <a
               href={CAL_LINK}

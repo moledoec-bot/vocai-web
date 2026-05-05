@@ -97,13 +97,23 @@ export default function ImplementacionesIASection() {
               tecnicismos: solo procesos que funcionan solos.
             </p>
 
-            <ul className="sub-services">
-              <li>Agentes IA</li>
-              <li>Automatizaciones n8n</li>
-              <li>Desarrollo de apps</li>
-              <li>Consultoría IA</li>
-              <li>Formación IA</li>
-            </ul>
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="price-card price-card--featured"
+            >
+              <span className="price-card-title">Agentes IA</span>
+              <div className="price-card-bottom">
+                <span className="price-card-price">Desde 500€</span>
+                <span className="price-card-arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+
+            <p className="also-list">
+              <span className="also-list-label">También hacemos:</span>
+              automatizaciones n8n · desarrollo de apps · consultoría IA · formación IA
+            </p>
 
             <a
               href={buildWhatsAppLink()}

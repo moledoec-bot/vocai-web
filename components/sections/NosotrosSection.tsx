@@ -14,22 +14,22 @@ export default function NosotrosSection() {
         <div className="nos-grid stagger" data-stagger-step="200">
           <div className="nos-card reveal" data-parallax="0.04">
             <div className="nos-avatar">Foto Agus</div>
-            <div className="name">Agustín Moledo</div>
-            <div className="role">Estrategia · IA · Producto</div>
+            <div className="name">Agus Moledo</div>
+            <div className="role">Estrategia · IA aplicada · Producto</div>
             <p className="bio">
-              Estratega comercial y product. Lidera la rama de IA y desarrollo.
-              Apasionado por automatizar lo aburrido para que la gente cree
-              más.
+              15 años emprendiendo y construyendo con IA desde sus inicios.
+              Lidera estrategia, agentes y desarrollo de apps en VOCAI.
             </p>
           </div>
 
           <div className="nos-card reveal" data-parallax="-0.04">
             <div className="nos-avatar">Foto Santi</div>
-            <div className="name">Santiago Piguillem</div>
-            <div className="role">Estudio · Producción · Contenido</div>
+            <div className="name">Santi Piguillem</div>
+            <div className="role">Producción audiovisual · IA aplicada a procesos</div>
             <p className="bio">
-              Director de estudio y producción audiovisual. Se ocupa de que
-              cada grabación suene y se vea como las grandes.
+              10+ años desarrollando proyectos, con base en dirección y
+              branding. Lidera el estudio, la producción audiovisual y la
+              aplicación de IA a procesos.
             </p>
           </div>
         </div>
