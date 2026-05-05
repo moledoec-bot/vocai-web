@@ -1,21 +1,10 @@
-import {
-  VideoIcon,
-  MicThinIcon,
-  SlidersHorizontalIcon,
-  ClapperboardIcon,
-  HeadphonesIcon,
-  Mic2Icon,
-} from '@/components/icons'
+import Image from 'next/image'
 import { CAL_LINK } from '@/lib/contact'
 
-const GALLERY = [
-  { Icon: VideoIcon, label: 'Foto estudio 1' },
-  { Icon: MicThinIcon, label: 'Foto estudio 2' },
-  { Icon: SlidersHorizontalIcon, label: 'Foto estudio 3' },
-  { Icon: ClapperboardIcon, label: 'Foto estudio 4' },
-  { Icon: HeadphonesIcon, label: 'Foto estudio 5' },
-  { Icon: Mic2Icon, label: 'Foto estudio 6' },
-] as const
+const HERO = {
+  src: '/images/IMG_4286.jpg',
+  alt: 'Estudio VOCAI · vista frontal con sillones, estantería y micrófonos',
+}
 
 export default function EstudioSection() {
   return (
@@ -61,15 +50,14 @@ export default function EstudioSection() {
             </a>
           </div>
 
-          <div className="estudio-gallery stagger">
-            {GALLERY.map(({ Icon, label }) => (
-              <div key={label} className="photo-placeholder reveal">
-                <span className="photo-icon" aria-hidden="true">
-                  <Icon />
-                </span>
-                <span className="photo-label">{label}</span>
-              </div>
-            ))}
+          <div className="estudio-hero reveal">
+            <Image
+              src={HERO.src}
+              alt={HERO.alt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              quality={85}
+            />
           </div>
         </div>
       </div>

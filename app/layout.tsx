@@ -3,10 +3,12 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { JsonLd } from '@/components/seo/JsonLd'
 
+// Solo cargamos la variante 'normal' de cada fuente. La italic no se
+// usa en ninguna parte del sitio (cero <em> o font-style: italic en
+// código) — quitarla ahorra ~419 KB de assets web.
 const generalSans = localFont({
   src: [
     { path: '../public/fonts/GeneralSans-Variable.woff2', style: 'normal', weight: '200 700' },
-    { path: '../public/fonts/GeneralSans-VariableItalic.woff2', style: 'italic', weight: '200 700' },
   ],
   variable: '--font-display',
   display: 'swap',
@@ -15,7 +17,6 @@ const generalSans = localFont({
 const inter = localFont({
   src: [
     { path: '../public/fonts/InterVariable.woff2', style: 'normal', weight: '100 900' },
-    { path: '../public/fonts/InterVariable-Italic.woff2', style: 'italic', weight: '100 900' },
   ],
   variable: '--font-body',
   display: 'swap',
@@ -39,10 +40,20 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     type: 'website',
     images: [
+      // WebP primary (22 KB, ~97% más liviano que PNG)
+      {
+        url: '/og-image.webp',
+        width: 1200,
+        height: 630,
+        type: 'image/webp',
+        alt: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
+      },
+      // PNG fallback para crawlers viejos
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
       },
     ],
@@ -52,7 +63,7 @@ export const metadata: Metadata = {
     title: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
     description:
       'Estudio de podcast, marketing digital e inteligencia artificial en Alicante.',
-    images: ['/og-image.png'],
+    images: ['/og-image.webp'],
   },
   robots: {
     index: true,

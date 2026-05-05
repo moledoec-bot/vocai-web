@@ -16,8 +16,13 @@
 .DS_Store
 *.pem
 npm-debug.log*
+# Frames temporales del video descartado
 public/frames/
+
+# HEIC originales (los .jpg derivados van versionados)
 public/images/*.HEIC
+public/images/*.heic
+
 public/video*
 .mcp.json
 .claude/skills/

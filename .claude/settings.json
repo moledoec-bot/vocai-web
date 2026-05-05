@@ -103,7 +103,20 @@
       "Bash(pngquant --quality=80-95 --output public/og-image-q.png public/og-image.png --force)",
       "Bash(curl -s http://localhost:3000/sitemap.xml)",
       "Bash(curl -s http://localhost:3000/robots.txt)",
-      "Bash(curl -sI http://localhost:3000/og-image.png)"
+      "Bash(curl -sI http://localhost:3000/og-image.png)",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate,duration,bit_rate,pix_fmt -show_entries format=size,duration,bit_rate -of default=noprint_wrappers=0 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/video/estudio-loop.mp4)",
+      "Bash(ffmpeg -y -i /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/video/estudio-loop.mp4 -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart -an /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/video/estudio-loop.tmp.mp4)",
+      "Bash(sips -r -90 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/images/IMG_4284.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/images/IMG_4284.jpg)",
+      "Bash(sips -r 180 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/images/IMG_4284.jpg)",
+      "Bash(awk '{print $3\"% CPU - \"$11\" \"$12\" \"$13}')",
+      "Bash(sips --help)",
+      "Bash(ffmpeg -hide_banner -encoders)",
+      "Bash(git -C /Users/agustinmoledo/Proyectos/desarrollo/vocai-web ls-files)",
+      "Bash(grep -iE \"\\\\.heic$|public/frames/\")",
+      "Bash(brew install *)",
+      "Bash(cwebp -version)",
+      "Bash(cwebp -q 85 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/og-image.png -o /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/og-image.webp)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",

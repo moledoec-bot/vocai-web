@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function NosotrosSection() {
   return (
     <section id="nosotros">
@@ -13,7 +15,16 @@ export default function NosotrosSection() {
 
         <div className="nos-grid stagger" data-stagger-step="200">
           <div className="nos-card reveal" data-parallax="0.04">
-            <div className="nos-avatar">Foto Agus</div>
+            <div className="founder-photo">
+              <Image
+                src="/images/agus.jpg"
+                alt="Agus Moledo, fundador de VOCAI"
+                fill
+                sizes="(min-width: 768px) 220px, 200px"
+                quality={85}
+                loading="lazy"
+              />
+            </div>
             <div className="name">Agus Moledo</div>
             <div className="role">Estrategia · IA aplicada · Producto</div>
             <p className="bio">
@@ -23,7 +34,16 @@ export default function NosotrosSection() {
           </div>
 
           <div className="nos-card reveal" data-parallax="-0.04">
-            <div className="nos-avatar">Foto Santi</div>
+            <div className="founder-photo">
+              <Image
+                src="/images/santi.jpg"
+                alt="Santi Piguillem, socio de VOCAI"
+                fill
+                sizes="(min-width: 768px) 220px, 200px"
+                quality={85}
+                loading="lazy"
+              />
+            </div>
             <div className="name">Santi Piguillem</div>
             <div className="role">Producción audiovisual · IA aplicada a procesos</div>
             <p className="bio">

@@ -429,15 +429,31 @@ h1, h2, h3, h4 {
 .estudio-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 2.5rem;
   margin-top: 3.5rem;
   align-items: start;
 }
 @media (min-width: 1024px) {
-  .estudio-grid { grid-template-columns: 1fr 1.1fr; gap: 4rem; }
+  .estudio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
 }
 .estudio-copy h2 { margin-bottom: 1.5rem; }
 .estudio-copy p { color: var(--text-muted); margin-bottom: 2rem; }
+
+/* Hero foto del estudio: horizontal 4:3 (IMG_4286 real es 1600×1200) */
+.estudio-hero {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  background: var(--bg-elev);
+}
+.estudio-hero img { object-fit: cover; object-position: center; }
 
 .sub-services {
   list-style: none;
@@ -565,51 +581,6 @@ h1, h2, h3, h4 {
   margin-right: 0.4rem;
 }
 
-.estudio-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-@media (min-width: 540px) {
-  .estudio-gallery { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-}
-.photo-placeholder {
-  aspect-ratio: 4 / 5;
-  background: linear-gradient(135deg, var(--bg-elev) 0%, var(--bg-elev-2) 100%);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.875rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 1rem;
-  color: var(--text-faded);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  transition:
-    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.photo-placeholder:hover {
-  transform: scale(1.05);
-  border-color: var(--coral);
-}
-.photo-icon {
-  width: 44px;
-  height: 44px;
-  color: var(--coral);
-  opacity: 0.18;
-  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.photo-icon svg { width: 100%; height: 100%; }
-.photo-placeholder:hover .photo-icon { opacity: 0.4; }
-.photo-label { font-size: 0.625rem; }
 
 /* ==========================================
    4) IMPLEMENTACIONES IA
@@ -726,22 +697,23 @@ h1, h2, h3, h4 {
   transform: translateY(-4px);
   border-color: var(--coral);
 }
-.nos-avatar {
-  width: 8rem;
-  height: 8rem;
-  margin: 0 auto 1.5rem auto;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--bg-elev-2) 0%, var(--bg-base) 100%);
-  border: 1px solid var(--border-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-faded);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+/* Foto founder (Agus / Santi): cuadrada, subtle, NO círculo */
+.founder-photo {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 0 auto 1.25rem auto;
+}
+.founder-photo img {
+  object-fit: cover;
+  object-position: center top; /* prioriza la cara, evita corte por arriba */
+}
+@media (min-width: 768px) {
+  .founder-photo { max-width: 220px; }
 }
 .nos-card .name {
   font-family: var(--font-display), system-ui, sans-serif;
@@ -1076,7 +1048,7 @@ body.is-loaded .hero-sub { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .reveal, .word-reveal, .hero-ctas, .hero-sub,
   #hero-shader-canvas, .navbar, .nav-links a::after,
-  .btn, .photo-placeholder, .spline-placeholder, .neural-net circle {
+  .btn, .spline-placeholder, .neural-net circle {
     transition: none !important;
     animation: none !important;
   }

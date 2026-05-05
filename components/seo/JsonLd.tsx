@@ -9,7 +9,7 @@ const schema = {
   // TODO: cuando Agus tenga teléfono real, reemplazar el placeholder.
   telephone: '+34000000000',
   email: 'hola@vocai.es',
-  image: 'https://vocai.es/og-image.png',
+  image: 'https://vocai.es/og-image.webp',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Camino del Faro 37, Cabo las Huertas',
