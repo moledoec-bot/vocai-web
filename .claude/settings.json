@@ -80,7 +80,20 @@
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,4800 --screenshot=/tmp/cp51-full.png --virtual-time-budget=10000 \"http://localhost:3000/\")",
       "Bash(git check-ignore *)",
       "Bash(curl -sS -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"nombre\":\"\",\"email\":\"\",\"mensaje\":\"\"}')",
-      "Bash(curl -sS -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"nombre\":\"Test\",\"email\":\"no-es-email\",\"mensaje\":\"hola\"}')"
+      "Bash(curl -sS -X POST http://localhost:3000/api/contact -H \"Content-Type: application/json\" -d '{\"nombre\":\"Test\",\"email\":\"no-es-email\",\"mensaje\":\"hola\"}')",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/cards-iter.png --virtual-time-budget=5000 \"http://localhost:3000/\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --hide-scrollbars --use-gl=swiftshader --enable-unsafe-swiftshader --no-sandbox --window-size=1440,900 --screenshot=/tmp/iter3.png --virtual-time-budget=5000 \"http://localhost:3000/\")",
+      "Bash(curl -sI http://localhost:3000/privacidad)",
+      "Bash(curl -sI http://localhost:3000/aviso-legal)",
+      "Bash(curl -sI http://localhost:3000/cookies)",
+      "Bash(curl -s http://localhost:3000/__TRACKED_VAR__)",
+      "Bash(curl -s \"http://localhost:3000/privacidad\")",
+      "Bash(/bin/ls -l /tmp/p.html)",
+      "Bash(echo \"size: $\\(/bin/ls -l /tmp/p.html)",
+      "Bash(/usr/bin/grep -oE '<h2[^>]*>[^<]+</h2>' /tmp/p.html)",
+      "Bash(/usr/bin/grep -c 'hero-shader-canvas' /tmp/p.html)",
+      "Bash(/usr/bin/grep -c 'legal-page-back' /tmp/p.html)",
+      "Bash(/usr/bin/grep -oE 'Volver al inicio' /tmp/p.html)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",

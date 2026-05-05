@@ -4,7 +4,7 @@ export default function FooterSection() {
       <div className="container">
         <div className="footer-grid stagger">
           <div className="footer-brand reveal">
-            <a href="#hero" className="vocai-logo vocai-logo--lg" aria-label="VOCAI">
+            <a href="/#hero" className="vocai-logo vocai-logo--lg" aria-label="VOCAI">
               <span className="vocai-wordmark">VOCAI</span>
               <span className="vocai-dot">.</span>
             </a>
@@ -35,16 +35,16 @@ export default function FooterSection() {
             <h4>Navegación</h4>
             <ul>
               <li>
-                <a href="#estudio">Estudio</a>
+                <a href="/#estudio">Estudio</a>
               </li>
               <li>
-                <a href="#ia">Implementaciones IA</a>
+                <a href="/#ia">Implementaciones IA</a>
               </li>
               <li>
-                <a href="#nosotros">Nosotros</a>
+                <a href="/#nosotros">Nosotros</a>
               </li>
               <li>
-                <a href="#contacto">Contacto</a>
+                <a href="/#contacto">Contacto</a>
               </li>
             </ul>
           </div>
@@ -67,13 +67,13 @@ export default function FooterSection() {
             <h4>Legal</h4>
             <ul>
               <li>
-                <a href="#">Privacidad</a>
+                <a href="/privacidad">Privacidad</a>
               </li>
               <li>
-                <a href="#">Aviso legal</a>
+                <a href="/aviso-legal">Aviso legal</a>
               </li>
               <li>
-                <a href="#">Cookies</a>
+                <a href="/cookies">Cookies</a>
               </li>
             </ul>
           </div>
