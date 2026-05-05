@@ -13,7 +13,7 @@ export default function HeroSection() {
             <WordReveal text="La voz de tu negocio." />
             <br />
             <span className="accent">
-              <WordReveal text="Construida con IA." startIndex={5} />
+              <WordReveal text="Impulsada con IA." startIndex={5} />
             </span>
           </h1>
 

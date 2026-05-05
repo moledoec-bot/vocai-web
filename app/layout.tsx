@@ -23,16 +23,16 @@ const inter = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: 'VOCAI — La voz de tu negocio, potenciada por IA',
+    default: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
     template: '%s | VOCAI',
   },
   description:
     'Estudio de podcast, marketing digital e inteligencia artificial para empresas y profesionales en Alicante.',
   metadataBase: new URL('https://vocai.es'),
-  alternates: { canonical: '/' },
+  alternates: { canonical: 'https://vocai.es' },
   openGraph: {
     siteName: 'VOCAI',
-    title: 'VOCAI — La voz de tu negocio, potenciada por IA',
+    title: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
     description:
       'Estudio de podcast, marketing digital e inteligencia artificial para empresas y profesionales en Alicante.',
     url: 'https://vocai.es',
@@ -40,19 +40,19 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-home.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'VOCAI — La voz de tu negocio, potenciada por IA',
+        alt: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VOCAI — La voz de tu negocio, potenciada por IA',
+    title: 'VOCAI — La voz de tu negocio. Impulsada con IA.',
     description:
       'Estudio de podcast, marketing digital e inteligencia artificial en Alicante.',
-    images: ['/og-home.jpg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,

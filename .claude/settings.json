@@ -93,7 +93,17 @@
       "Bash(/usr/bin/grep -oE '<h2[^>]*>[^<]+</h2>' /tmp/p.html)",
       "Bash(/usr/bin/grep -c 'hero-shader-canvas' /tmp/p.html)",
       "Bash(/usr/bin/grep -c 'legal-page-back' /tmp/p.html)",
-      "Bash(/usr/bin/grep -oE 'Volver al inicio' /tmp/p.html)"
+      "Bash(/usr/bin/grep -oE 'Volver al inicio' /tmp/p.html)",
+      "mcp__nanobanana__generate_image",
+      "Bash(cp og-image.png og-image-original-backup.png)",
+      "Bash(sips -s format png og-image.png)",
+      "Bash(sips -c 1444 2752 og-image.png)",
+      "Bash(sips -z 630 1200 og-image.png)",
+      "Bash(command -v pngquant)",
+      "Bash(pngquant --quality=80-95 --output public/og-image-q.png public/og-image.png --force)",
+      "Bash(curl -s http://localhost:3000/sitemap.xml)",
+      "Bash(curl -s http://localhost:3000/robots.txt)",
+      "Bash(curl -sI http://localhost:3000/og-image.png)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",

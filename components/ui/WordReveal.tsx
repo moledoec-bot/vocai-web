@@ -5,7 +5,7 @@
 // del texto recibido en <span class="word-reveal">.
 interface WordRevealProps {
   text: string
-  startIndex?: number // útil para chainear con otra línea (ej: "Construida con IA.")
+  startIndex?: number // útil para chainear con otra línea (ej: "Impulsada con IA.")
   stepMs?: number
 }
 

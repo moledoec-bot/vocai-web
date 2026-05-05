@@ -1,3 +1,4 @@
+// JSON-LD LocalBusiness para rich snippets en Google.
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -5,13 +6,14 @@ const schema = {
   description:
     'Estudio de podcast, marketing digital e inteligencia artificial en Alicante',
   url: 'https://vocai.es',
+  // TODO: cuando Agus tenga teléfono real, reemplazar el placeholder.
   telephone: '+34000000000',
-  image: 'https://vocai.es/og-home.jpg',
+  email: 'hola@vocai.es',
+  image: 'https://vocai.es/og-image.png',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Camino del Faro 37',
-    addressLocality: 'Cabo las Huertas',
-    addressRegion: 'Alicante',
+    streetAddress: 'Camino del Faro 37, Cabo las Huertas',
+    addressLocality: 'Alicante',
     postalCode: '03540',
     addressCountry: 'ES',
   },
@@ -31,7 +33,7 @@ const schema = {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Saturday'],
       opens: '10:00',
-      closes: '14:00',
+      closes: '17:00',
     },
   ],
   sameAs: ['https://www.instagram.com/vocai.st/'],
