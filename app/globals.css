@@ -691,6 +691,7 @@ h1, h2, h3, h4 {
   border-radius: 1.5rem;
   padding: 2.5rem;
   text-align: center;
+  height: 100%; /* matchea altura entre cards aunque las bios sean distintas */
   transition: transform 280ms ease, border-color 280ms ease;
 }
 .nos-card:hover {
@@ -710,7 +711,7 @@ h1, h2, h3, h4 {
 }
 .founder-photo img {
   object-fit: cover;
-  object-position: center top; /* prioriza la cara, evita corte por arriba */
+  object-position: center;
 }
 @media (min-width: 768px) {
   .founder-photo { max-width: 220px; }

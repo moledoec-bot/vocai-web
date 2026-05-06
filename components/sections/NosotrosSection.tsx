@@ -17,7 +17,7 @@ export default function NosotrosSection() {
           <div className="nos-card reveal" data-parallax="0.04">
             <div className="founder-photo">
               <Image
-                src="/images/agus.jpg"
+                src="/images/agus-ok.jpg"
                 alt="Agus Moledo, fundador de VOCAI"
                 fill
                 sizes="(min-width: 768px) 220px, 200px"
@@ -36,7 +36,7 @@ export default function NosotrosSection() {
           <div className="nos-card reveal" data-parallax="-0.04">
             <div className="founder-photo">
               <Image
-                src="/images/santi.jpg"
+                src="/images/santi-ok.jpg"
                 alt="Santi Piguillem, socio de VOCAI"
                 fill
                 sizes="(min-width: 768px) 220px, 200px"

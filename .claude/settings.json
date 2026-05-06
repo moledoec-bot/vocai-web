@@ -116,7 +116,13 @@
       "Bash(grep -iE \"\\\\.heic$|public/frames/\")",
       "Bash(brew install *)",
       "Bash(cwebp -version)",
-      "Bash(cwebp -q 85 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/og-image.png -o /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/og-image.webp)"
+      "Bash(cwebp -q 85 /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/og-image.png -o /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/public/og-image.webp)",
+      "Bash(grep -E \"re_[A-Za-z0-9]{20,}\")",
+      "Bash(curl -sI -o /dev/null -w \"%{http_code}\\\\n\" --max-time 3 http://localhost:3000/)",
+      "Bash(curl -sI -o /dev/null -w \"GET / → HTTP %{http_code}  \\(ttfb %{time_starttransfer}s\\)\\\\n\" http://localhost:3000/)",
+      "Bash(grep -nA 6 \"founder-photo\" /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/app/globals.css)",
+      "Bash(grep -nA 5 -E \"\\\\.nos-grid|\\\\.nos-card\" /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/app/globals.css)",
+      "Bash(curl -sI -o /dev/null -w \"GET / → HTTP %{http_code}\\\\n\" http://localhost:3000/)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",
