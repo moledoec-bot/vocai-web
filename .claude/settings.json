@@ -122,7 +122,17 @@
       "Bash(curl -sI -o /dev/null -w \"GET / → HTTP %{http_code}  \\(ttfb %{time_starttransfer}s\\)\\\\n\" http://localhost:3000/)",
       "Bash(grep -nA 6 \"founder-photo\" /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/app/globals.css)",
       "Bash(grep -nA 5 -E \"\\\\.nos-grid|\\\\.nos-card\" /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/app/globals.css)",
-      "Bash(curl -sI -o /dev/null -w \"GET / → HTTP %{http_code}\\\\n\" http://localhost:3000/)"
+      "Bash(curl -sI -o /dev/null -w \"GET / → HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(grep -nA 1 \"spline-placeholder\\\\|neural-net\" /Users/agustinmoledo/Proyectos/desarrollo/vocai-web/app/globals.css)",
+      "Bash(/usr/bin/grep -c \"Escena Spline\" /tmp/home.html)",
+      "Bash(/usr/bin/grep -c \"Cerebro / Red Neuronal\" /tmp/home.html)",
+      "Bash(/usr/bin/grep -c \"escena 3D interactiva\" /tmp/home.html)",
+      "Bash(/usr/bin/grep -c \"neural-network-container\" /tmp/home.html)",
+      "Bash(/usr/bin/grep -oE \"neural-line-flow\" /tmp/home.html)",
+      "Bash(/usr/bin/wc -l)",
+      "Bash(/usr/bin/grep -oE \"neural-node\" /tmp/home.html)",
+      "Bash(/usr/bin/grep -oE \"neural-chip-[1-5]\" /tmp/home.html)",
+      "Bash(/usr/bin/sort -u)"
     ],
     "additionalDirectories": [
       "/Users/agustinmoledo/.claude",
