@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { WhatsAppFloat } from '@/components/ui/WhatsAppFloat'
 
 // Solo cargamos la variante 'normal' de cada fuente. La italic no se
 // usa en ninguna parte del sitio (cero <em> o font-style: italic en
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body>
         <JsonLd />
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   )
