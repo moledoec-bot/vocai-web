@@ -1,6 +1,6 @@
 'use client'
 
-const WA_URL = 'https://wa.link/fydgy6'
+const WA_URL = 'https://wa.link/q7k2ui'
 
 export function WhatsAppFloat() {
   return (
